@@ -1,13 +1,23 @@
 from django.shortcuts import render
+from django.template import loader
+from django.http import HttpResponse
+from .models import Category, Task
+
+
 
 # Create your views here.
-def index(request, question_id):
+def index(request):
     categories = Category.objects.all()
-    return HttpResponse("You're looking at question %s." % question_id)
+    template = loader.get_template('tasks/index.html')
+    context = {
+        'categories': categories,
+    }
+    return HttpResponse(template.render(context, request))
 
-def selected(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+def selected(request):
+    selectedCategories = Category.objects.filter(selected = False)
+    response = "selected"
+    return HttpResponse(response)
 
 
 # def index(request):
