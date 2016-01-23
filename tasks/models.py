@@ -4,12 +4,12 @@ from django.db import models
 
 
 class Category(models.Model):
-    cat_title = models.CharField(max_length = 50)
+    category_title = models.CharField(max_length = 50)
     description = models.CharField(max_length = 200)
-    selected = models.BooleanField(default = False)
+    category_selected = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.cat_title
+        return self.category_title
 
 class Task(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
@@ -23,4 +23,20 @@ class Task(models.Model):
 
     # question_text = models.CharField(max_length=200)
     # pub_date = models.DateTimeField('date published')
+
+class Question(models.Model):
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    question_title = models.CharField(max_length = 50)
+    question_text = models.CharField(max_length = 200)
+
+    def __str__(self):
+        return self.question_title
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete = models.CASCADE)
+    choice_text = models.CharField(max_length = 200)
+    choice_selected = models.BooleanField(default = False)
+
+    def __str__(self):
+        return self.choice_text
 
