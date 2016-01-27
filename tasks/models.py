@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
 class Category(models.Model):
     category_title = models.CharField(max_length = 50)
     description = models.CharField(max_length = 200)
@@ -21,7 +18,6 @@ class Task(models.Model):
     def __str__(self):
         return self.task_title
 
-    # question_text = models.CharField(max_length=200)
     # pub_date = models.DateTimeField('date published')
 
 class Question(models.Model):
@@ -39,4 +35,3 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-
