@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Task, Category
+from .models import *
 
 admin.site.register(Task)
 admin.site.register(Category)
+admin.site.register(Question)
+admin.site.register(Choice)
