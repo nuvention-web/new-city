@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "NewCityHosting": {
+      "applicationId": "gm6GOPZ8j3hv24GsPG7hSNxk90Gou3furT6hUdcb"
+    },
+    "_default": {
+      "link": "NewCityHosting"
+    }
+  }
+}
