@@ -14,9 +14,10 @@
 
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:50%; }
+        #map { position:absolute; top:14%; bottom:0; width:50%; float:left; }
         #n-description {float: right; width:50%; height: 50%;}
         #fit {
+            top: 14%;
             float: left;
             display: block;
             position: relative;
@@ -30,6 +31,36 @@
             text-align: center;
             color: #fff;
             background: #ee8a65;
+        }
+        #upper-east-side{
+            background-image: url("../img/ny/upper_east_side.png");
+            width: 50%;
+            height: 100px;
+        }
+        #battery-park-city{
+            background-image: url("../img/ny/battery_park.jpg");
+            width: 50%;
+            height: 100px;
+        }
+        #chelsea{
+            background-image: url("../img/ny/chelsea.jpg");
+            width: 50%;
+            height: 100px;
+        }
+        #chinatown{
+            background-image: url("../img/ny/chinatown.jpg");
+            width: 50%;
+            height: 100px;
+        }
+        #little-italy{
+            background-image: url("../img/ny/little_italy.jpg");
+            width: 50%;
+            height: 100px;
+        }
+        #east-village{
+            background-image: url("../img/ny/east_village.jpg");
+            width: 50%;
+            height: 100px;
         }
     </style>
 </head>
@@ -59,87 +90,33 @@
 
     <div id='map'></div>
     <br/>
-    <button id='fit'>Larger view</button>
+    <button id='fit'>Move to New York</button>
     <br/>
     <nav id='filter-group' class='filter-group'></nav>
     <div id='n-description'>
-        <h1>Welcome to NY!!</h1>
-        <h3>your neighborhood guide is here</h3>
+        <div id='upper-east-side'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/upper-east-side/">Upper East Side</a>
+        <div id='battery-park-city'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/battery-park-city/">Battery Park City</a>
+        <div id='chelsea'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/chelsea/" id='loc'>Chelsea</a>
+        <div id='chinatown'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/chinatown/" id='loc'>Chinatown</a>
+        <div id='little-italy'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/little-italy/" id='loc'>Little Italy</a>
+        <div id='east-village'>
+        </div>
+        <a href="https://www.compass.com/neighborhood-guides/nyc/east-village/" id='loc'>East Village</a>
     </div>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibmV3Y2l0eWhhY2tlcnMiLCJhIjoiY2lrMW90bzYxMDNheXVnbTBxbDdvc2RzaSJ9.Re9IddeG-RBYEHplUHfBew'
 ;
-
-// add hardcoded markers
-var markers = {
-    "type": "FeatureCollection",
-    "features": [{
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "theatre"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.038659, 38.931567]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "theatre"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.003168, 38.894651]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "bar"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.090372, 38.881189]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "bicycle"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.052477, 38.943951]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "music"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.031706, 38.914581]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "music"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.020945, 38.878241]
-        }
-    }, {
-        "type": "Feature",
-        "properties": {
-            "marker-symbol": "music"
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-77.007481, 38.876516]
-        }
-    }]
-};
-
 // Bounded Area to prevent user from scrolling out of NY area
 // var southEast = L.latLng(40.477399, -73.700009),
 //     northWest = L.latLng(40.917577, -74.25909),
