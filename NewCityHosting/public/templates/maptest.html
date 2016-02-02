@@ -87,11 +87,32 @@ function initMap() {
     icon: cityIconBase + cityImage
   });
 
+  var evContent = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
+
   //Coordinates for info box on East Village 
   var posInfoWindow = new google.maps.LatLng(40.726543, -73.981794)
 
   var infoWindow = new google.maps.InfoWindow({
-    content: "hello",
+    content: evContent,
     map: map,
     position: posInfoWindow
   });
@@ -142,23 +163,90 @@ function initMap() {
     title: 'Cacio E Pepe',
     icon: rIconBase + restaurantImage
   });
+
+  var r2info = new google.maps.InfoWindow({
+    content: r2.title,
+    map: map,
+    position: new google.maps.LatLng(40.730748, -73.985927)
+  });
+
+  r2info.close()
+
+  google.maps.event.addListener(r2, 'mouseover', function() {
+    r2info.open(map, this);
+  });
+
+  google.maps.event.addListener(r2, 'mouseout', function() {
+    r2info.close();
+  });
+
   var r3 = new google.maps.Marker({
     position: {lat: 40.718227, lng: -73.985874},
     map: map,
     title: 'Nonna’s L E S Pizzeria',
     icon: rIconBase + restaurantImage
   });
+
+  var r3info = new google.maps.InfoWindow({
+    content: r3.title,
+    map: map,
+    position: new google.maps.LatLng(40.718227, -73.985874)
+  });
+
+  r3info.close()
+
+  google.maps.event.addListener(r3, 'mouseover', function() {
+    r3info.open(map, this);
+  });
+
+  google.maps.event.addListener(r3, 'mouseout', function() {
+    r3info.close();
+  });
+
   var r4 = new google.maps.Marker({
     position: {lat: 40.726463, lng: -73.986641},
     map: map,
     title: 'Raku',
     icon: rIconBase + restaurantImage
   });
+
+  var r4info = new google.maps.InfoWindow({
+    content: r4.title,
+    map: map,
+    position: new google.maps.LatLng(40.726463, -73.986641)
+  });
+
+  r4info.close()
+
+  google.maps.event.addListener(r4, 'mouseover', function() {
+    r4info.open(map, this);
+  });
+
+  google.maps.event.addListener(r4, 'mouseout', function() {
+    r4info.close();
+  });
+
   var r5 = new google.maps.Marker({
     position: {lat: 40.726347, lng: -73.986489},
     map: map,
     title: 'Upstate',
     icon: rIconBase + restaurantImage
+  });
+
+  var r5info = new google.maps.InfoWindow({
+    content: r5.title,
+    map: map,
+    position: new google.maps.LatLng(40.726347, -73.986489)
+  });
+
+  r5info.close()
+
+  google.maps.event.addListener(r5, 'mouseover', function() {
+    r5info.open(map, this);
+  });
+
+  google.maps.event.addListener(r5, 'mouseout', function() {
+    r5info.close();
   });
 
    // bars markers
@@ -168,23 +256,90 @@ function initMap() {
     title: 'Keybar',
     icon: bIconBase + barImage
   });
+
+  var b1info = new google.maps.InfoWindow({
+    content: b1.title,
+    map: map,
+    position: new google.maps.LatLng(40.730042, -73.981521)
+  });
+
+  b1info.close()
+
+  google.maps.event.addListener(b1, 'mouseover', function() {
+    b1info.open(map, this);
+  });
+
+  google.maps.event.addListener(b1, 'mouseout', function() {
+    b1info.close();
+  });
+
   var b2 = new google.maps.Marker({
     position: {lat: 40.722616, lng: -73.986036},
     map: map,
     title: 'The Library',
     icon: bIconBase + barImage
   });
+
+  var b2info = new google.maps.InfoWindow({
+    content: b2.title,
+    map: map,
+    position: new google.maps.LatLng(40.722616, -73.986036)
+  });
+
+  b2info.close()
+
+  google.maps.event.addListener(b2, 'mouseover', function() {
+    b2info.open(map, this);
+  });
+
+  google.maps.event.addListener(b2, 'mouseout', function() {
+    b2info.close();
+  });
+
   var b3 = new google.maps.Marker({
     position: {lat: 40.724727, lng:  -73.980861},
     map: map,
     title: 'PMF Pardon My French',
     icon: bIconBase + barImage
   });
+
+  var b3info = new google.maps.InfoWindow({
+    content: b3.title,
+    map: map,
+    position: new google.maps.LatLng(40.724727, -73.980861)
+  });
+
+  b3info.close()
+
+  google.maps.event.addListener(b3, 'mouseover', function() {
+    b3info.open(map, this);
+  });
+
+  google.maps.event.addListener(b3, 'mouseout', function() {
+    b3info.close();
+  });
+
   var b4 = new google.maps.Marker({
     position: {lat: 40.729712, lng:  -73.988626},
     map: map,
     title: 'Angels Bar',
     icon: bIconBase + barImage
+  });
+
+  var b4info = new google.maps.InfoWindow({
+    content: b4.title,
+    map: map,
+    position: new google.maps.LatLng(40.729712, -73.988626)
+  });
+
+  b4info.close()
+
+  google.maps.event.addListener(b4, 'mouseover', function() {
+    b4info.open(map, this);
+  });
+
+  google.maps.event.addListener(b4, 'mouseout', function() {
+    b4info.close();
   });
 
   document.getElementById('submit').addEventListener('click', function() {
