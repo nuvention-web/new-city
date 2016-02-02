@@ -1,0 +1,9 @@
+# 1/31
+tomorrow, need to:
+	redo the form
+	make the dashboard page prettier
+	add payoff to the index page
+
+long term:
+	connect to database
+
