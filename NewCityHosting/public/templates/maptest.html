@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+  #floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Geocode">
+    </div>
+    <div id="map"></div>
+    <script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 40.7127, lng: -74.0059}
+   });
+
+  var boundaries = [
+    // {lat: 25.774, lng: -80.190},
+    // {lat: 18.466, lng: -66.118},
+    // {lat: 32.321, lng: -64.757}
+
+    {lat:40.73372, lng:-73.98734},
+    {lat:40.727213, lng:-73.971836},
+    {lat:40.721199, lng:-73.973107},
+    {lat:40.71928, lng:-73.973692},
+    {lat:40.71957, lng:-73.975614},
+    {lat:40.72459, lng:-73.992624},
+    {lat:40.72762, lng:-73.99157},
+    {lat:40.73372, lng:-73.98734}
+  ];
+
+  var eastVillage = new google.maps.Polygon({
+    paths: boundaries,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 3,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  })
+  eastVillage.setMap(map);
+
+  var posInfoWindow = new google.maps.LatLng(40.7267701,-73.9867884)
+
+  var infoWindow = new google.maps.InfoWindow({
+    content: "hello",
+    map: map,
+    position: posInfoWindow
+  });
+
+  infoWindow.close()
+
+google.maps.event.addListener(eastVillage, 'mouseover', function() {
+  infoWindow.open(map, this);
+});
+
+google.maps.event.addListener(eastVillage, 'mouseout', function() {
+  infoWindow.close();
+});
+
+  var geocoder = new google.maps.Geocoder();
+
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYmG4gAZ9WUF9POl862TulXhpJZbrk3ew&signed_in=true&callback=initMap"
+        async defer></script>
+  </body>
+</html>
