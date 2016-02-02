@@ -43,17 +43,18 @@
 
   <div class="container">
     <div class="row">
-      <h2 class="todoOne">Todo Item #1</h2>
+      <!-- <h2 class="todoOne">Todo Item #1</h2> -->
       <!-- <img id="imageSize" src="" alt=""> -->
       <h3 class="todoOneTitle">Three months before move:</h3>
       <ul class="todoOneList">
+        <!-- onclick="toggle('p', this)" -->
         <input class="todo" type="checkbox" name="todo" value="false">Begin researching your neighborhood<br/>
         <input class="todo" type="checkbox" name="todo" value="false">Explore our customized guide to neighborhoods, pricing and amenities, so you can think about what to expect for your new home.<br/>
         <input class="todo" type="checkbox" name="todo" value="false">Talk to friends and family to get their ideas and opinions. These people know you best and can give you information that is most tailored to your personality and needs!<br/>
       </ul>
     </div>
     <div class="row">
-      <h2 class="todoTwo">Todo Item #2</h2>
+      <!-- <h2 class="todoTwo">Todo Item #2</h2> -->
       <!-- <img id="imageSize" src="" alt=""> -->
       <h3 class="todoTwoTitle">Two months before move:</h3>
       <ul class="todoTwoList">
@@ -63,7 +64,7 @@
       </ul>
     </div>
     <div class="row">
-      <h2 class="todoThree">Todo Item #3</h2>
+      <!-- <h2 class="todoThree">Todo Item #3</h2> -->
       <!-- <img id="imageSize" src="" alt=""> -->
       <h3 class="todoThreeTitle">Within first month after moving:</h3>
       <ul class="todoThreeList">
@@ -71,11 +72,19 @@
       </ul>
     </div>
   </div>
-  <script type="text/javascript">
-    
-  </script>
+
+<script>
+  function toggle(class_name, obj) {
+    var $input = $(obj);
+    if ($input.prop('checked')) {
+      $(class_name).hide();
+    }
+    else {
+      $(class_name).show();
+    }
+  }
+</script>
+
 </body>
-
-
 
 </html>
