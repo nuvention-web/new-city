@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    .form-style-8{
+        font-family: 'Open Sans Condensed', arial, sans;
+        width: 700px;
+        padding: 30px;
+        background: #FFFFFF;
+        margin: 50px auto;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+        -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+    }
+    .form-style-8 h2{
+        background: #4D4D4D;
+        text-transform: uppercase;
+        font-family: 'Open Sans Condensed', sans-serif;
+        color: #797979;
+        font-size: 18px;
+        font-weight: 100;
+        padding: 20px;
+        margin: -30px -30px 30px -30px;
+    }
+    .form-style-8 input[type="text"],
+    .form-style-8 input[type="date"],
+    .form-style-8 input[type="datetime"],
+    .form-style-8 input[type="email"],
+    .form-style-8 input[type="number"],
+    .form-style-8 input[type="search"],
+    .form-style-8 input[type="time"],
+    .form-style-8 input[type="url"],
+    .form-style-8 input[type="password"],
+    /*.form-style-8 input[type="checkbox"],*/
+    .form-style-8 textarea,
+    .form-style-8 select
+    {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        display: block;
+        width: 100%;
+        padding: 7px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        background: transparent;
+        margin-bottom: 10px;
+        font: 16px Arial, Helvetica, sans-serif;
+        height: 45px;
+    }
+    .form-style-8 textarea{
+        resize:none;
+        overflow: hidden;
+    }
+    .form-style-8 input[type="button"],
+    .form-style-8 input[type="submit"]{
+        -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+        -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+        box-shadow: inset 0px 1px 0px 0px #45D6D6;
+        background-color: #2CBBBB;
+        border: 1px solid #27A0A0;
+        display: inline-block;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 14px;
+        padding: 8px 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    .form-style-8 input[type="button"]:hover,
+    .form-style-8 input[type="submit"]:hover {
+        background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+        background-color:#34CACA;
+    }
+    </style>
+
+  </head>
+  <body>
+    <div class="form-style-8">
+      <h2>User Form</h2>
+      <form action="http://newcity.parseapp.com/templates/dashboard.html">
+        1. Where do you work?
+        <input type="text" name="field1" />
+
+        2. How would you like to get to work?
+        <div>
+          <input type="checkbox">Walk<br>
+          <input type="checkbox">Bike<br>
+          <input type="checkbox">Drive<br>
+          <input type="checkbox">Public Transportation<br><br>
+        </div>
+
+        3. If you selected "Drive" in Question #2, what is your maximum commute time (one way)?
+        <div>
+          <input type="checkbox">10 minutes<br>
+          <input type="checkbox">30 minutes<br>
+          <input type="checkbox">45 minutes<br>
+          <input type="checkbox">1 hour<br>
+          <input type="checkbox">No limit<br><br>
+        </div>
+
+        4. If you selected "Public Transportation" in Question #2, are you willing to commute from outside the city?
+        <div>
+          <input type="checkbox">Yes<br>
+          <input type="checkbox">No<br><br>
+        </div>
+
+        Please rate each item below on scale of 1-5. (5 being most important and 1 being the least important)
+        <br><br>
+        5. Living within 1-3 blocks of a subway stop
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        6. Living in Manhattan
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        7. Having a subway commute to work that is less than 15 minutes?
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        8. Living in quiet, residential neighborhood
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        9. Living in close proximity to nightlife
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        10. Having a doorman
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        11. Living in a high-rise building
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        12. Having an elevator
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        13. Having washer-dryer and dishwasher in unit/building
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        14. Living in a building that allows pets
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        15. Living near Central Park
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        16. Living close to other families
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        17. Living far from tourists and any of NY's most popular iconic locations
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        18. Living amidst the hustle and bustle that makes the city exciting
+        <div>
+          <input type="checkbox">1<br>
+          <input type="checkbox">2<br>
+          <input type="checkbox">3<br>
+          <input type="checkbox">4<br>
+          <input type="checkbox">5<br><br>
+        </div>
+
+        19. How do you prefer to spend your Saturday nights? (Check all that apply)
+        <div>
+          <input type="checkbox">Staying in and spending time with close friends<br>
+          <input type="checkbox">Hitting up the club scene and dancing<br>
+          <input type="checkbox">Going to local, neighborhood bars where I feel welcome<br>
+          <input type="checkbox">Trying out new restaurants<br>
+          <input type="checkbox">Attending cultural events(e.g.,broadway musicals, ballet performances, stand up comedy, etc)<br><br>
+        </div>
+
+        20. What do you enjoy doing on a Sunday morning?
+        <div>
+          <input type="checkbox">Going to a trendy brunch spot with friends<br>
+          <input type="checkbox">Going for a run on a scenic route<br>
+          <input type="checkbox">Finding a cafe/coffee shop in a quiet neighborhood<br>
+          <input type="checkbox">Exploring and walking around interesting neighborhood<br>
+          <input type="checkbox">Finding activities to do with my kids<br>
+          <input type="checkbox">Finding activities to do with my kids<br>
+          <input type="checkbox">Finding activities to do with my kids<br><br>
+        </div>
+
+        21. How would you describe your style?
+        <div>
+          <input type="checkbox">Trendy<br>
+          <input type="checkbox">High-fashion<br>
+          <input type="checkbox">Hipster<br>
+          <input type="checkbox">Classic<br>
+          <input type="checkbox">Casual<br>
+          <input type="checkbox">Preppy<br><br>
+        </div>
+        <form>
+          <input type="submit">
+      </form>
+    </div>
+
+  <script type="text/javascript">
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight)+"px";
+    }
+  </script>
+  </body>
+</html>
