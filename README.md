@@ -32,14 +32,14 @@ Python 3.5
 Install pip (if you don't have it installed already)
 Consider using virtualenv or virtualenvwrapper
 Download Django using pip
-'''sh
+```sh
 $pip install django
-'''
+```
 
 Get django-allauth
-'''sh
+```sh
 $pip install django-allauth
-'''
+```
 
 Then clone this repo. You're all set!
 
