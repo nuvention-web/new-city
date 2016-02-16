@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://newcity.parseapp.com/templates/neighborhood_guide.html -->
+<html jstcache="0"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.adp,.adp table{font-family:Roboto,Arial,sans-serif;font-weight:300;color:#2c2c2c}.adp b,.adp-list b{font-weight:400}.adp-warnbox{margin:5px 0 3px}.warnbox-content{background:#fff1a8;padding:5px 6px}.warnbox-c1,.warnbox-c2{background:#fff1a8;font-size:1px;height:1px;overflow:hidden}.warnbox-c1{margin:0 2px}.warnbox-c2{margin:0 1px}.adp-list{background:#fff;border:1px solid #cdcdcd;cursor:pointer;padding:4px;font-family:Roboto,Arial,sans-serif;font-weight:300;color:#2c2c2c}.adp-fullwidth{width:100%}.adp-listsel{background:#eee;text-decoration:none}.adp-listheader{padding:4px}.adp-placemark{background:#eee;border:1px solid silver;color:#000;cursor:pointer;margin:10px 0;vertical-align:middle}img.adp-marker{width:22px;height:40px}.adp-details,.adp-legal{color:#676767}.adp-summary{padding:0 3px 3px}.adp-step,.adp-substep{border-top:1px solid #cdcdcd;margin:0;padding:.3em 3px;vertical-align:top}.adp-list img,.adp-substep img{width:15px;height:15px;position:relative;top:2px;margin-right:3px}.adp-distance{white-space:nowrap}.adp-step,.adp-text{width:100%}.adp-directions{cursor:pointer;border-collapse:collapse}.adp-list .gm-arrow{width:8px;height:9px;margin:5px 0 3px}.adp-agencies{font-size:80%;margin:5px 0}.adp-summary-duration{float:right;margin-left:7px;white-space:nowrap}.adp-substep .gm-line{margin-right:4px}.adp-substep .adp-stepicon{overflow:hidden;position:relative;top:0;left:0;width:16px;height:16px}.adp-substep .adp-stepicon .adp-maneuver{background-size:19px 630px;position:absolute;left:0;width:16px;height:16px}.adp-substep .adp-stepicon .adp-maneuver.adp-ferry{background-position:0 -614px}.adp-substep .adp-stepicon .adp-maneuver.adp-ferry-train{background-position:0 -566px}.adp-substep .adp-stepicon .adp-maneuver.adp-merge{background-position:0 -143px}.adp-substep .adp-stepicon .adp-maneuver.adp-straight{background-position:0 -534px}.adp-substep .adp-stepicon .adp-maneuver.adp-fork-left{background-position:0 -550px}.adp-substep .adp-stepicon .adp-maneuver.adp-ramp-left{background-position:0 -598px}.adp-substep .adp-stepicon .adp-maneuver.adp-roundabout-left{background-position:0 -197px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-left{background-position:0 -413px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-sharp-left{background-position:0 0}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-slight-left{background-position:0 -378px}.adp-substep .adp-stepicon .adp-maneuver.adp-uturn-left{background-position:0 -305px}.adp-substep .adp-stepicon .adp-maneuver.adp-fork-right{background-position:0 -499px}.adp-substep .adp-stepicon .adp-maneuver.adp-ramp-right{background-position:0 -429px}.adp-substep .adp-stepicon .adp-maneuver.adp-roundabout-right{background-position:0 -232px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-right{background-position:0 -483px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-sharp-right{background-position:0 -582px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-slight-right{background-position:0 -51px}.adp-substep .adp-stepicon .adp-maneuver.adp-uturn-right{background-position:0 -35px}.adp-substep .adp-stepicon .adp-maneuver {background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/maneuvers_hdpi.png);}</style><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style .gm-style-iw{font-weight:300;font-size:13px;overflow:hidden}.gm-style .gm-iw{color:#2c2c2c}.gm-style .gm-iw b{font-weight:400}.gm-style .gm-iw a:link,.gm-style .gm-iw a:visited{color:#4272db;text-decoration:none}.gm-style .gm-iw a:hover{color:#4272db;text-decoration:underline}.gm-style .gm-iw .gm-title{font-weight:400;margin-bottom:1px}.gm-style .gm-iw .gm-basicinfo{line-height:18px;padding-bottom:12px}.gm-style .gm-iw .gm-website{padding-top:6px}.gm-style .gm-iw .gm-photos{padding-bottom:8px;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.gm-style .gm-iw .gm-sv,.gm-style .gm-iw .gm-ph{cursor:pointer;height:50px;width:100px;position:relative;overflow:hidden}.gm-style .gm-iw .gm-sv{padding-right:4px}.gm-style .gm-iw .gm-wsv{cursor:pointer;position:relative;overflow:hidden}.gm-style .gm-iw .gm-sv-label,.gm-style .gm-iw .gm-ph-label{cursor:pointer;position:absolute;bottom:6px;color:#fff;font-weight:400;text-shadow:rgba(0,0,0,0.7) 0 1px 4px;font-size:12px}.gm-style .gm-iw .gm-stars-b,.gm-style .gm-iw .gm-stars-f{height:13px;font-size:0}.gm-style .gm-iw .gm-stars-b{position:relative;background-position:0 0;width:65px;top:3px;margin:0 5px}.gm-style .gm-iw .gm-rev{line-height:20px;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.gm-style.gm-china .gm-iw .gm-rev{display:none}.gm-style .gm-iw .gm-numeric-rev{font-size:16px;color:#dd4b39;font-weight:400}.gm-style .gm-iw.gm-transit{margin-left:15px}.gm-style .gm-iw.gm-transit td{vertical-align:top}.gm-style .gm-iw.gm-transit .gm-time{white-space:nowrap;color:#676767;font-weight:bold}.gm-style .gm-iw.gm-transit img{width:15px;height:15px;margin:1px 5px 0 -20px;float:left}.gm-iw {text-align:left;}.gm-iw .gm-numeric-rev {float:left;}.gm-iw .gm-photos,.gm-iw .gm-rev {direction:ltr;}.gm-iw .gm-stars-f, .gm-iw .gm-stars-b {background:url("https://maps.gstatic.com/mapfiles/api-3/images/review_stars_hdpi.png") no-repeat;background-size: 65px 26px;float:left;}.gm-iw .gm-stars-f {background-position:left -13px;}.gm-iw .gm-sv-label,.gm-iw .gm-ph-label {left: 4px;}</style><link type="text/css" rel="stylesheet" href="./New City_files/css"><style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}.gm-style img{max-width:none}</style>
+  <title>New City</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="./New City_files/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="./New City_files/bootstrap-theme.min.css">
+  <!-- jQuery -->
+  <script src="./New City_files/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="./New City_files/bootstrap.min.js"></script>
+  <!-- <script src="home.js"></script> -->
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <!-- For intranet testing only, remove in production. -->
+  
+
+  <link rel="stylesheet" href="./New City_files/outputStyle.css"> <!-- customized CSS -->
+  <!-- <link rel="stylesheet" href="../css/main.css"> <!-- customized CSS -->
+  <style>
+    #map {
+        width: 60%;
+        height: 500px;
+      }
+  </style>
+<script type="text/javascript" charset="UTF-8" src="./New City_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/map.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/geometry.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/poly.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/infowindow.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/geocoder.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/marker.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/stats.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/controls.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/GeocodeService.Search"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/directions.js"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService.GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/DirectionsService.Route"></script><style>.gm-style .gm-iw{color:#2C2C2C}.gm-style .gm-iw a:link,.gm-style .gm-iw a:visited{color:#4272DB;text-decoration:none}.gm-style .gm-iw a:hover{color:#4272DB;text-decoration:underline}.gm-style .gm-iw .gm-sv-label,.gm-style .gm-iw .gm-ph-label{cursor:pointer;position:absolute;bottom:6px;color:#ffffff;font-weight:400;text-shadow:rgba(0,0,0,0.7) 0px 1px 4px;font-size:12px}</style><script type="text/javascript" charset="UTF-8" src="./New City_files/overlay.js"></script><style>.adp,.adp table{font-family:Roboto,Arial,sans-serif;font-weight:300;color:#2C2C2C}.adp b,.adp-list b{font-weight:400}.adp-warnbox{margin:5px 0 3px 0}.warnbox-content{background:#fff1a8;padding:5px 6px}.warnbox-c1,.warnbox-c2{background:#fff1a8;font-size:1px;height:1px;margin-top:0;overflow:hidden}.warnbox-c1{margin:0 2px}.warnbox-c2{margin:0 1px}.adp-list{background:#fff;border:1px solid #cdcdcd;cursor:pointer;padding:4px;font-family:Roboto,Arial,sans-serif;font-weight:300;color:#2C2C2C}.adp-fullwidth{width:100%}.adp-listsel{background:#eee;text-decoration:none}.adp-listheader{padding:4px}.adp-placemark{background:#eee;border:1px solid silver;color:#000;cursor:pointer;margin:10px 0px 10px 0px;vertical-align:middle}img.adp-marker{width:22px;height:40px}.adp-details,.adp-legal{color:#676767}.adp-summary{padding:0 3px 3px 3px}.adp-step,.adp-substep{border-top:1px solid #cdcdcd;margin:0;padding:.3em 3px .3em 3px;vertical-align:top}.adp-list img,.adp-substep img{width:15px;height:15px;position:relative;top:2px;margin-right:3px}.adp-distance{white-space:nowrap}.adp-step,.adp-text{width:100%}.adp-directions{cursor:pointer;border-collapse:collapse}.adp-list .gm-arrow{width:8px;height:9px;margin:5px 0 3px}.adp-agencies{font-size:80%;margin:5px 0}.adp-summary-duration{float:right;margin-left:7px;white-space:nowrap}.adp-substep .gm-line{margin-right:4px}.adp-substep .adp-stepicon{overflow:hidden;position:relative;top:0;left:0;width:16px;height:16px}.adp-substep .adp-stepicon .adp-maneuver{background-size:19px 630px;position:absolute;left:0;width:16px;height:16px}.adp-substep .adp-stepicon .adp-maneuver.adp-ferry{background-position:0 -614px}.adp-substep .adp-stepicon .adp-maneuver.adp-ferry-train{background-position:0 -566px}.adp-substep .adp-stepicon .adp-maneuver.adp-merge{background-position:0 -143px}.adp-substep .adp-stepicon .adp-maneuver.adp-straight{background-position:0 -534px}.adp-substep .adp-stepicon .adp-maneuver.adp-fork-left{background-position:0 -550px}.adp-substep .adp-stepicon .adp-maneuver.adp-ramp-left{background-position:0 -598px}.adp-substep .adp-stepicon .adp-maneuver.adp-roundabout-left{background-position:0 -197px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-left{background-position:0 -413px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-sharp-left{background-position:0 0}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-slight-left{background-position:0 -378px}.adp-substep .adp-stepicon .adp-maneuver.adp-uturn-left{background-position:0 -305px}.adp-substep .adp-stepicon .adp-maneuver.adp-fork-right{background-position:0 -499px}.adp-substep .adp-stepicon .adp-maneuver.adp-ramp-right{background-position:0 -429px}.adp-substep .adp-stepicon .adp-maneuver.adp-roundabout-right{background-position:0 -232px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-right{background-position:0 -483px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-sharp-right{background-position:0 -582px}.adp-substep .adp-stepicon .adp-maneuver.adp-turn-slight-right{background-position:0 -51px}.adp-substep .adp-stepicon .adp-maneuver.adp-uturn-right{background-position:0 -35px}</style><script type="text/javascript" charset="UTF-8" src="./New City_files/QuotaService.RecordEvent"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(1).GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(2).GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(1).GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(3).GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(4).GetViewportInfo"></script><script type="text/javascript" charset="UTF-8" src="./New City_files/ViewportInfoService(5).GetViewportInfo"></script></head>
+
+<body jstcache="0">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://newcity.parseapp.com/index.html">New City</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="http://newcity.parseapp.com/templates/dashboard.html">Dashboard <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="jumbotron">
+    <div class="container">
+      <header id="headTitle">EAST VILLAGE</header>
+      </div>
+    </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-6" id="bodyText">
+
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="5" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="6"></li>
+    <!-- <li data-target="#myCarousel" data-slide-to="7"></li> -->
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active">
+      <img src="./New City_files/ev1.jpg">
+    </div>
+
+    <div class="item">
+      <img src="./New City_files/ev2.jpg">
+    </div>
+
+    <div class="item">
+      <img src="./New City_files/ev3.jpg">
+    </div>
+
+    <div class="item">
+      <img src="./New City_files/ev4.jpg">
+    </div>
+
+    <div class="item">
+      <img src="./New City_files/ev5.jpg">
+    </div>    
+
+    <div class="item">
+      <img src="./New City_files/ev6.jpg">
+    </div>
+
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="http://newcity.parseapp.com/templates/neighborhood_guide.html#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="http://newcity.parseapp.com/templates/neighborhood_guide.html#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- end Carousel-->
+        <br><p id="summaryText">The East Village never fails to keep the excitement going long after other neighborhoods hit the pillow. Follow the foodies, dive bar enthusiasts, and vintage-hunters to the east end of Manhattan, where head-turning street style is the norm.</p>
+
+        <h2>Average Rent</h2> 
+          <h3>Studio</h3>
+          <p>Doorman: $3,200</p>
+          <p>Non-Doorman: $2,100</p>
+
+          <h3>One Bedroom</h3>
+          <p>Doorman: $4,200</p>
+          <p>Non-Doorman: $2,600</p>
+
+          <h3>Two Bedroom</h3>
+          <p>Doorman: $6,000</p>
+          <p>Non-Doorman: $3,500</p>
+
+        <h2>Places to Eat &amp; Drink</h2> 
+          <h3>Restaurants</h3>
+          <ol>
+            <li><a href="http://www.yelp.com/biz/ippudo-ny-new-york">Ippudo NY $$</a></li>
+            <li><a href="http://www.yelp.com/biz/westville-new-york-5?osq=Westville">Westville $$</a></li>
+            <li><a href="http://www.yelp.com/biz/gyu-kaku-japanese-bbq-new-york">Gyu Kaku $$</a></li>
+            <li><a href="http://www.yelp.com/biz/upstate-new-york-2">Upstate $$</a></li>
+            <li><a href="http://www.yelp.com/biz/pmf-pardon-my-french-new-york">PMF Pardon My French $$</a></li>
+          </ol>
+
+          <h3>Bars</h3>
+          <ol>
+            <li><a href="http://www.yelp.com/biz/proletariat-new-york">Proleteriat $$</a></li>
+            <li><a href="http://www.yelp.com/biz/good-night-sonny-new-york">Good Night Sonny $$</a></li>
+            <li><a href="http://www.yelp.com/biz/the-library-new-york">The Library $$</a></li>
+            <li><a href="http://www.yelp.com/biz/juke-bar-new-york">Juke Bar $$</a></li>
+            <li><a href="http://www.yelp.com/biz/the-wayland-new-york">The Wayland $$</a></li>
+
+          </ol>
+
+        <h2>Things to Do</h2> 
+        <ol>
+          <li><a href="http://ny.curbed.com/archives/2014/09/04/the_strange_history_of_the_east_villages_most_famous_street.phpnuy">St. Marks Place</a></li>
+          <li><a href="http://www.yelp.com/biz/nuyorican-poets-cafe-new-york">Attend a show at the Nuyorican Poets Cafe</a></li>
+          <li><a href="http://www.websterhall.com/">See a concert at Webster Hall</a></li>
+        </ol>
+
+       </div>
+    <!-- <div class="row"> -->
+      <div class="col-md-6">
+
+      <!-- HERE is where the map goes -->
+        <div id="map" style="position: relative; overflow: hidden; transform: translateZ(0px) translateZ(0px); background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 112px 290px 0px; transform: matrix(1, 0, 0, 1, -71, 67);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 30;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: 281px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: 281px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: 281px;"></div></div></div></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 106px; top: 281px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: 25px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -150px; top: 281px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: -231px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 362px; top: 281px;"></div></div></div></div><div style="position: absolute; z-index: 0; transform: translateZ(0px); left: 71px; top: -67px;"><div style="overflow: hidden; width: 333px; height: 500px;"><img src="./New City_files/StaticMapService.GetMapImage" style="width: 333px; height: 500px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="transform: translateZ(0px); position: absolute; left: 106px; top: 281px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -150px; top: -231px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(1)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -150px; top: 25px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(2)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 106px; top: 25px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(3)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 362px; top: 25px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(4)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -150px; top: 281px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(5)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 106px; top: -231px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(6)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 362px; top: -231px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(7)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 362px; top: 281px; transition: opacity 200ms ease-out;"><img src="./New City_files/vt(8)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"><iframe src="./New City_files/widget.html" frameborder="0" allowtransparency="true" scrolling="no" style="border: 0px; overflow: hidden; height: 100%; width: 100%;"></iframe></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; transform-origin: 112px 290px 0px; transform: matrix(1, 0, 0, 1, -71, 67);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"><div style="cursor: default; position: absolute; width: 53px; height: 191px; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px;"><div style="width: 0px; height: 0px; border-right-width: 10px; border-right-style: solid; border-right-color: transparent; border-left-width: 10px; border-left-style: solid; border-left-color: transparent; border-top-width: 24px; border-top-style: solid; border-top-color: rgba(0, 0, 0, 0.0980392); position: absolute; left: 17px; top: 191px;"></div><div style="position: absolute; left: 0px; top: 0px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; width: 53px; height: 191px; background-color: rgba(0, 0, 0, 0.2);"></div><div style="border-top-width: 24px; position: absolute; left: 17px; top: 188px;"><div style="position: absolute; overflow: hidden; left: -6px; top: -1px; width: 16px; height: 30px;"><div style="position: absolute; left: 6px; transform: skewX(22.6deg); transform-origin: 0px 0px 0px; height: 24px; width: 10px; box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 6px; background-color: rgb(255, 255, 255);"></div></div><div style="position: absolute; overflow: hidden; top: -1px; left: 10px; width: 16px; height: 30px;"><div style="position: absolute; left: 0px; transform: skewX(-22.6deg); transform-origin: 10px 0px 0px; height: 24px; width: 10px; box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 6px; background-color: rgb(255, 255, 255);"></div></div></div><div style="position: absolute; left: 1px; top: 1px; border-radius: 2px; width: 51px; height: 189px; background-color: rgb(255, 255, 255);"></div></div><div class="gm-style-iw" style="top: 9px; position: absolute; left: 15px; width: 23px; overflow: hidden;"><div style="display: inline-block; overflow: auto; max-height: 407px; max-width: 232px;"></div><iframe src="./New City_files/widget(1).html" frameborder="0" allowtransparency="true" scrolling="no" style="border: 0px; overflow: hidden;"></iframe></div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 15px; top: 13px; z-index: 10000; cursor: pointer;"><img src="./New City_files/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="z-index: -202; cursor: pointer; transform: translateZ(0px); display: none;"><div style="width: 30px; height: 27px; overflow: hidden; position: absolute;"><img src="./New City_files/undo_poly.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 90px; height: 27px;"></div></div><div style="position: absolute; left: 2671px; top: -3589px; z-index: -3581;"><div style="box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 5px; line-height: 12px; border: 1px solid rgb(102, 85, 102); padding: 2px; font-size: 13px; font-weight: 400; font-family: Roboto, Arial, sans-serif; white-space: nowrap; border-radius: 3px 3px 0px; position: absolute; right: 0px; bottom: 0px; background: -webkit-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(238, 238, 238) 52%, rgb(249, 249, 249) 52%, rgb(227, 227, 227) 63%, rgb(238, 238, 238) 63%, rgb(227, 227, 227) 100%);"><img src="./New City_files/walk.png" draggable="false" style="width: 16px; height: 16px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; vertical-align: top; position: relative;"><img src="./New City_files/tiph.png" draggable="false" style="-webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; position: absolute; right: -8px; top: 19px; width: 15px; height: 9px;"></div></div><div style="position: absolute; left: 1806px; top: -4011px; z-index: -4003;"><div style="box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 5px; line-height: 12px; border: 1px solid rgb(102, 85, 102); padding: 2px; font-size: 13px; font-weight: 400; font-family: Roboto, Arial, sans-serif; white-space: nowrap; border-radius: 3px 3px 0px; position: absolute; right: 0px; bottom: 0px; background: -webkit-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(238, 238, 238) 52%, rgb(249, 249, 249) 52%, rgb(227, 227, 227) 63%, rgb(238, 238, 238) 63%, rgb(227, 227, 227) 100%);"><img src="./New City_files/4.png" draggable="false" style="width: 16px; height: 16px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; vertical-align: top; position: relative;"><img src="./New City_files/tiph.png" draggable="false" style="-webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; position: absolute; right: -8px; top: 19px; width: 15px; height: 9px;"></div></div><div style="position: absolute; left: 542px; top: -1897px; z-index: -1889;"><div style="box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 5px; line-height: 12px; border: 1px solid rgb(102, 85, 102); padding: 2px; font-size: 13px; font-weight: 400; font-family: Roboto, Arial, sans-serif; white-space: nowrap; border-radius: 3px 3px 3px 0px; position: absolute; left: 0px; bottom: 0px; background: -webkit-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(238, 238, 238) 52%, rgb(249, 249, 249) 52%, rgb(227, 227, 227) 63%, rgb(238, 238, 238) 63%, rgb(227, 227, 227) 100%);"><img src="./New City_files/walk.png" draggable="false" style="width: 16px; height: 16px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; vertical-align: top; position: relative;"><img src="./New City_files/tip.png" draggable="false" style="-webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -8px; top: 19px; width: 15px; height: 9px;"></div></div></div></div></div><div style="padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 17px; top: 160px; background-color: white;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="./New City_files/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 167px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="">Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; -webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="width: 25px; height: 25px; margin-top: 10px; overflow: hidden; display: none; margin-right: 14px; position: absolute; top: 0px; right: 0px;"><img src="./New City_files/sv5.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 112px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div controlwidth="64" controlheight="22" style="z-index: 1000000; position: absolute; width: 68px; margin: 10px; top: 0px; right: -4px; height: 26px;"><iframe src="./New City_files/widget(2).html" frameborder="0" allowtransparency="true" scrolling="no" style="border: 0px; overflow: hidden; position: absolute; right: 0px; visibility: visible; width: 68px; height: 26px;"></iframe></div><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@40.6960124,-74.0079872,17z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; -webkit-user-select: none; position: absolute; bottom: 107px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;"><div draggable="false" style="-webkit-user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; width: 28px; height: 55px; background-color: rgb(255, 255, 255);"><div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="./New City_files/tmapctrl_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; top: 0px; background-color: rgb(230, 230, 230);"></div><div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="./New City_files/tmapctrl_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: -15px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="./New City_files/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./New City_files/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./New City_files/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; display: none; background-color: rgb(255, 255, 255);"><img src="./New City_files/tmapctrl4_hdpi.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="./New City_files/tmapctrl4_hdpi.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 22px; font-weight: 500; background-color: rgb(255, 255, 255); background-clip: padding-box;">Map</div><div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 31px; text-align: left; display: none; background-color: white;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="./New City_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; min-width: 40px; background-color: rgb(255, 255, 255); background-clip: padding-box;">Satellite</div><div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 31px; text-align: left; display: none; background-color: white;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="./New City_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=40.696012,-74.007987&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="./New City_files/google4_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div></div></div>
+        <div id="directionsPanel" style="float: right; width: 30%; direction: ltr;"><div jstcache="0"><div jstcache="155" class="adp"><div jstcache="54" jsinstance="*0" class="adp-warnbox"><div class="warnbox-c2"></div><div class="warnbox-c1"></div><div jstcache="55" class="warnbox-content" jsan="7.warnbox-content">Walking directions are in beta.    Use caution – This route may be missing sidewalks or pedestrian paths.</div><div class="warnbox-c1"></div><div class="warnbox-c2"></div></div><div data-leg-index="0" jsaction="transitPanel.selectLeg"><table id="adp-placemark" class="adp-placemark"><tbody><tr><td><img jstcache="56" src="./New City_files/Roboto-Regular.ttf&amp;color=ff333333&amp;ax=44&amp;ay=48&amp;scale=2" class="adp-marker"></td><td jstcache="57" class="adp-text" jsan="7.adp-text">144 Avenue A, New York, NY 10009, USA</td></tr></tbody></table></div><div jstcache="58" jsinstance="*0"><div class="adp-summary"><span jstcache="59">2.0 mi</span><span jstcache="60">. </span><span jstcache="61">About <span jstcache="50">18 mins</span></span></div><div><table class="adp-directions"><tbody><tr data-leg-index="0" data-step-index="0" jstcache="62" jsaction="transitPanel.selectLegAndStep" jsinstance="0"><td class="adp-substep"><b jstcache="63"></b><div><img jstcache="64" src="./New City_files/walk.png"><span jstcache="65" style="margin-left:2px;font-weight:400" jsan="5.margin-left,5.font-weight"></span><span jstcache="66" style="margin-left:4px" jsan="5.margin-left">Walk to Astor Pl</span></div><div jstcache="67" style="display:none"><span jstcache="68" style="display:none"><span jstcache="69"></span>–<span jstcache="70"></span>&nbsp;</span><span class="adp-details">(<span jstcache="71" style="display:none"></span><span jstcache="72" style="display:none">, </span><span jstcache="73" style="display:none">1 stop</span><span jstcache="74" style="display:none"></span>)</span><div jstcache="75" style="font-size:80%;display:none"><span>Service run by</span> <span jstcache="76" style="display:none"><span jstcache="77" style="display:none">, </span><a target="_new" jstcache="78" style="display:none" jsan="0.target"></a><span jstcache="79" style="display:none"></span></span></div></div><div jstcache="80" class="adp-details"><span jstcache="81">About <span jstcache="50">11 mins</span></span></div></td></tr><tr data-leg-index="0" data-step-index="1" jstcache="62" jsaction="transitPanel.selectLegAndStep" jsinstance="1"><td class="adp-substep"><b jstcache="63">Astor Pl</b><div><img jstcache="64" src="./New City_files/4.png"><span jstcache="65" style="margin-left:2px;font-weight:400" jsan="5.margin-left,5.font-weight"></span><span jstcache="66" style="margin-left:4px" jsan="5.margin-left">Subway towards New Lots Av</span></div><div jstcache="67"><span jstcache="68"><span jstcache="69">1:42am</span>–<span jstcache="70">1:48am</span>&nbsp;</span><span class="adp-details">(<span jstcache="71">6 mins</span><span jstcache="72">, </span><span jstcache="73" style="display:none">1 stop</span><span jstcache="74"><span jstcache="110">4</span> stops</span>)</span><div jstcache="75" style="font-size:80%"><span>Service run by</span> <span jstcache="76" jsinstance="*0"><span jstcache="77" style="display:none">, </span><a target="_new" jstcache="78" href="http://www.mta.info/" jsan="8.href,0.target">MTA New York City Transit</a><span jstcache="79" style="display:none"></span></span></div></div><div jstcache="80" class="adp-details" style="display:none"><span jstcache="81"></span></div></td></tr><tr data-leg-index="0" data-step-index="2" jstcache="62" jsaction="transitPanel.selectLegAndStep" jsinstance="*2"><td class="adp-substep"><b jstcache="63">Brooklyn Bridge - City Hall</b><div><img jstcache="64" src="./New City_files/walk.png"><span jstcache="65" style="margin-left:2px;font-weight:400" jsan="5.margin-left,5.font-weight"></span><span jstcache="66" style="margin-left:4px" jsan="5.margin-left">Walk to City Hall Park Path, New York, NY 10007, USA</span></div><div jstcache="67" style="display:none"><span jstcache="68" style="display:none"><span jstcache="69"></span>–<span jstcache="70"></span>&nbsp;</span><span class="adp-details">(<span jstcache="71" style="display:none"></span><span jstcache="72" style="display:none">, </span><span jstcache="73" style="display:none">1 stop</span><span jstcache="74" style="display:none"></span>)</span><div jstcache="75" style="font-size:80%;display:none"><span>Service run by</span> <span jstcache="76" style="display:none"><span jstcache="77" style="display:none">, </span><a target="_new" jstcache="78" style="display:none" jsan="0.target"></a><span jstcache="79" style="display:none"></span></span></div></div><div jstcache="80" class="adp-details"><span jstcache="81">About <span jstcache="50">1 min</span></span></div></td></tr></tbody></table></div><div data-leg-index="1" jstcache="82" jsaction="transitPanel.selectLeg"><table class="adp-placemark"><tbody><tr><td><img jstcache="83" src="./New City_files/Roboto-Regular(1).ttf&amp;color=ff333333&amp;ax=44&amp;ay=48&amp;scale=2" class="adp-marker"></td><td jstcache="84" class="adp-text" jsan="7.adp-text">City Hall Park Path, New York, NY 10007, USA</td></tr></tbody></table></div></div><div class="adp-agencies"><div jstcache="85"><b>Local agency information:</b><div>Contains more information on fares, schedules, and service advisories</div><div jstcache="86" jsinstance="*0"><a target="_new" jstcache="87" href="http://www.mta.info/" jsan="8.href,0.target">MTA New York City Transit</a><span jstcache="88" style="display:none"></span><span jstcache="89"> - </span><span jstcache="90">+1 718-330-1234</span></div></div></div><div jstcache="91" class="adp-legal" jsan="7.adp-legal">Map data ©2016 Google</div></div></div></div>
+        <div id="floating-panel">
+          <input id="address" type="textbox" value="Sydney, NSW">
+          <input id="submit" type="button" value="Geocode">
+          <input id="reset" type="button" value="Reset">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+var directionsDisplay;
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 40.7127, lng: -74.0059}
+   });
+
+  //Marker Icon setup
+  var rIconBase = "http://maps.google.com/mapfiles/kml/pal2";
+  var bIconBase = "http://maps.google.com/mapfiles/kml/pal2";
+  var workIconBase = "http://maps.google.com/mapfiles/kml/paddle";
+  var cityIconBase = "http://maps.google.com/mapfiles/kml/paddle";
+
+  //image files
+  var restaurantImage = '/icon41.png';
+  var barImage = '/icon27.png';
+  var workImage = '/purple-stars.png';
+  var cityImage ='/wht-square.png';
+
+  //boundaries for East Village
+  var boundaries = [
+    {lat:40.73372, lng:-73.98734},
+    {lat:40.727213, lng:-73.971836},
+    {lat:40.721199, lng:-73.973107},
+    {lat:40.71928, lng:-73.973692},
+    {lat:40.71957, lng:-73.975614},
+    {lat:40.72459, lng:-73.992624},
+    {lat:40.72762, lng:-73.99157},
+    {lat:40.73372, lng:-73.98734}
+  ];
+
+  var eastVillage = new google.maps.Polygon({
+    paths: boundaries,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 3,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  })
+  eastVillage.setMap(map);
+
+  // Marker for center of East Village
+  // var evCenter = new google.maps.Marker({
+  //   position: {lat: 40.726543, lng: -73.981794},
+  //   map: map,
+  //   title: 'Tompkins Square Park',
+  //   icon: cityIconBase + cityImage
+  // });
+
+  var evContent = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">East Village</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, abcdefeawof</p>'+
+      '<p>link?<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '</p>'+
+      '</div>'+
+      '</div>';
+
+  //Coordinates for info box on East Village 
+  var posInfoWindow = new google.maps.LatLng(40.726543, -73.981794)
+
+  var infoWindow = new google.maps.InfoWindow({
+    content: evContent,
+    map: map,
+    position: posInfoWindow
+  });
+
+  infoWindow.close()
+
+  google.maps.event.addListener(eastVillage, 'mouseover', function() {
+    infoWindow.open(map, this);
+  });
+
+  google.maps.event.addListener(eastVillage, 'mouseout', function() {
+    infoWindow.close();
+  });
+
+  var geocoder = new google.maps.Geocoder();
+
+  // Restaurants marker
+  var r1 = new google.maps.Marker({
+    position: {lat: 40.738364, lng: -73.990583},
+    map: map,
+    title: 'Tarallucci E Vino',
+    icon: rIconBase + restaurantImage
+  });
+
+  var r1info = new google.maps.InfoWindow({
+    content: 'Tarallucci E Vino',
+    map: map,
+    position: new google.maps.LatLng(40.738364, -73.990583)
+  });
+
+  r1info.close()
+
+  google.maps.event.addListener(r1, 'click', function() {
+    r1info.open(map, this);
+  });
+
+  google.maps.event.addListener(r1, 'mousemove', function() {
+    r1info.close();
+  });
+
+  var r2 = new google.maps.Marker({
+    position: {lat: 40.730748, lng: -73.985927},
+    map: map,
+    title: 'Cacio E Pepe',
+    icon: rIconBase + restaurantImage
+  });
+
+  var r2info = new google.maps.InfoWindow({
+    content: r2.title,
+    map: map,
+    position: new google.maps.LatLng(40.730748, -73.985927)
+  });
+
+  r2info.close()
+
+  google.maps.event.addListener(r2, 'click', function() {
+    r2info.open(map, this);
+  });
+
+  google.maps.event.addListener(r2, 'mousemove', function() {
+    r2info.close();
+  });
+
+  var r3 = new google.maps.Marker({
+    position: {lat: 40.718227, lng: -73.985874},
+    map: map,
+    title: 'Nonna’s L E S Pizzeria',
+    icon: rIconBase + restaurantImage
+  });
+
+  var r3info = new google.maps.InfoWindow({
+    content: r3.title,
+    map: map,
+    position: new google.maps.LatLng(40.718227, -73.985874)
+  });
+
+  r3info.close()
+
+  google.maps.event.addListener(r3, 'click', function() {
+    r3info.open(map, this);
+  });
+
+  google.maps.event.addListener(r3, 'mousemove', function() {
+    r3info.close();
+  });
+
+  var r4 = new google.maps.Marker({
+    position: {lat: 40.726463, lng: -73.986641},
+    map: map,
+    title: 'Raku',
+    icon: rIconBase + restaurantImage
+  });
+
+  var r4info = new google.maps.InfoWindow({
+    content: r4.title,
+    map: map,
+    position: new google.maps.LatLng(40.726463, -73.986641)
+  });
+
+  r4info.close()
+
+  google.maps.event.addListener(r4, 'click', function() {
+    r4info.open(map, this);
+  });
+
+  google.maps.event.addListener(r4, 'mousemove', function() {
+    r4info.close();
+  });
+
+  var r5 = new google.maps.Marker({
+    position: {lat: 40.726347, lng: -73.986489},
+    map: map,
+    title: 'Upstate',
+    icon: rIconBase + restaurantImage
+  });
+
+  var r5info = new google.maps.InfoWindow({
+    content: r5.title,
+    map: map,
+    position: new google.maps.LatLng(40.726347, -73.986489)
+  });
+
+  r5info.close()
+
+  google.maps.event.addListener(r5, 'click', function() {
+    r5info.open(map, this);
+  });
+
+  google.maps.event.addListener(r5, 'mousemove', function() {
+    r5info.close();
+  });
+
+   // bars markers
+  var b1 = new google.maps.Marker({
+    position: {lat: 40.730042, lng: -73.981521},
+    map: map,
+    title: 'Keybar',
+    icon: bIconBase + barImage
+  });
+
+  var b1info = new google.maps.InfoWindow({
+    content: b1.title,
+    map: map,
+    position: new google.maps.LatLng(40.730042, -73.981521)
+  });
+
+  b1info.close()
+
+  google.maps.event.addListener(b1, 'click', function() {
+    b1info.open(map, this);
+  });
+
+  google.maps.event.addListener(b1, 'mousemove', function() {
+    b1info.close();
+  });
+
+  var b2 = new google.maps.Marker({
+    position: {lat: 40.722616, lng: -73.986036},
+    map: map,
+    title: 'The Library',
+    icon: bIconBase + barImage
+  });
+
+  var b2info = new google.maps.InfoWindow({
+    content: b2.title,
+    map: map,
+    position: new google.maps.LatLng(40.722616, -73.986036)
+  });
+
+  b2info.close()
+
+  google.maps.event.addListener(b2, 'click', function() {
+    b2info.open(map, this);
+  });
+
+  google.maps.event.addListener(b2, 'mousemove', function() {
+    b2info.close();
+  });
+
+  var b3 = new google.maps.Marker({
+    position: {lat: 40.724727, lng:  -73.980861},
+    map: map,
+    title: 'PMF Pardon My French',
+    icon: bIconBase + barImage
+  });
+
+  var b3info = new google.maps.InfoWindow({
+    content: b3.title,
+    map: map,
+    position: new google.maps.LatLng(40.724727, -73.980861)
+  });
+
+  b3info.close()
+
+  google.maps.event.addListener(b3, 'click', function() {
+    b3info.open(map, this);
+  });
+
+  google.maps.event.addListener(b3, 'mousemove', function() {
+    b3info.close();
+  });
+
+  var b4 = new google.maps.Marker({
+    position: {lat: 40.729712, lng:  -73.988626},
+    map: map,
+    title: 'Angels Bar',
+    icon: bIconBase + barImage
+  });
+
+  var b4info = new google.maps.InfoWindow({
+    content: b4.title,
+    map: map,
+    position: new google.maps.LatLng(40.729712, -73.988626)
+  });
+
+  b4info.close()
+
+  google.maps.event.addListener(b4, 'click', function() {
+    b4info.open(map, this);
+  });
+
+  google.maps.event.addListener(b4, 'mousemove', function() {
+    b4info.close();
+  });
+
+  document.getElementById('submit').addEventListener('click', function() {
+    var start = posInfoWindow
+    geocodeAddress(start, geocoder, map, workIconBase, workImage);
+  });
+
+  document.getElementById('reset').addEventListener('click', function() {
+    directionsDisplay.setMap(null);
+    directionsDisplay.setPanel(null);
+    // var divDirection = document.getElementById("directionsPanel");
+    // divDirection.parentNode.removeChild(divDirection);
+    initMap();
+  });
+}
+
+function geocodeAddress(start, geocoder, resultsMap, workIconBase, workImage) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      var destination = results[0].geometry.location
+      resultsMap.setCenter(destination);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: destination,
+        icon: workIconBase + workImage
+      });
+      calcRoute(start, destination)
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+function calcRoute(start, destination) {
+  // DirectionService
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsService = new google.maps.DirectionsService();
+
+  //set up Directions display
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: {lat: 40.7127, lng: -74.0059}
+   });
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+
+  var request = {
+    origin:start,
+    destination:destination,
+    travelMode: google.maps.TravelMode.TRANSIT
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+</script>
+<script src="./New City_files/js" async="" defer=""></script>
+
+<iframe name="gm-master" src="./New City_files/master.html" style="visibility: hidden; position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;"></iframe></body></html>

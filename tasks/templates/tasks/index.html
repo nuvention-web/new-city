@@ -1,0 +1,9 @@
+{% if categories %}
+    <ul>
+    {% for cat in categories %}
+        <li>{{ cat.category_title }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No cats.</p>
+{% endif %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>New City</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- <script src="home.js"></script> -->
+
+  <link rel="stylesheet" type="text/css" href="HPstyle.css">
+</head>
+
+<body>
+	<link rel="stylesheet" type="text/css" href="navbarStyle.css">
+	</head>
+	<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://newcity.parseapp.com/index.html">New City</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="http://newcity.parseapp.com/templates/dashboard.html">Dashboard <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Articles</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <!-- <h2 class="todoOne">Todo Item #1</h2> -->
+      <!-- <img id="imageSize" src="" alt=""> -->
+      <h3 class="todoOneTitle">Three months before move:</h3>
+      <ul class="todoOneList">
+        <!-- onclick="toggle('p', this)" -->
+        <input class="todo" type="checkbox" name="todo" value="false">Begin researching your neighborhood<br/>
+        <input class="todo" type="checkbox" name="todo" value="false">Explore our customized guide to neighborhoods, pricing and amenities, so you can think about what to expect for your new home.<br/>
+        <input class="todo" type="checkbox" name="todo" value="false">Talk to friends and family to get their ideas and opinions. These people know you best and can give you information that is most tailored to your personality and needs!<br/>
+      </ul>
+    </div>
+    <div class="row">
+      <!-- <h2 class="todoTwo">Todo Item #2</h2> -->
+      <!-- <img id="imageSize" src="" alt=""> -->
+      <h3 class="todoTwoTitle">Two months before move:</h3>
+      <ul class="todoTwoList">
+        <input class="todo" type="checkbox" name="todo" value="false">Decide whether you would like to use a broker. We also have a list of recommended partners and special discount for New City Premium members. <br/>
+        <input class="todo" type="checkbox" name="todo" value="false">Contact your broker and provide them with your personalized. Make an appointment to view apartments with them.<br/>
+        <input class="todo" type="checkbox" name="todo" value="false">Schedule time for when you will visit the city to find an apartment. We recommend visiting for at least four days.<br/>
+      </ul>
+    </div>
+    <div class="row">
+      <!-- <h2 class="todoThree">Todo Item #3</h2> -->
+      <!-- <img id="imageSize" src="" alt=""> -->
+      <!-- <h3 class="tddodoThreeTitle">Within first month after moving:</h3> -->
+      <ul class="todoThreeList">
+        <input class="todo" type="checkbox" name="todo" value="false">Get your new Driver’s License. Did you know that New York state law requires that if you move to New York and become a resident, you must get your license within 30 days? Follow this list of steps to successfully obtain your new license: <br/>
+      </ul>
+    </div>
+  </div>
+
+<script>
+  function toggle(class_name, obj) {
+    var $input = $(obj);
+    if ($input.prop('checked')) {
+      $(class_name).hide();
+    }
+    else {
+      $(class_name).show();
+    }
+  }
+</script>
+
+</body>
+
+</html>
