@@ -23,8 +23,21 @@ using Django that is currently under development.
 ##Architecture Diagram 
 ![Image of Yaktocat](img/architecture_diagram.png)
 
-
 ##Install 
+
+###Prerequisite
+Python 3.5 
+
+###Installation Guide
+Install pip (if you don't have it installed already)
+Consider using virtualenv or virtualenvwrapper
+Download Django using pip
+>git clone https://github.com/django/django.git
+
+Get django-allauth
+>pip install django-allauth
+
+Then clone this repo. You're all set!
 
 ##Issues
 Please direct all your issues/questions to https://github.com/nuvention-web/new-city/issues
