@@ -1,0 +1,7 @@
+{% for cat in selectedCategories %}
+    <div>
+        {{questions = cat.question_set()}}
+        {{for question in questions}}
+        <li>question.question_text</li> 
+    </div>
+{% endfor %}

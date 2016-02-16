@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 70%;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+    </style>
+  </head>
+
+
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Search your work address here">
+      <input id="submit" type="button" value="Search">
+    </div>
+    <div id="map"></div>
+
+
+<script>
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 40.7127, lng: -74.0059}
+  });
+
+  // Marker Icon setup
+  var geocoder = new google.maps.Geocoder();
+  var rIconBase = "http://maps.google.com/mapfiles/kml/pal2";
+  var bIconBase = "http://maps.google.com/mapfiles/kml/pal2";
+  var workIconBase = "http://maps.google.com/mapfiles/kml/paddle";
+  var cityIconBase = "http://maps.google.com/mapfiles/kml/paddle";
+
+  var restaurantImage = '/icon41.png';
+  var barImage = '/icon27.png';
+  var workImage = '/purple-stars.png';
+  var cityImage ='/wht-square.png';
+
+  // East Village Center
+  var evCenter = new google.maps.Marker({
+    position: {lat: 40.726543, lng: -73.981794},
+    map: map,
+    title: 'Tompkins Square Park',
+    icon: cityIconBase + cityImage
+  });
+
+
+  // Restaurants marker
+  var r1 = new google.maps.Marker({
+    position: {lat: 40.738364, lng: -73.990583},
+    map: map,
+    title: 'Tarallucci E Vino',
+    icon: rIconBase + restaurantImage
+  });
+  var r2 = new google.maps.Marker({
+    position: {lat: 40.730748, lng: -73.985927},
+    map: map,
+    title: 'Cacio E Pepe',
+    icon: rIconBase + restaurantImage
+  });
+  var r3 = new google.maps.Marker({
+    position: {lat: 40.718227, lng: -73.985874},
+    map: map,
+    title: 'Nonna’s L E S Pizzeria',
+    icon: rIconBase + restaurantImage
+  });
+  var r4 = new google.maps.Marker({
+    position: {lat: 40.726463, lng: -73.986641},
+    map: map,
+    title: 'Raku',
+    icon: rIconBase + restaurantImage
+  });
+  var r5 = new google.maps.Marker({
+    position: {lat: 40.726347, lng: -73.986489},
+    map: map,
+    title: 'Upstate',
+    icon: rIconBase + restaurantImage
+  });
+
+
+  // bars markers
+  var b1 = new google.maps.Marker({
+    position: {lat: 40.730042, lng: -73.981521},
+    map: map,
+    title: 'Keybar',
+    icon: bIconBase + barImage
+  });
+  var b2 = new google.maps.Marker({
+    position: {lat: 40.722616, lng: -73.986036},
+    map: map,
+    title: 'The Library',
+    icon: bIconBase + barImage
+  });
+  var b3 = new google.maps.Marker({
+    position: {lat: 40.724727, lng:  -73.980861},
+    map: map,
+    title: 'PMF Pardon My French',
+    icon: bIconBase + barImage
+  });
+  var b4 = new google.maps.Marker({
+    position: {lat: 40.729712, lng:  -73.988626},
+    map: map,
+    title: 'Angels Bar',
+    icon: bIconBase + barImage
+  });
+
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map, workIconBase, workImage);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap, workIconBase, workImage) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        icon: workIconBase + workImage
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYmG4gAZ9WUF9POl862TulXhpJZbrk3ew&signed_in=true&callback=initMap"
+        async defer></script>
+</body>
+</html>
