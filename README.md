@@ -1,4 +1,4 @@
-# new-city
+# New-City
 
 ##Overview
 
@@ -21,7 +21,8 @@ newcity.parseapp.com and uses Parse as backend. Also, we have an website with
 using Django that is currently under development. 
 
 ##Architecture Diagram 
-![alt text](https://github.com/nuvention-web/new-city/tree/master/img/architecture_diagram.png "Architecture Diagram")
+![Image of Yaktocat](https://github.com/nuvention-web/new-city/tree/master/img/architecture_diagram.png)
+
 
 ##Install 
 
