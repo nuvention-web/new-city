@@ -22,8 +22,8 @@ newcity.parseapp.com and uses Parse as backend. Also, we have an website with
 using Django that is currently under development.
 
 ##Architecture Diagram
-<<<<<<< HEAD
-![Image of Yaktocat](img/architecture_diagram.png)
+
+![Image of architecture diagram](img/architecture_diagram.png)
 
 ##Install
 
