@@ -1,7 +1,15 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import City, Tag, House, UserProfile, Tenant, Subletter
+from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter
+
+class PostModelAdmin(admin.ModelAdmin):
+    list_display = ["user", "house", "title", "last_updated", "created_timestamp"]
+    list_filter = ["user", "house", "tags"]
+
+    search_fields = ["user", "house", "tags"]
+    class Meta:
+        model = Post
 
 class CityModelAdmin(admin.ModelAdmin):
     list_display = ["name", "last_updated", "created_timestamp"]
@@ -53,6 +61,7 @@ admin.site.register(House, HouseModelAdmin)
 admin.site.register(UserProfile, UserProfileModelAdmin)
 admin.site.register(Tenant, TenantModelAdmin)
 admin.site.register(Subletter, SubletterModelAdmin)
+admin.site.register(Post, PostModelAdmin)
 
 
 
