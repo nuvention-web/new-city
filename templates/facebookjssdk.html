@@ -62,7 +62,8 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function displayUserInfo() {
     FB.api('/me', function(response) {
-      console.log("Getting My Info")
+      console.log(response)
+      // console.log("Getting My Info")
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
@@ -75,7 +76,7 @@
 
   function getFriendsList(){
     FB.api('/me/friends', function(response){
-      console.log("Getting FriendsList")
+      // console.log("Getting FriendsList")
       console.log(response)
     })
   }
