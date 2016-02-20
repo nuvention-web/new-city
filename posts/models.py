@@ -53,7 +53,17 @@ class Tenant(models.Model):
 
 class House(models.Model):
     subletter = models.OneToOneField(Subletter)
+
     address = models.OneToOneField(Address)
+    price = models.PositiveIntegerField
+    beds = models.PositiveIntegerField
+    baths = models.PositiveIntegerField
+    pet_allowed = models.BooleanField(default=False)
+    has_pool = models.BooleanField(default=False)
+    has_parking = models.BooleanField(default=False)
+    has_laundry = models.BooleanField(default=False)
+
+
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
