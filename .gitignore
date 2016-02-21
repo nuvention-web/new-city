@@ -23,4 +23,3 @@ testem.log
 # git ignore 
 *.pyc 
 *.swp
-db.sqlite3
