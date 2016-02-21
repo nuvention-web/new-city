@@ -1,16 +1,24 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter
+from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter, PostTag
+
+class PostTagInline(admin.TabularInline):
+    model = PostTag
+    #what is extra?
+    extra = 1
 
 class PostModelAdmin(admin.ModelAdmin):
     #tags cannot be included because many to many
-    list_display = ["user", "house", "created_timestamp",
+    list_display = ["user", "house", "get_tags", "created_timestamp",
                     "last_updated"]
 
     list_filter = ["user", "house", "tags"]
 
     search_fields = ["user", "house", "tags"]
+
+    inlines = (PostTagInline,)
+
     class Meta:
         model = Post
 
@@ -62,6 +70,8 @@ class SubletterModelAdmin(admin.ModelAdmin):
     list_display = ["profile"]
     class Meta:
         model = Subletter
+
+
 
 admin.site.register(City, CityModelAdmin)
 admin.site.register(Tag, TagModelAdmin)

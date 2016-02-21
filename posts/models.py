@@ -69,6 +69,9 @@ class House(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
 
 class Friendship(models.Model):
     user_source = models.ForeignKey(UserProfile, related_name='user_source')
@@ -84,6 +87,9 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
 
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile', blank=True, null=True)
@@ -92,11 +98,14 @@ class Post(models.Model):
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
+    def get_tags(self):
+        return ",".join([str(tag) for tag in self.tags.all()])
+
     def __unicode__(self):
-        return self.title
+        return str(self.id)
 
     def __str__(self):
-        return self.title
+        return str(self.id)
 
     #def get_absolute_url(self):
 
