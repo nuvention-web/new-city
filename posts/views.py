@@ -46,7 +46,7 @@ def post_delete(request):
 
 def create_user(request):
     print ("this is request *************")
-    print request.POST
+    print (request.POST)
     if request.method == 'POST':
         post_text = request.POST.get('user')
         response_data = {}

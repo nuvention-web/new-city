@@ -52,12 +52,12 @@ class Tenant(models.Model):
 
 
 class House(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField(max_length=1000)
+    title = models.CharField(max_length=100, default="")
+    content = models.TextField(max_length=1000, default="")
     address = models.OneToOneField(Address)
-    price = models.PositiveIntegerField()
-    beds = models.PositiveIntegerField()
-    baths = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(default=0)
+    beds = models.PositiveIntegerField(default=0)
+    baths = models.PositiveIntegerField(default=0)
     pet_allowed = models.BooleanField(default=False)
     has_pool = models.BooleanField(default=False)
     has_parking = models.BooleanField(default=False)
