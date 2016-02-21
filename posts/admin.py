@@ -41,7 +41,7 @@ class HouseModelAdmin(admin.ModelAdmin):
 
     list_filter = ["address", "created_timestamp"]
 
-    search_fields = ["subletter", "address"]
+    search_fields = ["address"]
     class Meta:
         model = House
 

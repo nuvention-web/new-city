@@ -1,8 +1,8 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-
-from .forms import PostForm
-from .models import Post
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse
+from .forms import HouseForm, PostForm
+from .models import Post, House
 
 # Create your views here.
 def home(request):
@@ -16,17 +16,29 @@ def post_create_house(request):
         instance = form.save(commit=False)
         instance.save()
         #messages.success(request, "Succesfully Created")
-        return HttpResponseRedirect(instance.get_absolute_url())
+        #return redirect("create_post")
+        return HttpResponseRedirect(reverse('create_post',
+                                    kwargs={'house_id': instance.id}))
+    context = {
+        "form": form,
+    }
+    return render(request, "create_house.html", context)
+
+def post_create_post(request, house_id=None):
+    house_instance = get_object_or_404(House, id=house_id)
+    form = PostForm(request.POST or None)
+    if form.is_valid() and house_instance:
+        instance = form.save(commit=False)
+        instance.house = house_instance
+        instance.save()
+        return redirect("list")
     # else:
     #     messages.error(request, "Not Successfully Created")
 
     context = {
         "form": form,
     }
-    return render(request, "post_create.html", context)
-
-def post_create_post(request):
-    return HttpResponse("<h1>Hello World</h1>")
+    return render(request, "create_post.html", context)
 
 def post_detail(request):
     return HttpResponse("<h1>Hello World</h1>")

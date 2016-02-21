@@ -54,7 +54,8 @@ class Tenant(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=100, default="")
     content = models.TextField(max_length=1000, default="")
-    address = models.OneToOneField(Address)
+    #How shoulld users input address
+    address = models.OneToOneField(Address, blank=True, null=True)
     price = models.PositiveIntegerField(default=0)
     beds = models.PositiveIntegerField(default=0)
     baths = models.PositiveIntegerField(default=0)
@@ -66,7 +67,7 @@ class House(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return self.subletter
+        return self.title
 
 
 class Friendship(models.Model):
@@ -80,11 +81,14 @@ class Tag(models.Model):
     name = models.CharField(max_length=50)
     content = models.CharField(max_length=100)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Post(models.Model):
-    user = models.ForeignKey(UserProfile, related_name='post_user_profile')
+    user = models.ForeignKey(UserProfile, related_name='post_user_profile', blank=True, null=True)
     house = models.OneToOneField(House)
-    tags = models.ManyToManyField(Tag, through='PostTag')
+    tags = models.ManyToManyField(Tag, through='PostTag', blank=True)
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
