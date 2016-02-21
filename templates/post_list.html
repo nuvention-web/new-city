@@ -1,0 +1,29 @@
+<!--DOCTYPE html -->
+<html>
+<head>
+  <title>{% block head_title %}Post List{% endblock head_title %}</title>
+</head>
+
+<body>
+  <h1>This is the user_list</h1>
+  <h1>Not. This is the post_list</h1>
+
+  {% for post in post_list %}
+
+  <a href='{{ users.get_absolute_url }}'>{{ post.title }}</a></br>
+  {{ post.title }}</br>
+  {{ post.user.user }}</br>
+  {{ post.user.gender }}</br>
+  {{ post.user.address }}</br>
+  {{ post.user.birthday }}</br>
+  {{ post.user.friends }}</br>
+  {{ post.user.picture }}</br>
+  {{ post.user.create_timestamp }}</br>
+  {{ post.user.last_updated }}</br>
+  {{ post.user.last_active }}</br>
+  </br>
+
+  {% endfor %}
+</body>
+
+</html>

@@ -33,14 +33,14 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     gender = models.CharField(max_length=1, choices=GENDER)
-    address = models.ForeignKey(Address, null=True)
-    birthday = models.DateField(null=True, error_messages={'invalid': "Please enter a correct date format"})
+    address = models.ForeignKey(Address, null=True, blank=True)
+    birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
-    created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True)
+    created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
+    last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
+    last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
 
 
 class Subletter(models.Model):
@@ -54,7 +54,7 @@ class Tenant(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=100, default="")
     content = models.TextField(max_length=1000, default="")
-    address = models.OneToOneField(Address)
+    address = models.OneToOneField(Address, default="")
     price = models.PositiveIntegerField(default=0)
     beds = models.PositiveIntegerField(default=0)
     baths = models.PositiveIntegerField(default=0)
@@ -83,16 +83,22 @@ class Tag(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile')
-    house = models.OneToOneField(House)
+    title = models.CharField(max_length=100, default="")
+    # user = models.OneToOneField(UserProfile)
+    house = models.OneToOneField(House, null=True, blank=True)
     tags = models.ManyToManyField(Tag, through='PostTag')
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
+    # shouldnt need this on python 3
     def __unicode__(self):
         return self.title
 
     def __str__(self):
         return self.title
+
+    def get_user(self):
+        return self.user
 
     #def get_absolute_url(self):
 

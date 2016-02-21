@@ -1,8 +1,11 @@
-from django.http import HttpResponse
+import json
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import PostForm
+# from .forms import PostForm, HouseForm
+from .forms import HouseForm
 from .models import Post
+# from .models import Post, UserProfile
 
 # Create your views here.
 def home(request):
@@ -32,11 +35,18 @@ def post_detail(request):
     return HttpResponse("<h1>Hello World</h1>")
 
 def post_list(request):
-    posts = Post.objects.all()
+    post_list = Post.objects.all()
+    # user_list = Post.get_user.objects.all()
+    # user = post_list.user.all()
+
+    # for post in post_list:
+    #     user = post_list[post].get_user()
+
     context = {
-        "posts" : posts
+        # "user" : user, 
+        "post_list" : post_list, 
     }
-    return render(request,'index.html', context)
+    return render(request,'post_list.html', context)
 
 def post_update(request):
     return HttpResponse("<h1>Hello World</h1>")
