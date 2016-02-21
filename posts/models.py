@@ -52,18 +52,16 @@ class Tenant(models.Model):
 
 
 class House(models.Model):
-    subletter = models.OneToOneField(Subletter)
-
+    title = models.CharField(max_length=100)
+    content = models.TextField(max_length=1000)
     address = models.OneToOneField(Address)
-    price = models.PositiveIntegerField
-    beds = models.PositiveIntegerField
-    baths = models.PositiveIntegerField
+    price = models.PositiveIntegerField()
+    beds = models.PositiveIntegerField()
+    baths = models.PositiveIntegerField()
     pet_allowed = models.BooleanField(default=False)
     has_pool = models.BooleanField(default=False)
     has_parking = models.BooleanField(default=False)
     has_laundry = models.BooleanField(default=False)
-
-
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -87,13 +85,16 @@ class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile')
     house = models.OneToOneField(House)
     tags = models.ManyToManyField(Tag, through='PostTag')
-    title = models.CharField(max_length=100)
-    content = models.TextField(max_length=1000)
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __unicode__(self):
         return self.title
+
+    def __str__(self):
+        return self.title
+
+    #def get_absolute_url(self):
 
 
 class PostTag(models.Model):
