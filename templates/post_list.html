@@ -10,7 +10,7 @@
 
   {% for post in post_list %}
 
-  <a href='{{ users.get_absolute_url }}'>{{ post.title }}</a></br>
+  <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
   {{ post.title }}</br>
   {{ post.user.user }}</br>
   {{ post.user.gender }}</br>

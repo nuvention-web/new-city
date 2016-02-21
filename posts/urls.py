@@ -7,7 +7,7 @@ from .views import (
   home,
   post_create_house,
   post_create_post,
-  post_detail,
+  post_details,
   post_list,
   post_update,
   post_delete,
@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^list/$', post_list, name="listing"),
     url(r'^create_house/$', post_create_house),
     url(r'^create_post/$', post_create_post),
-    url(r'^detail/$', post_detail),
+    # url(r'^details/$', post_details, name="details"),
+    url(r'^(?P<id>\d+)/$', post_details, name="details"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
 ]

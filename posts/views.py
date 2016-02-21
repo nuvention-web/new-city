@@ -1,6 +1,6 @@
 import json
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # from .forms import PostForm, HouseForm
 from .forms import HouseForm
@@ -31,8 +31,14 @@ def post_create_house(request):
 def post_create_post(request):
     return HttpResponse("<h1>Hello World</h1>")
 
-def post_detail(request):
-    return HttpResponse("<h1>Hello World</h1>")
+def post_details(request, user):
+    instance = get_object_or_404(Post, user=user)
+    
+    context = {
+            "title": instance.title, 
+            "instance": instance, 
+            }
+    return render(request, "post_detail.html", context)
 
 def post_list(request):
     post_list = Post.objects.all()

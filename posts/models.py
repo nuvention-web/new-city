@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -82,15 +83,15 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
+    # user = models.OneToOneField(UserProfile)
     user = models.ForeignKey(UserProfile, related_name='post_user_profile')
     title = models.CharField(max_length=100, default="")
-    # user = models.OneToOneField(UserProfile)
     house = models.OneToOneField(House, null=True, blank=True)
     tags = models.ManyToManyField(Tag, through='PostTag')
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
-    # shouldnt need this on python 3
+    # thought we didnt need this on python 3?
     def __unicode__(self):
         return self.title
 
@@ -100,7 +101,9 @@ class Post(models.Model):
     def get_user(self):
         return self.user
 
-    #def get_absolute_url(self):
+    def get_absolute_url(self):
+    #     return reverse("details", kwargs={"user": self.user})
+        return "posts/%s" %(self.id)
 
 
 class PostTag(models.Model):
