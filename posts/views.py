@@ -31,8 +31,8 @@ def post_create_house(request):
 def post_create_post(request):
     return HttpResponse("<h1>Hello World</h1>")
 
-def post_details(request, user):
-    instance = get_object_or_404(Post, user=user)
+def post_details(request):
+    instance = get_object_or_404(Post)
     
     context = {
             "title": instance.title, 

@@ -12,6 +12,7 @@
 
   <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
   {{ post.title }}</br>
+
   {{ post.user.user }}</br>
   {{ post.user.gender }}</br>
   {{ post.user.address }}</br>
@@ -21,7 +22,22 @@
   {{ post.user.create_timestamp }}</br>
   {{ post.user.last_updated }}</br>
   {{ post.user.last_active }}</br>
-  </br>
+
+  {{ post.user.create_timestamp }}</br>
+  {{ post.house.title }} </br>
+  {{ post.house.content }} </br>
+  {{ post.house.address.street }} </br>
+  {{ post.house.address.city.name }} </br>
+  {{ post.house.price }} </br>
+  {{ post.house.beds }} </br>
+  {{ post.house.baths }} </br>
+  {{ post.house.pet_allowed }} </br>
+  {{ post.house.has_pool }} </br>
+  {{ post.house.has_parking }} </br>
+  {{ post.house.has_laundry }} </br>
+  {{ post.house.created_timestamp }} </br>
+  {{ post.house.last_update }} </br>
+ </br>
 
   {% endfor %}
 </body>

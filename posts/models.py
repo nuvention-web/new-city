@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -21,7 +21,7 @@ class Address(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return u'%s, %s, %s' % (self.street, self.city)
+        return u'%s, %s' % (self.street, self.city)
 
 
 class UserProfile(models.Model):
@@ -55,7 +55,7 @@ class Tenant(models.Model):
 class House(models.Model):
     title = models.CharField(max_length=100, default="")
     content = models.TextField(max_length=1000, default="")
-    address = models.OneToOneField(Address, default="")
+    address = models.OneToOneField(Address, default="", null=True, blank=True)
     price = models.PositiveIntegerField(default=0)
     beds = models.PositiveIntegerField(default=0)
     baths = models.PositiveIntegerField(default=0)
