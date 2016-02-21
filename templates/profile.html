@@ -4,9 +4,15 @@
 {% if user %}
     <h1>Welcome, {{user.first_name}}</h1>
     {% for account in user.socialaccount_set.all %}
-        <h1>{{account.extra_data}}</h1>
-        <p><img width="50" height="50" src="{{ account.get_avatar_url }}" /></p>
+        <p><img width="500" height="500" src="{{ account.get_avatar_url }}" /></p>
         <h3>Name: {{ account.extra_data.name }}</h3>
+        <h3>Email: {{ account.extra_data.email }}</h3>
+        <h3>Gender: {{ account.extra_data.gender }}</h3>
+        <h3>Check your Friends in Jack&Coke...</h3>
+        {% for friend in account.extra_data.friends.data %}
+            <li>{{friend.name}}</li>
+        {% endfor %}
+        <h3>Total FB friends count: {{account.extra_data.friends.summary.total_count}}</h3>
     {% endfor %}
 {% endif %}
 
