@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Facebook Login JavaScript Example</title>
-<meta charset="UTF-8">
+  <title>Facebook Login JavaScript Example</title>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
   <h1>New City</h1>
 
 
-<script>
+  <script>
   function statusChangeCallback(response) {
     if (response.status === 'connected') {
-      displayUserInfo();
+      displayAndSaveUserInfo();
       getFriendsList();
 
     } else if (response.status === 'not_authorized') {
       document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      'into this app.';
     } else {
       document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      'into Facebook.';
     }
   }
 
@@ -34,8 +35,8 @@
   }
 
   window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '990824900964852',
+    FB.init({
+      appId      : '990824900964852',
     cookie     : true,  // enable cookies to allow the server to access
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -43,9 +44,9 @@
   });
 
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
 
   };
 
@@ -60,12 +61,12 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function displayUserInfo() {
+  function displayAndSaveUserInfo() {
     FB.api('/me', function(response) {
       console.log(response)
-      // console.log("Getting My Info")
+      createUser(response)
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      'Thanks for logging in, ' + response.name + '!';
     });
   }
 
@@ -77,12 +78,35 @@
   function getFriendsList(){
     FB.api('/me/friends', function(response){
       // console.log("Getting FriendsList")
-      console.log(response)
     })
   }
 
+  function createUser(response){
+    console.log("got into createUser")
+    postData = {user : response, csrfmiddlewaretoken: '{{csrf_token}}' }
+    $.ajax({
+      url : "create_user/", // the endpoint
+      type : "POST", // http method
+      data : postData, // data sent with the post request
 
-</script>
+      // handle a successful response
+      success : function(json) {
+          console.log(json); // log the returned json to the console
+          console.log("ajax post success"); // another sanity check
+        },
+
+      // handle a non-successful response
+      error : function(xhr,errmsg,err) {
+        console.log("ajax post error")
+        // $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+        //       " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+        //   console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        // }
+      }});
+  }
+
+
+  </script>
 
 <!--
   Below we include the Login Button social plugin. This button uses
@@ -96,6 +120,8 @@
 
 
 <div id="status">
+</div>
+<div id="results">
 </div>
 
 </body>

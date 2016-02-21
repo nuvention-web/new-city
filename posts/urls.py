@@ -3,6 +3,7 @@ from django.contrib import admin
 
 from .views import (
   home,
+  create_user,
   post_create,
   post_detail,
   post_list,
@@ -12,6 +13,7 @@ from .views import (
 
 urlpatterns = [
     url(r'^$', home),
+    url(r'^create_user/$', create_user),
     url(r'^list/$', post_list),
     url(r'^create/$', post_create),
     url(r'^detail/$', post_detail),
