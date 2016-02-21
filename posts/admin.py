@@ -4,12 +4,16 @@ from django.contrib import admin
 from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter
 
 class PostModelAdmin(admin.ModelAdmin):
-    list_display = ["user", "house", "title", "last_updated", "created_timestamp"]
+    #tags cannot be included because many to many
+    list_display = ["user", "house", "created_timestamp",
+                    "last_updated"]
+
     list_filter = ["user", "house", "tags"]
 
     search_fields = ["user", "house", "tags"]
     class Meta:
         model = Post
+
 
 class CityModelAdmin(admin.ModelAdmin):
     list_display = ["name", "last_updated", "created_timestamp"]
@@ -30,7 +34,11 @@ class TagModelAdmin(admin.ModelAdmin):
         model = Tag
 
 class HouseModelAdmin(admin.ModelAdmin):
-    list_display = ["subletter", "address", "created_timestamp", "last_updated"]
+    list_display = ["__unicode__", "title", "content", "address",
+                    "price", "beds", "baths", "pet_allowed",
+                    "has_parking", "has_laundry", "has_pool",
+                    "created_timestamp", "last_updated"]
+
     list_filter = ["address", "created_timestamp"]
 
     search_fields = ["subletter", "address"]

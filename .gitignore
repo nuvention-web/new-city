@@ -19,3 +19,8 @@ testem.log
 # all dot files and gitignore itself
 .*
 !/.gitignore
+
+# git ignore 
+*.pyc 
+*.swp
+db.sqlite3
