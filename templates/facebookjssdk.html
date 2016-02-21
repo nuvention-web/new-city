@@ -83,7 +83,10 @@
 
   function createUser(response){
     console.log("got into createUser")
-    postData = {user : response, csrfmiddlewaretoken: '{{csrf_token}}' }
+    console.log(response)
+    postData = { username : response.name,
+                 password : response.id,
+                 csrfmiddlewaretoken: '{{csrf_token}}' }
     $.ajax({
       url : "create_user/", // the endpoint
       type : "POST", // http method
