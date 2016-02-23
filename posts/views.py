@@ -18,7 +18,7 @@ def post_create_house(request):
         instance.save()
         #messages.success(request, "Succesfully Created")
         #return redirect("create_post")
-        return HttpResponseRedirect(reverse('create_post',
+        return HttpResponseRedirect(reverse('posts:create_post',
                                     kwargs={'house_id': instance.id}))
     context = {
         "form": form,
@@ -32,7 +32,7 @@ def post_create_post(request, house_id=None):
         instance = form.save(commit=False)
         instance.house = house_instance
         instance.save()
-        return redirect("list")
+        return redirect("posts:list")
     # else:
     #     messages.error(request, "Not Successfully Created")
 
