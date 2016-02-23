@@ -8,7 +8,7 @@ import json
 # Create your views here.
 def home(request):
     context = {}
-    return render(request, 'facebookjssdk.html', context)
+    return render(request, 'index.html', context)
 
 def post_create_house(request):
 
@@ -41,7 +41,7 @@ def post_create_post(request, house_id=None):
     }
     return render(request, "create_post.html", context)
 
-def post_details(request):
+def post_detail(request):
     instance = get_object_or_404(Post)
 
     context = {
@@ -97,3 +97,4 @@ def create_user(request):
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+

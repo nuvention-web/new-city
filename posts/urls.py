@@ -7,7 +7,7 @@ from .views import (
   home,
   post_create_house,
   post_create_post,
-  post_details,
+  post_detail,
   post_list,
   post_update,
   post_delete,
