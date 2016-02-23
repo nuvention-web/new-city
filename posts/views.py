@@ -32,6 +32,7 @@ def post_create_post(request, house_id=None):
         instance = form.save(commit=False)
         instance.house = house_instance
         instance.save()
+
         return redirect("posts:list")
     # else:
     #     messages.error(request, "Not Successfully Created")
