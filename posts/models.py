@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -13,6 +13,8 @@ class City(models.Model):
     def __unicode__(self):
         return u'%s' % (self.name)
 
+    def __str__(self):
+        return u'%s' % (self.name)
 
 class Address(models.Model):
     street = models.CharField(max_length=128, error_messages={'required': 'Please specify the street name!', })
@@ -21,6 +23,9 @@ class Address(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
+        return u'%s, %s' % (self.street, self.city)
+
+    def __str__(self):
         return u'%s, %s' % (self.street, self.city)
 
 
@@ -43,6 +48,11 @@ class UserProfile(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
     last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
 
+    def __unicode__(self):
+        return self.user.username
+
+    def __str__(self):
+        return self.user.username
 
 class Subletter(models.Model):
     profile = models.OneToOneField(UserProfile)
