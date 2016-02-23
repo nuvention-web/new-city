@@ -10,7 +10,7 @@ class PostTagInline(admin.TabularInline):
 
 class PostModelAdmin(admin.ModelAdmin):
     #tags cannot be included because many to many
-    list_display = ["user", "house", "get_tags", "created_timestamp",
+    list_display = ["title", "user", "house", "get_tags", "created_timestamp",
                     "last_updated"]
 
     list_filter = ["user", "house", "tags"]
