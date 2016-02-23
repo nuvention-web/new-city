@@ -41,8 +41,8 @@ def post_create_post(request, house_id=None):
     }
     return render(request, "create_post.html", context)
 
-def post_detail(request):
-    instance = get_object_or_404(Post)
+def post_detail(request, post_id=None):
+    instance = get_object_or_404(Post, id=post_id)
 
     context = {
             "title": instance.title,

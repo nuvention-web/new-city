@@ -20,8 +20,8 @@ urlpatterns = [
     url(r'^list/$', post_list, name='list'),
     url(r'^create_house/$', post_create_house, name='create_house'),
     url(r'^create_post/(?P<house_id>\d+)$', post_create_post, name='create_post'),
-    #url(r'^(?P<id>\d+)/$', post_details, name="details"),
-    url(r'^detail/$', post_detail),
+    url(r'^(?P<post_id>\d+)/$', post_detail, name="detail"),
+    #url(r'^detail/$', post_detail),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
 ]

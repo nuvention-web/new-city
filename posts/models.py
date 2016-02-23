@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-# from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -29,6 +29,7 @@ class Address(models.Model):
         return u'%s, %s' % (self.street, self.city)
 
 
+# TODO: adding users via admin hangs
 class UserProfile(models.Model):
     MALE = 'M'
     FEMALE = 'F'
@@ -123,8 +124,8 @@ class Post(models.Model):
         return self.user
 
     def get_absolute_url(self):
-    #     return reverse("details", kwargs={"user": self.user})
-        return "posts/%s" %(self.id)
+        return reverse("posts:detail", kwargs={"post_id": self.id})
+        # return "posts/%s" %(self.id)
 
 
 class PostTag(models.Model):
