@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
 from .models import Post, House
+import json
 
 # Create your views here.
 def home(request):
@@ -40,15 +41,28 @@ def post_create_post(request, house_id=None):
     }
     return render(request, "create_post.html", context)
 
-def post_detail(request):
-    return HttpResponse("<h1>Hello World</h1>")
+def post_details(request):
+    instance = get_object_or_404(Post)
+
+    context = {
+            "title": instance.title,
+            "instance": instance,
+            }
+    return render(request, "post_detail.html", context)
 
 def post_list(request):
-    posts = Post.objects.all()
+    post_list = Post.objects.all()
+    # user_list = Post.get_user.objects.all()
+    # user = post_list.user.all()
+
+    # for post in post_list:
+    #     user = post_list[post].get_user()
+
     context = {
-        "posts" : posts
+        # "user" : user,
+        "post_list" : post_list,
     }
-    return render(request,'index.html', context)
+    return render(request,'post_list.html', context)
 
 def post_update(request):
     return HttpResponse("<h1>Hello World</h1>")

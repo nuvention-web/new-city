@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter, PostTag
+from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter, PostTag, Address
 
 class PostTagInline(admin.TabularInline):
     model = PostTag
@@ -31,6 +31,15 @@ class CityModelAdmin(admin.ModelAdmin):
     search_fields = ["name"]
     class Meta:
         model = City
+
+class AddressModelAdmin(admin.ModelAdmin):
+    list_display = ["street", "city", "created_timestamp", "last_updated"]
+    list_editable = ["street", "city"]
+    list_filter = ["street", "city", "created_timestamp", "last_updated"]
+
+    search_fields = ["street", "city", "created_timestamp", "last_updated"]
+    class Meta:
+        model = Address
 
 class TagModelAdmin(admin.ModelAdmin):
     list_display = ["name", "content"]
@@ -74,6 +83,7 @@ class SubletterModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(City, CityModelAdmin)
+admin.site.register(Address, AddressModelAdmin)
 admin.site.register(Tag, TagModelAdmin)
 admin.site.register(House, HouseModelAdmin)
 admin.site.register(UserProfile, UserProfileModelAdmin)

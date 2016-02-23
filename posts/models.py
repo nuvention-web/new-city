@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+# from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -20,7 +21,7 @@ class Address(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return u'%s, %s, %s' % (self.street, self.city)
+        return u'%s, %s' % (self.street, self.city)
 
 
 class UserProfile(models.Model):
@@ -33,14 +34,14 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     gender = models.CharField(max_length=1, choices=GENDER)
-    address = models.ForeignKey(Address, null=True)
-    birthday = models.DateField(null=True, error_messages={'invalid': "Please enter a correct date format"})
+    address = models.ForeignKey(Address, null=True, blank=True)
+    birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
-    created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True)
+    created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
+    last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
+    last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
 
 
 class Subletter(models.Model):
@@ -55,7 +56,7 @@ class House(models.Model):
     title = models.CharField(max_length=100, default="")
     content = models.TextField(max_length=1000, default="")
     #How shoulld users input address
-    address = models.OneToOneField(Address, blank=True, null=True)
+    address = models.OneToOneField(Address, default="", null=True, blank=True)
     price = models.PositiveIntegerField(default=0)
     beds = models.PositiveIntegerField(default=0)
     baths = models.PositiveIntegerField(default=0)
@@ -93,7 +94,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile', blank=True, null=True)
-    house = models.OneToOneField(House)
+    title = models.CharField(max_length=100, default="")
+    house = models.OneToOneField(House, null=True, blank=True)
     tags = models.ManyToManyField(Tag, through='PostTag', blank=True)
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
@@ -107,7 +109,12 @@ class Post(models.Model):
     def __str__(self):
         return str(self.id)
 
-    #def get_absolute_url(self):
+    def get_user(self):
+        return self.user
+
+    def get_absolute_url(self):
+    #     return reverse("details", kwargs={"user": self.user})
+        return "posts/%s" %(self.id)
 
 
 class PostTag(models.Model):
