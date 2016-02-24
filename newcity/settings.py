@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    # Session
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -57,6 +57,11 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Session
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    # Per-site Caching
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'newcity.urls'
@@ -147,9 +152,19 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# Caching for landing page forms
+# memcached,using pylibmc binding
+# Cached Session (other options include file-based, cookie-based)
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        'LOCATION': '/tmp/memcached.sock',
+    }
+}
 
-
-
+SESSION_ENGINE = {
+    "django.contrib.sessions.backends.cached_db",
+}
 
 
 # Internationalization

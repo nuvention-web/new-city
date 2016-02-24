@@ -24,3 +24,4 @@ class PostForm(forms.ModelForm):
         fields = [
             "tags",
         ]
+
