@@ -15,14 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
 from django.views.generic import TemplateView
-
-
+# static files (javascript, css)
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from .views import home
 
 urlpatterns = [
+    #url(r'^$', TemplateView.as_view(template_name = "main.html")),
+    url(r'^$', home),
     url(r'^admin/', admin.site.urls),
     url(r'^posts/', include("posts.urls", namespace="posts")),
     url(r'^accounts/profile/', TemplateView.as_view(template_name="profile.html")),
     url(r'^accounts/', include('allauth.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import House, Post
+from .models import House, Post, Tag
 
 class HouseForm(forms.ModelForm):
     class Meta:
@@ -16,12 +16,21 @@ class HouseForm(forms.ModelForm):
             "has_parking",
             "has_laundry",
             "has_pool",
-    ]
+        ]
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
             "tags",
+        ]
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = [
+            "name",
+            "content",
         ]
 

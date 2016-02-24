@@ -10,6 +10,18 @@ def home(request):
     context = {}
     return render(request, 'index.html', context)
 
+def create_user_profile(request):
+    form = UserProfileForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect("posts:list")
+    context = {
+        "form": form,
+    }
+    return render(request, 'questionnaire.html', context)
+
+
 def post_create_house(request):
 
     form = HouseForm(request.POST or None)
@@ -97,5 +109,4 @@ def create_user(request):
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
-
 

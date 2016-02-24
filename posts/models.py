@@ -34,8 +34,10 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     gender = models.CharField(max_length=1, choices=GENDER)
-    address = models.ForeignKey(Address, null=True, blank=True)
-    birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
+    school = models.CharField(max_length=50)
+    job = models.CharField(max_length=50)
+    hometown = models.ForeignKey(City, null=True, blank=True)
+    birthday  = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
@@ -90,6 +92,7 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 class Post(models.Model):
