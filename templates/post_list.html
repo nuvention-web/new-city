@@ -8,6 +8,19 @@
   <h1>This is the user_list</h1>
   <h1>Not. This is the post_list</h1>
 
+  {% for tag in tag_list %} {{ tag.name }} {% endfor %}
+
+  {# facebook wrote a separate php script to run their searches #}
+  <script type="text/javascript">
+    function func(){
+      return false;
+    }
+  </script>
+  <form action="" method="get" id="filter-search" onSubmit="return func()">
+    <input id="search" name="search" type="text" value="Find filters"/>
+    <input id="search-submit-buttom" name="search-button" type="button" value="Search" onClick="func()"/>
+  </form>
+
   {% for post in post_list %}
 
   <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>

@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
-from .models import Post, House
+from .models import Post, House, Tag
 import json
 
 # Create your views here.
@@ -52,6 +52,7 @@ def post_detail(request, post_id=None):
 
 def post_list(request):
     post_list = Post.objects.all()
+    tag_list = Tag.objects.all()
     # user_list = Post.get_user.objects.all()
     # user = post_list.user.all()
 
@@ -61,6 +62,7 @@ def post_list(request):
     context = {
         # "user" : user,
         "post_list" : post_list,
+        "tag_list" : tag_list, 
     }
     return render(request,'post_list.html', context)
 

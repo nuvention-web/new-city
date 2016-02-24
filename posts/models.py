@@ -94,7 +94,7 @@ class Friendship(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
-    content = models.CharField(max_length=100)
+    content = models.CharField(max_length=100, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
