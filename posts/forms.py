@@ -35,14 +35,10 @@ class PostForm(forms.ModelForm):
         self.fields["tags"].widget = CheckboxSelectMultiple()
         self.fields["tags"].queryset = Tag.objects.all()
 
-    #save by first creating an id for the M2M
+    # #save by first creating an id for the M2M
     # def save(self, commit=True):
-    #     if (commit==True):
-    #         post = super(PostForm, self).save()
-    #         instance_tags = self.cleaned_data.get('tags')
-    #         print(post)
-    #         instance_post = post
-    #     else:
-    #         post = (PostForm, self).save(commit=False)
-    #         return post
+    #     post = super(PostForm, self).save()
+    #     instance_tags = self.cleaned_data.get('tags')
+    #     print(post)
+    #     instance_post = post
 
