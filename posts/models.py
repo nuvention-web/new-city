@@ -13,6 +13,8 @@ class City(models.Model):
     def __unicode__(self):
         return u'%s' % (self.name)
 
+    def __str__(self):
+        return u'%s' % (self.name)
 
 class Address(models.Model):
     street = models.CharField(max_length=128, error_messages={'required': 'Please specify the street name!', })
@@ -23,7 +25,11 @@ class Address(models.Model):
     def __unicode__(self):
         return u'%s, %s' % (self.street, self.city)
 
+    def __str__(self):
+        return u'%s, %s' % (self.street, self.city)
 
+
+# TODO: adding users via admin hangs
 class UserProfile(models.Model):
     MALE = 'M'
     FEMALE = 'F'
@@ -45,6 +51,11 @@ class UserProfile(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
     last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
 
+    def __unicode__(self):
+        return self.user.username
+
+    def __str__(self):
+        return self.user.username
 
 class Subletter(models.Model):
     profile = models.OneToOneField(UserProfile)
@@ -82,7 +93,6 @@ class Friendship(models.Model):
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile', blank=True, null=True)
     title = models.CharField(max_length=100, default="")
@@ -105,8 +115,8 @@ class Post(models.Model):
         return self.user
 
     def get_absolute_url(self):
-    #     return reverse("details", kwargs={"user": self.user})
-        return "posts/%s" %(self.id)
+        return reverse("posts:detail", kwargs={"post_id": self.id})
+        # return "posts/%s" %(self.id)
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)

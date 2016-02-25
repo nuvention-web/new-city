@@ -53,8 +53,8 @@ def post_create_post(request, house_id=None):
     }
     return render(request, "create_post.html", context)
 
-def post_detail(request):
-    instance = get_object_or_404(Post)
+def post_detail(request, post_id=None):
+    instance = get_object_or_404(Post, id=post_id)
 
     context = {
             "title": instance.title,
@@ -64,6 +64,10 @@ def post_detail(request):
 
 def post_list(request):
     post_list = Post.objects.all()
+
+    # post_list.filter()
+
+    tag_list = Tag.objects.all()
     # user_list = Post.get_user.objects.all()
     # user = post_list.user.all()
 
@@ -73,6 +77,7 @@ def post_list(request):
     context = {
         # "user" : user,
         "post_list" : post_list,
+        "tag_list" : tag_list,
     }
     return render(request,'post_list.html', context)
 
