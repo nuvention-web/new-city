@@ -1,15 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
+<head>
         <meta charset="utf-8">
         <title></title>
-    </head>
-    <body>
-        {% if user.is_authenticated %}
-            Welcome back {{ user.username }}
-        {% else %}
-            You are not logged in
-        {% endif %}
-        <h1>This is Post List</h1>
-    </body>
+</head>
+<body>
+    
+
+
+    {% if user.is_authenticated %}
+        Welcome back {{ user.username }}
+    {% else %}
+        You are not logged in
+    {% endif %}
+    <h1>This is Post List</h1>
+</body>
 </html>
