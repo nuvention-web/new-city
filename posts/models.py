@@ -40,7 +40,9 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     gender = models.CharField(max_length=1, choices=GENDER)
-    address = models.ForeignKey(Address, null=True, blank=True)
+    school = models.CharField(max_length=50)
+    hometown = models.ForeignKey(City, null=True, blank=True)
+    job = models.CharField(max_length=50)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
@@ -92,22 +94,12 @@ class Friendship(models.Model):
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 
-class Tag(models.Model):
-    name = models.CharField(max_length=50)
-    content = models.CharField(max_length=100, null=True, blank=True)
-
-    def __unicode__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
-
-
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, related_name='post_user_profile', blank=True, null=True)
     title = models.CharField(max_length=100, default="")
     house = models.OneToOneField(House, null=True, blank=True)
-    tags = models.ManyToManyField(Tag, through='PostTag', blank=True)
+    #Tag is in quotations because of order of code
+    tags = models.ManyToManyField('Tag', through='PostTag', blank=True)
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
@@ -127,6 +119,16 @@ class Post(models.Model):
         return reverse("posts:detail", kwargs={"post_id": self.id})
         # return "posts/%s" %(self.id)
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    content = models.CharField(max_length=100)
+    posts = models.ManyToManyField(Post, through='PostTag', blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
 
 class PostTag(models.Model):
     post = models.ForeignKey(Post)

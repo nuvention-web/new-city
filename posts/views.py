@@ -1,9 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
-from .models import Post, House, Tag
+from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
+#from django.contrib.formtools.wizard.views import SessionWizardView
+from formtools.wizard.views import SessionWizardView
 
 # Create your views here.
 def home(request):
@@ -30,8 +32,18 @@ def post_create_post(request, house_id=None):
     form = PostForm(request.POST or None)
     if form.is_valid() and house_instance:
         instance = form.save(commit=False)
+        id_tag_list = request.POST.getlist('tags')
         instance.house = house_instance
         instance.save()
+
+        post_instance = instance
+        for id_tag in id_tag_list:
+            tag_instance = Tag.objects.get(id=int(id_tag))
+            print(type(tag_instance))
+            print(type(house_instance))
+            new_posttag = PostTag(post=post_instance, tag=tag_instance)
+            new_posttag.save()
+
         return redirect("posts:list")
     # else:
     #     messages.error(request, "Not Successfully Created")
@@ -102,4 +114,29 @@ def create_user(request):
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+
+class QuestionnaireWizard(SessionWizardView):
+    template_name = "questionnaire.html"
+
+    def done(self, form_list, **kwargs):
+        form_data = process_form_data(self, form_list)
+
+        return render_to_response('done.html', {'form_data':form_data})
+
+def process_form_data(self, form_list):
+    form_data = [form.cleaned_data for form in form_list]
+
+    school = form_data[0]['school']
+    hometown = form_data[1]['hometown']
+    job = form_data[2]['job']
+
+    #hometown must be a city instance
+    hometown_instance = City.objects.get(name = hometown)
+
+    print(self.request.user)
+    new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
+    new_user_profile.save()
+
+    return form_data
+
 

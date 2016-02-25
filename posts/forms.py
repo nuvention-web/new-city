@@ -1,6 +1,8 @@
 from django import forms
 
-from .models import House, Post
+from .models import House, Post, Tag
+
+from django.forms.widgets import CheckboxSelectMultiple
 
 class HouseForm(forms.ModelForm):
     class Meta:
@@ -19,8 +21,29 @@ class HouseForm(forms.ModelForm):
     ]
 
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
         fields = [
-            "tags",
+            "title", "tags",
         ]
+
+    #create multiple choice fields for tags
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+
+        self.fields["tags"].widget = CheckboxSelectMultiple()
+        self.fields["tags"].queryset = Tag.objects.all()
+
+#Form Wizard
+class QuestionnaireForm1(forms.Form):
+    school = forms.CharField(max_length=50)
+
+class QuestionnaireForm2(forms.Form):
+    hometown= forms.CharField(max_length=50)
+
+class QuestionnaireForm3(forms.Form):
+    job = forms.CharField(max_length=50)
+
+
+

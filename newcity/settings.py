@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-
+    #Django form wizard
+    'formtools',
 ]
 
 MIDDLEWARE_CLASSES = [

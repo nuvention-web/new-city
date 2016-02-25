@@ -63,8 +63,8 @@ class HouseModelAdmin(admin.ModelAdmin):
         model = House
 
 class UserProfileModelAdmin(admin.ModelAdmin):
-    list_display = ["user", "address", "created_timestamp", "last_updated", "last_active"]
-    list_filter = ["user", "address"]
+    list_display = ["user", "school", "hometown", "job", "created_timestamp", "last_updated", "last_active"]
+    list_filter = ["user", "school", "hometown", "job"]
 
     search_fields = ["user", "address"]
     class Meta:
@@ -80,6 +80,11 @@ class SubletterModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Subletter
 
+class PostTagModelAdmin(admin.ModelAdmin):
+    list_display = ["post", "tag"]
+    class Meta:
+        model = Subletter
+
 
 
 admin.site.register(City, CityModelAdmin)
@@ -90,6 +95,7 @@ admin.site.register(UserProfile, UserProfileModelAdmin)
 admin.site.register(Tenant, TenantModelAdmin)
 admin.site.register(Subletter, SubletterModelAdmin)
 admin.site.register(Post, PostModelAdmin)
+admin.site.register(PostTag, PostTagModelAdmin)
 
 
 
