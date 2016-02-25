@@ -52,6 +52,9 @@ def post_detail(request, post_id=None):
 
 def post_list(request):
     post_list = Post.objects.all()
+
+    # post_list.filter()
+
     tag_list = Tag.objects.all()
     # user_list = Post.get_user.objects.all()
     # user = post_list.user.all()
