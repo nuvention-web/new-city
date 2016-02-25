@@ -1,0 +1,29 @@
+[
+  {
+    "model": "posts.city",
+    "pk": 1,
+    "fields": {
+      "name": "San Francisco",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
+    "model": "posts.city",
+    "pk": 2,
+    "fields": {
+      "name": "New York",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
+    "model": "posts.city",
+    "pk": 3,
+    "fields": {
+      "name": "Chicago",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  }
+]
