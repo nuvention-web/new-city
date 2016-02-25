@@ -1,6 +1,7 @@
 <!--DOCTYPE html -->
 <html>
 <head>
+
   <title>{% block head_title %}Post List{% endblock head_title %}</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -10,7 +11,8 @@
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 10000,
+      max: 5000,
+      step:100,
       values: [ 1000, 2000 ],
       slide: function( event, ui ) {
         $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
@@ -19,29 +21,53 @@
     $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
   });
   </script>
-
+  
   <script>
+    $('#temp').on('submit', function(event) {
+      event.preventDefault();
+      console.log("added filter");
+      refresh_with_filter();
+    });
     
+    function refresh_with_filter() {
+      console.log("refresh_with_filter is working");
+    };
   </script>
-</head>
+
+  </head>
 
 <body>
   <h1>This is the post_list</h1>
 
+  {# list all tags #}
   {% for tag in tag_list %} 
-
-  <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
-  
+    <input type="button" class="filter-buttons" value='{{ tag.name }}'></button>
   {% endfor %}
 
-  {# list all house attributes as filter criteria #}
-
+  {# price slider #}
   <p>
-    <label for="amount">Price range:</label>
+    <label for="amount">Price range (per month):</label>
     <input type="text" id="amount" readonly>
   </p>
-  <div id="slider-range"></div>
+  <div id="slider-range"></div></br>
 
+  {# temp #}
+  <form action='' method='post' id="temp">
+  </form>
+
+    {% comment %}
+  {# list all house attributes as filter criteria #}
+  <form action="" method="get" id="apply_house_filter">{% csrf_token %}
+    <input type="range" name="num_bedrooms" id="num_bedrooms" class="house_filter" value='2' min='1' max='6'>
+    <input type="range" name="num_bathrooms" id="num_bathrooms" class="house_filter" value='2' min='1' max='6'>
+    <input action="" type="button" name="pet_allowed_filter" id="pet_allowed_filter" class="house_filter" value="pets allowed?">
+    <input action="" type="button" name="has_pool_filter" id="has_pool_filter" class="house_filter" value="has a pool?">
+    <input action="" type="button" name="has_parking_filter" id="has_parking_filter" class="house_filter" value="has parking?">
+    <input action="" type="button" name="has_laundry_filter" id="has_laundry_filter" class="house_filter" value="has laundry?">
+  </form>
+    {% endcomment %}
+
+  {% comment %}
   {# facebook wrote a separate php script to run their searches #}
   <script type="text/javascript">
     function func(){
@@ -52,7 +78,9 @@
     <input id="search" name="search" type="text" value="Find filters"/>
     <input id="search-submit-buttom" name="search-button" type="button" value="Search" onClick="func()"/>
   </form>
+  {% endcomment %}
 
+  </br>
   {% for post in post_list %}
 
   <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
@@ -67,7 +95,7 @@
   {{ post.house.address.street }} </br>
   {{ post.house.address.city.name }} </br>
   {{ post.house.price }} </br>
- </br>
+  </br>
 
   {% endfor %}
 </body>
