@@ -24,3 +24,13 @@ class PostForm(forms.ModelForm):
         fields = [
             "tags",
         ]
+
+class QuestionnaireForm1(forms.Form):
+    school = forms.CharField(max_length=50)
+
+class QuestionnaireForm2(forms.Form):
+    hometown= forms.CharField(max_length=50)
+
+class QuestionnaireForm3(forms.Form):
+    job = forms.CharField(max_length=50)
+

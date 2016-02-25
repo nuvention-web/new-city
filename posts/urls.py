@@ -14,6 +14,10 @@ from .views import (
   create_user,
 )
 
+from .forms import QuestionnaireForm1, QuestionnaireForm2, QuestionnaireForm3
+from .views import QuestionnaireWizard
+
+
 urlpatterns = [
     url(r'^$', home),
     url(r'^create_user/$', create_user),
@@ -24,5 +28,8 @@ urlpatterns = [
     url(r'^detail/$', post_detail),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
+    url(r'^questionnaire/$', QuestionnaireWizard.as_view([QuestionnaireForm1,
+                                                          QuestionnaireForm2,
+                                                          QuestionnaireForm3])),
 ]
 

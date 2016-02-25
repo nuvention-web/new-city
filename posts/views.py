@@ -1,9 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
 from .models import Post, House
 import json
+#from django.contrib.formtools.wizard.views import SessionWizardView
+from formtools.wizard.views import SessionWizardView
 
 # Create your views here.
 def home(request):
@@ -97,4 +99,20 @@ def create_user(request):
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+
+class QuestionnaireWizard(SessionWizardView):
+    template_name = "questionnaire.html"
+
+    def done(self, form_list, **kwargs):
+        form_data = process_form_data(form_list)
+
+        return render_to_response('done.html', {'form_data':form_data})
+
+def process_form_data(form_list):
+    form_data = [form.cleaned_data for form in form_list]
+
+    print(form_data[0]['school'])
+
+    return form_data
+
 
