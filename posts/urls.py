@@ -12,6 +12,7 @@ from .views import (
   post_update,
   post_delete,
   create_user,
+  post_list_roommate,
 )
 
 from .forms import QuestionnaireForm1, QuestionnaireForm2, QuestionnaireForm3
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^$', home),
     url(r'^create_user/$', create_user),
     url(r'^list/$', post_list, name='list'),
+    url(r'^list_roommate/$', post_list_roommate, name='list_roommate'),
     url(r'^create_house/$', post_create_house, name='create_house'),
     url(r'^create_post/(?P<house_id>\d+)$', post_create_post, name='create_post'),
     url(r'^(?P<post_id>\d+)/$', post_detail, name="detail"),

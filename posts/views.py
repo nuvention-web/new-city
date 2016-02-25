@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm
+from .forms import HouseForm, PostForm, UserProfileForm
 from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
@@ -44,7 +44,7 @@ def post_create_post(request, house_id=None):
             new_posttag = PostTag(post=post_instance, tag=tag_instance)
             new_posttag.save()
 
-        return redirect("posts:list")
+        return redirect("posts:list_rommate")
     # else:
     #     messages.error(request, "Not Successfully Created")
 
@@ -80,6 +80,25 @@ def post_list(request):
         "tag_list" : tag_list,
     }
     return render(request,'post_list.html', context)
+
+def post_list_roommate(request):
+    roommate_list = UserProfile.objects.all()
+    form = UserProfileForm(request.GET or None)
+
+    if request.is_ajax():
+        gender = request.GET.get('gender')
+        print(gender)
+
+        if gender:
+            roommate_list = roommate_list.filter(gender = gender)
+            print(roommate_list)
+
+    context = {
+        "roommate_list": roommate_list,
+        "form": form,
+    }
+    return render(request, 'post_list_roommate.html', context)
+
 
 def post_update(request):
     return HttpResponse("<h1>Hello World</h1>")
