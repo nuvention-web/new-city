@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
-from .models import Post, House
+from .models import Post, House, PostTag, Tag
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
 from formtools.wizard.views import SessionWizardView
@@ -32,8 +32,18 @@ def post_create_post(request, house_id=None):
     form = PostForm(request.POST or None)
     if form.is_valid() and house_instance:
         instance = form.save(commit=False)
+        id_tag_list = request.POST.getlist('tags')
         instance.house = house_instance
         instance.save()
+
+        post_instance = instance
+        for id_tag in id_tag_list:
+            tag_instance = Tag.objects.get(id=int(id_tag))
+            print(type(tag_instance))
+            print(type(house_instance))
+            new_posttag = PostTag(post=post_instance, tag=tag_instance)
+            new_posttag.save()
+
         return redirect("posts:list")
     # else:
     #     messages.error(request, "Not Successfully Created")

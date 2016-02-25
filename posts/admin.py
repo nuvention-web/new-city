@@ -80,6 +80,11 @@ class SubletterModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Subletter
 
+class PostTagModelAdmin(admin.ModelAdmin):
+    list_display = ["post", "tag"]
+    class Meta:
+        model = Subletter
+
 
 
 admin.site.register(City, CityModelAdmin)
@@ -90,6 +95,7 @@ admin.site.register(UserProfile, UserProfileModelAdmin)
 admin.site.register(Tenant, TenantModelAdmin)
 admin.site.register(Subletter, SubletterModelAdmin)
 admin.site.register(Post, PostModelAdmin)
+admin.site.register(PostTag, PostTagModelAdmin)
 
 
 
