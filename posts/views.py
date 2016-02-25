@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from .forms import HouseForm, PostForm
-from .models import Post, House, PostTag, Tag
+from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
 from formtools.wizard.views import SessionWizardView
@@ -114,14 +114,23 @@ class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"
 
     def done(self, form_list, **kwargs):
-        form_data = process_form_data(form_list)
+        form_data = process_form_data(self, form_list)
 
         return render_to_response('done.html', {'form_data':form_data})
 
-def process_form_data(form_list):
+def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]
 
-    print(form_data[0]['school'])
+    school = form_data[0]['school']
+    hometown = form_data[1]['hometown']
+    job = form_data[2]['job']
+
+    #hometown must be a city instance
+    hometown_instance = City.objects.get(name = hometown)
+
+    print(self.request.user)
+    new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
+    new_user_profile.save()
 
     return form_data
 
