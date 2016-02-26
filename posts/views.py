@@ -44,7 +44,7 @@ def post_create_post(request, house_id=None):
             new_posttag = PostTag(post=post_instance, tag=tag_instance)
             new_posttag.save()
 
-        return redirect("posts:list_rommate")
+        return redirect("posts:list_roommate")
     # else:
     #     messages.error(request, "Not Successfully Created")
 
