@@ -1,0 +1,62 @@
+[
+  {
+    "model": "posts.city",
+    "pk": 1,
+    "fields": {
+      "name": "San Francisco",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
+    "model": "posts.city",
+    "pk": 2,
+    "fields": {
+      "name": "New York",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
+    "model": "posts.city",
+    "pk": 3,
+    "fields": {
+      "name": "Chicago",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "sunghyukpark0408@gmail.com",
+      "email": "sunghyukpark0408@gmail.com",
+      "password": "thisissunghyukpark0408",
+      "first_name": "Sunghyuk",
+      "last_name": "Park"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "username": "olivia@gmail.com",
+      "email": "olivia@gmail.com",
+      "password": "thisisolivia",
+      "first_name": "Olivia",
+      "last_name": "Lim"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "username":"dong@gmail.com",
+      "email": "dong@gmail.com",
+      "password": "thisisdongyolo",
+      "first_name": "Dongyo",
+      "last_name": "Seo"
+    }
+  }
+]
