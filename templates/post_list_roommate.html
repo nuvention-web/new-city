@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+          <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    </head>
+
+    <body>
+        <h1>This is Roommate List</h1>
+        <div id="div-roommate">
+        {% for roommate in roommate_list %}
+          <!-- <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br> -->
+          {{ roommate.user.username }}</br>
+          {{ roommate.gender }}</br>
+          {{ roommate.school }}</br>
+          {{ roommate.hometown }}</br>
+          {{ roommate.job }}</br>
+          {{ roommate.birthday }}</br>
+          <!-- {{ roommate.picture }}</br>
+          {{ roommate.friends }}</br> -->
+         </br>
+        {% endfor %}
+        </div>
+
+    <form method='GET' action="" id="filter-form">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Filter"/>
+    </form>
+
+    <script type="text/javascript">
+    $('#filter-form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+    filter_roommate();
+    });
+    </script>
+
+    <script type="text/javascript">
+    function filter_roommate() {
+    console.log("filter_roommate is working!") // sanity check
+    $.ajax({
+        url : "/posts/list_roommate/", // the endpoint
+        type : "GET", // http method
+        data : { gender : $('#filter-gender').val() }, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            $('#filter-gender').val(''); // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            // $(document).ajaxStop(function() { location.reload(true); });
+            window.location.reload(json)
+            $(document).html(json.html)
+            },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
+
+    </script>
+
+    </body>
+</html>
