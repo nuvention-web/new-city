@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import House, Post, Tag
+from .models import House, Post, Tag, UserProfile
 
 from django.forms.widgets import CheckboxSelectMultiple
 
@@ -34,6 +34,19 @@ class PostForm(forms.ModelForm):
 
         self.fields["tags"].widget = CheckboxSelectMultiple()
         self.fields["tags"].queryset = Tag.objects.all()
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            "gender", "school", "hometown", "job",
+        ]
+        widgets = {
+            "gender": forms.TextInput(
+                        attrs={'id': 'filter-gender', 'placeholder': 'M or F'}
+                    ),
+        }
 
 #Form Wizard
 class QuestionnaireForm1(forms.Form):

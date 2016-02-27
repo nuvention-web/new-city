@@ -2,11 +2,52 @@
 <html>
 <head>
   <title>{% block head_title %}Post List{% endblock head_title %}</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 10000,
+      values: [ 1000, 2000 ],
+      slide: function( event, ui ) {
+        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+  });
+  </script>
 </head>
 
 <body>
-  <h1>This is the user_list</h1>
-  <h1>Not. This is the post_list</h1>
+  <h1>This is the post_list</h1>
+
+  {% for tag in tag_list %} 
+
+  <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
+  
+  {% endfor %}
+
+  {# list all house attributes as filter criteria #}
+
+  <p>
+    <label for="amount">Price range:</label>
+    <input type="text" id="amount" readonly>
+  </p>
+  <div id="slider-range"></div>
+
+  {# facebook wrote a separate php script to run their searches #}
+  <script type="text/javascript">
+    function func(){
+      return false;
+    }
+  </script>
+  <form action="" method="get" id="filter-search" onSubmit="return func()">
+    <input id="search" name="search" type="text" value="Find filters"/>
+    <input id="search-submit-buttom" name="search-button" type="button" value="Search" onClick="func()"/>
+  </form>
 
   {% for post in post_list %}
 
@@ -14,29 +55,14 @@
   {{ post.title }}</br>
 
   {{ post.user.user }}</br>
-  {{ post.user.gender }}</br>
   {{ post.user.address }}</br>
-  {{ post.user.birthday }}</br>
-  {{ post.user.friends }}</br>
   {{ post.user.picture }}</br>
-  {{ post.user.create_timestamp }}</br>
-  {{ post.user.last_updated }}</br>
-  {{ post.user.last_active }}</br>
 
-  {{ post.user.create_timestamp }}</br>
   {{ post.house.title }} </br>
   {{ post.house.content }} </br>
   {{ post.house.address.street }} </br>
   {{ post.house.address.city.name }} </br>
   {{ post.house.price }} </br>
-  {{ post.house.beds }} </br>
-  {{ post.house.baths }} </br>
-  {{ post.house.pet_allowed }} </br>
-  {{ post.house.has_pool }} </br>
-  {{ post.house.has_parking }} </br>
-  {{ post.house.has_laundry }} </br>
-  {{ post.house.created_timestamp }} </br>
-  {{ post.house.last_update }} </br>
  </br>
 
   {% endfor %}
