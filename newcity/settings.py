@@ -149,8 +149,8 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-
-
+# enabling custom redirects with django-allauth
+ACCOUNT_ADAPTER = 'project.users.adapter.MyAccountAdapter'
 
 
 # Internationalization

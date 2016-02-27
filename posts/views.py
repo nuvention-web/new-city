@@ -10,7 +10,7 @@ from formtools.wizard.views import SessionWizardView
 # Create your views here.
 def home(request):
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'HP.html', context)
 
 def post_create_house(request):
 
