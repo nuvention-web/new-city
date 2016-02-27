@@ -10,7 +10,7 @@ from formtools.wizard.views import SessionWizardView
 # Create your views here.
 def home(request):
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'HP.html', context)
 
 def post_create_house(request):
 
@@ -128,6 +128,7 @@ def create_user(request):
             json.dumps(response_data),
             content_type="application/json"
         )
+
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
