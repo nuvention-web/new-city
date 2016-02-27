@@ -39,7 +39,7 @@ class UserProfile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
-    gender = models.CharField(max_length=1, choices=GENDER)
+    gender = models.CharField(max_length=1, choices=GENDER, null=False)
     school = models.CharField(max_length=50)
     hometown = models.ForeignKey(City, null=True, blank=True)
     job = models.CharField(max_length=50)

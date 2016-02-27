@@ -28,14 +28,34 @@
         {% endfor %}
         </div>
 
+
+    <!-- <label for="theme-grey">
+      <input type="radio" id="theme-grey" name="theme" value="grey" />Grey</label> -->
+  <!--   <label for="theme-pink">
+      <input type="radio" id="theme-pink" name="theme" value="pink" />Pink</label>
+    <label for="theme-green">
+      <input type="radio" id="theme-green" name="theme" value="green" />Green</label> -->
+
     <form method='GET' action="" id="filter-form">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Filter"/>
+
+
+    <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
+
+    <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+
+    </br>
+
+    Hometown: <input type="text" id="text-hometown"><br>
+    <input id = "input-hometown" type="submit" value="Search Hometown"><br>
+
+    <input id = "reset" type="submit" value="Reset">
+
     </form>
     </div>
 
     <script type="text/javascript">
-    $('#filter-form').on('submit', function(event){
+    // $('.gender-class').on('submit', function(event){
+    $(".gender-class").click(function(event){
     event.preventDefault();
     console.log("form submitted!")  // sanity check
     filter_roommate();
@@ -43,16 +63,27 @@
     </script>
 
     <script type="text/javascript">
-    function filter_roommate() {
+    $("#input-hometown").on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+    filter_roommate();
+    });
+    </script>
+
+    <script type="text/javascript">
+    function filter_roommate_gender() {
     console.log("filter_roommate is working!") // sanity check
     $.ajax({
         url : "/posts/list_roommate/", // the endpoint
         type : "GET", // http method
-        data : { gender : $('#filter-gender').val() }, // data sent with the post request
+        // data : { gender : $('#filter-gender').val()
+        data : { gender : $("input:radio[name=filter-gender]:checked").val(),
+               hometown: $('#text-hometown').val()}
+        }, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
-            $('#filter-gender').val(''); // remove the value from the input
+            // $('#filter-gender').val(''); // remove the value from the input
             console.log(json); // log the returned json to the console
             console.log("success"); // another sanity check
             // $(document).ajaxStop(function() { location.reload(true); });
@@ -70,6 +101,13 @@
         });
     };
 
+    </script>
+
+    <script type="text/javascript">
+    $("#reset").on('submit', function(event){
+    // event.preventDefault();
+    location.reload()
+    });
     </script>
 
     </body>

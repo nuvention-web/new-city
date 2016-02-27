@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, UserProfileForm
+from .forms import HouseForm, PostForm, FilterRoommateForm
 from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
@@ -83,15 +83,18 @@ def post_list(request):
 
 def post_list_roommate(request):
     roommate_list = UserProfile.objects.all()
-    form = UserProfileForm(request.GET or None)
+    form = FilterRoommateForm(request.GET or None)
 
     if request.is_ajax():
         gender = request.GET.get('gender')
+        hometown = request.GET.get('hometown')
         print(gender)
+        print(hometown)
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
-            print(roommate_list)
+        if hometown:
+            roommate_list = roommate_list.filter(hometown = hometown)
 
     context = {
         "roommate_list": roommate_list,

@@ -35,18 +35,30 @@ class PostForm(forms.ModelForm):
         self.fields["tags"].widget = CheckboxSelectMultiple()
         self.fields["tags"].queryset = Tag.objects.all()
 
+SEX = (
+    ('M', 'Male'),
+    ('F', 'Female'),
+)
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = [
-            "gender", "school", "hometown", "job",
-        ]
-        widgets = {
-            "gender": forms.TextInput(
-                        attrs={'id': 'filter-gender', 'placeholder': 'M or F'}
-                    ),
-        }
+
+class FilterRoommateForm(forms.Form):
+    gender = forms.ChoiceField(widget=forms.RadioSelect(
+                                attrs={'id': 'filter-gender'}),
+                                choices=SEX)
+
+    # def __init__(self, *args, **kwargs):
+    #     super(FilterRoommateForm, self).__init__(*args, **kwargs)
+    #     self.fields['description'].widget = TextInput(attrs={
+    #         'id': 'myCustomId',
+    #         'class': 'myCustomClass',
+    #         'name': 'myCustomName',
+    #         'placeholder': 'myCustomPlaceholder'})
+
+        # widgets = {
+        #     "gender": forms.Select(
+        #                 attrs={'id': 'filter-gender',},
+        #                 choices= SEX)
+        # }
 
 #Form Wizard
 class QuestionnaireForm1(forms.Form):
