@@ -10,6 +10,7 @@
 
     </head>
 
+    <div id="output">
     <body>
         <h1>This is Roommate List</h1>
         <div id="div-roommate">
@@ -31,6 +32,7 @@
     {{ form.as_p }}
     <input type="submit" value="Filter"/>
     </form>
+    </div>
 
     <script type="text/javascript">
     $('#filter-form').on('submit', function(event){
@@ -54,8 +56,9 @@
             console.log(json); // log the returned json to the console
             console.log("success"); // another sanity check
             // $(document).ajaxStop(function() { location.reload(true); });
-            window.location.reload(json)
-            $(document).html(json.html)
+            // window.location.reload(json)
+            $('#output').html(json)
+            // .html(json)
             },
 
         // handle a non-successful response
