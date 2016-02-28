@@ -10,8 +10,8 @@
 
     </head>
 
-    <div id="output">
     <body>
+    <div id="output">
         <h1>This is Roommate List</h1>
         <div id="div-roommate">
         {% for roommate in roommate_list %}
@@ -27,6 +27,7 @@
          </br>
         {% endfor %}
         </div>
+    </div>
 
     <form method='GET' action="" id="filter-form">{% csrf_token %}
     <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
@@ -86,7 +87,14 @@
             console.log("success"); // another sanity check
             // $(document).ajaxStop(function() { location.reload(true); });
             // window.location.reload(json)
-            $('#output').html(json)
+            var raw_html = document.createElement('html')
+            console.log(raw_html)
+            raw_html.innerHTML = json
+            console.log(raw_html)
+            var output = raw_html.firstChild;
+            console.log(output)
+
+            // $('#output').html(json)
             // .html(json)
             },
 

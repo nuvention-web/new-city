@@ -88,15 +88,12 @@ def post_list_roommate(request):
     if request.is_ajax():
         gender = request.GET.get('gender')
         hometown = request.GET.get('hometown')
-        print(hometown)
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
         if hometown:
             city_instance = City.objects.get(name = hometown)
-            print(city_instance)
             roommate_list = roommate_list.filter(hometown = city_instance)
-            print("filter success")
 
     context = {
         "roommate_list": roommate_list,
