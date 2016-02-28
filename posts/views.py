@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, FilterRoommateForm
+from .forms import HouseForm, PostForm, FilterRoommateForm, CityForm
 from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
@@ -9,8 +9,20 @@ from formtools.wizard.views import SessionWizardView
 
 # Create your views here.
 def home(request):
+    form = CityForm(request.GET or None)
+    if form.is_valid():
+        initial_city = request.GET.get('initial_city')
+
+        if 'searching_for_home' in request.GET:
+            return HttpResponseRedirect(reverse('posts:list',
+                                        kwargs={'initial_city': initial_city}))
+
+        elif 'searching_for_roommate' in request.GET:
+            return HttpResponseRedirect(reverse('posts:list_roommate',
+                                        kwargs={'initial_city': initial_city}))
+
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'HP.html', context)
 
 def post_create_house(request):
 
@@ -63,6 +75,9 @@ def post_detail(request, post_id=None):
     return render(request, "post_detail.html", context)
 
 def post_list(request):
+# def post_list(request, initial_city=None):
+    # init_city_query = City.objects.filter(name=initial_city)
+    # post_list = Post.objects.filter(city=init_city_query)
     post_list = Post.objects.all()
 
     # post_list.filter()
@@ -108,6 +123,10 @@ def post_update(request):
 def post_delete(request):
     return HttpResponse("<h1>Hello World</h1>")
 
+def login(request):
+    context = {}
+    return render(request, 'login.html', context)
+
 def create_user(request):
     print ("this is request *************")
     print (request.POST)
@@ -130,6 +149,7 @@ def create_user(request):
             json.dumps(response_data),
             content_type="application/json"
         )
+
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
