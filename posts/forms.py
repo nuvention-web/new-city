@@ -20,6 +20,17 @@ class HouseForm(forms.ModelForm):
             "has_pool",
     ]
 
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            "gender", 
+            "school", 
+            "hometown",
+            "job", 
+            # "picture", 
+        ]
+
 class PostForm(forms.ModelForm):
 
     class Meta:
@@ -60,3 +71,5 @@ class QuestionnaireForm3(forms.Form):
 
 class CityForm(forms.Form):
     initial_city = forms.CharField(max_length=50) 
+
+

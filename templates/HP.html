@@ -35,7 +35,6 @@
 
   <div class="container" id="bottom">
     <h3>What city are you moving to?</h3>
-
     <h3>Looking for a...</h3><br>
     <form action='' method='get' id='set_init_city'> {% csrf_token %}
       <input type="text" id="initial_city" name="initial_city" placeholder="Enter City" value=""><br><br>
@@ -43,12 +42,6 @@
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       <input type="submit" name="searching_for_roommate" value"Roommate"/>
     </form>
-
-      <!-- <a href='{% url 'posts:questionnaire' %}' class="button">Home</a> -->
-      <!-- <a href='{% url 'accounts:account_signup' %}' class="button">Home</a> -->
-      <!-- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-      <!-- <a href='{% url 'posts:questionnaire' %}' class="button">Roommate</a> -->
-      <!-- <a href='{% url 'accounts:account_signup' %}' class="button">Roommate</a> -->
   </div>
 
 </div>

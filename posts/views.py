@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, UserProfileForm, CityForm
+from .forms import HouseForm, PostForm, UserProfileForm, CityForm, EditProfileForm
 from .models import Post, House, PostTag, Tag, UserProfile, City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
@@ -125,6 +125,18 @@ def login(request):
     context = {}
     return render(request, 'login.html', context)
 
+def edit_profile(request):
+    form = EditProfileForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(reverse('posts:edit_profile', 
+                                    kwargs={'user_id': instance.id}))
+    context = {
+            "form": form
+            }
+    return render(request, 'edit_profile.html', context)
+
 def create_user(request):
     print ("this is request *************")
     print (request.POST)
@@ -170,7 +182,7 @@ def process_form_data(self, form_list):
     job = form_data[2]['job']
 
     #hometown must be a city instance
-    hometown_instance = City.objects.get(name=hometown)
+    hometown_instance = City.objects.get(name = hometown)
 
     print(self.request.user)
     new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
