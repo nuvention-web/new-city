@@ -97,9 +97,14 @@ def post_list(request, initial_city=None):
     }
     return render(request,'post_list.html', context)
 
-def post_list_roommate(request):
+def post_list_roommate(request, initial_city=None):
+
     roommate_list = UserProfile.objects.all()
     form = FilterRoommateForm(request.GET or None)
+
+    if initial_city:
+        city_instance = City.objects.get(name = initial_city)
+        roommate_list = roommate_list.filter(city_to = city_instance)
 
     if request.is_ajax():
         gender = request.GET.get('gender')
