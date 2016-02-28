@@ -19,10 +19,15 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 
+from posts.views import (
+    home
+)
+
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home),
     url(r'^posts/', include("posts.urls", namespace="posts")),
     url(r'^accounts/profile/', TemplateView.as_view(template_name="profile.html")),
     url(r'^accounts/', include('allauth.urls', namespace="accounts")),

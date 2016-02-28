@@ -1,4 +1,4 @@
-<!--DOCTYPE html -->
+a<!--DOCTYPE html -->
 <html>
 <head>
   <title>{% block head_title %}Post List{% endblock head_title %}</title>
@@ -25,10 +25,10 @@
 <body>
   <h1>This is the post_list</h1>
 
-  {% for tag in tag_list %} 
+  {% for tag in tag_list %}
 
   <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
-  
+
   {% endfor %}
 
   {# list all house attributes as filter criteria #}
