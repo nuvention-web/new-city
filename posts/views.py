@@ -170,7 +170,7 @@ def process_form_data(self, form_list):
     job = form_data[2]['job']
 
     #hometown must be a city instance
-    hometown_instance = City.objects.get(name = hometown)
+    hometown_instance = City.objects.get(name=hometown)
 
     print(self.request.user)
     new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
