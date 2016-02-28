@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^create_user/$', create_user),
     url(r'^list/(?P<initial_city>\D+)$', post_list, name='list'),
     url(r'^list_roommate/(?P<initial_city>\D+)$', post_list_roommate, name='list_roommate'),
+    ##remove name in list and list_roommate
     url(r'^list/$', post_list, name='list'),
     url(r'^list_roommate/$', post_list_roommate, name='list_roommate'),
     url(r'^create_house/$', post_create_house, name='create_house'),

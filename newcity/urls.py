@@ -19,7 +19,7 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 
-from posts.views import (
+from .views import (
     home
 )
 
