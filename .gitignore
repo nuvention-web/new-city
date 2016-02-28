@@ -15,3 +15,11 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+# all dot files and gitignore itself
+.*
+!/.gitignore
+
+# git ignore 
+*.pyc 
+*.swp

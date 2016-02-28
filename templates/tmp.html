@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	function goSearch(){
+		if ($('#s').val())
+			window.location = "/search/"+escape($('#s').val());
+
+		return false
+	}
+</script>
+
+<div id="header-3">
+	<div class="search-box rounded-corners">
+		<form action="" class="search rounded-corners" id="site-search" method="get" onSubmit="return goSearch();">
+			<div class="input-div">
+				<input id="s" name="s" type="text" value="Search..." onfocus="this.value=''" />
+			</div>
+			<div class="submit-button">
+				<input class="submit-button" id="site-search-submit" name="commit" type="button" value="Search" onClick="goSearch()" />
+			</div>
+		</form>
+	</div>
+</div> 
