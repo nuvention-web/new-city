@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    <div id="output">
+    <div id="output" class="output">
         <h1>This is Roommate List</h1>
         <div id="div-roommate">
         {% for roommate in roommate_list %}
@@ -54,7 +54,6 @@
     <script>
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
-        event.preventDefault();
         console.log("form submitted!")  // sanity check
         filter_roommate();
     });
@@ -87,13 +86,10 @@
             // $(document).ajaxStop(function() { location.reload(true); });
             // window.location.reload(json)
             var raw_html = document.createElement('html')
-            console.log(raw_html)
             raw_html.innerHTML = json
-            console.log(raw_html)
-            var output = raw_html.firstChild;
-            console.log(output)
-
-            // $('#output').html(json)
+            // var output = raw_html.firstChild;
+            var output = raw_html.getElementsByClassName("output")[0]
+            $(".output").html(output)
             // .html(json)
             },
 
