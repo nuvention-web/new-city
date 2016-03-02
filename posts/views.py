@@ -25,7 +25,6 @@ def home(request):
     return render(request, 'HP.html', context)
 
 def post_create_house(request):
-
     form = HouseForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
