@@ -13,9 +13,10 @@ from django.http import HttpResponseRedirect
 def home(request, initial_city=None):
     form = CityForm(request.GET or None)
     city_list = City.objects.all()
+    print(request.GET)
 
     if form.is_valid():
-        print("here")
+
 
         initial_city = request.GET.get('initial_city')
 

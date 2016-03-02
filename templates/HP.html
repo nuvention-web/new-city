@@ -39,10 +39,12 @@
 
     <h3>Looking for a...</h3><br>
     <form action='' method='get' id='set_init_city'> {% csrf_token %}
+    <input type="hidden" id="initial_city" name="initial_city" value="">
 
       <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select City
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Select City
       <span class="caret"></span></button>
+
       <ul class="dropdown-menu">
         {% for city in city_list %}
         <li><a>{{ city.name }}</a></li>
@@ -75,13 +77,8 @@
  $(function(){
   $(".dropdown-menu li a").click(function(){
     $(".btn:first-child").text($(this).text());
+    $("#initial_city").val($(this).text());
   });
-});
-</script>
-
-<script>
-$( ".button-next" ).click(function() {
-  alert( $(".btn:first-child").text());
 });
 </script>
 
