@@ -30,18 +30,18 @@
     </div>
 
     <form method='GET' action="" id="filter-form">{% csrf_token %}
-    <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
-    <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+        <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
+        <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
     </br>
     </form>
 
      <form method='GET' action="" id="filter-hometown-form">{% csrf_token %}
-    Hometown: <input type="text" id="text-hometown">
-    <input id = "input-hometown" type="submit" value="Search Hometown"><br>
+        Hometown: <input type="text" id="text-hometown">
+        <input id = "input-hometown" type="submit" value="Search Hometown"><br>
     </form>
 
     <form method='GET' action="" id="reset-form">{% csrf_token %}
-    <input id = "reset" type="submit" value="Reset">
+        <input id = "reset" type="submit" value="Reset">
     </form>
 
     <!-- post house -->
@@ -51,31 +51,25 @@
 
     </div>
 
-    <script type="text/javascript">
+    <script>
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
-    event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    filter_roommate();
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
     });
-    </script>
 
-    <script type="text/javascript">
     $("#filter-hometown-form").on('submit', function(event){
-    event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    filter_roommate();
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
     });
-    </script>
 
-     <script type="text/javascript">
     $("#reset-form").on('submit', function(event){
-    // event.preventDefault();
-    location.reload()
+        // event.preventDefault();
+        location.reload()
     });
-    </script>
 
-    <script type="text/javascript">
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     $.ajax({
@@ -111,7 +105,6 @@
             }
         });
     };
-
     </script>
 
     </body>

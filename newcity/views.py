@@ -9,9 +9,6 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request, initial_city=None):
     form = CityForm(request.GET or None)
-    print("HERE")
-    print(initial_city)
-    print(request.GET)
 
     if form.is_valid():
         print("here")
