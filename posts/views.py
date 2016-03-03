@@ -58,20 +58,40 @@ def post_detail(request, post_id=None):
     return render(request, "post_detail.html", context)
 
 def post_list(request, initial_city=None):
+
+    print(request.GET)
+    post_list = Post.objects.all()
+    house_list = House.objects.all()
+
     if initial_city:
         city_query = City.objects.filter(name=initial_city)
         address_query = Address.objects.filter(city=city_query)
-        house_query = House.objects.filter(address=address_query)
-        post_list = Post.objects.filter(house=house_query)
+        house_list = House.objects.filter(address=address_query)
+        post_list = Post.objects.filter(house=house_list)
     else:
         post_list = Post.objects.all()
 
+    if request.is_ajax():
+        price_low = request.GET.get("price_low")
+        price_high = request.GET.get("price_high")
+        print(price_low)
+        print(price_high)
+        house_list = house_list.filter(price__range = (price_low, price_high))
+        post_list = post_list.filter(house=house_list)
+
     tag_list = Tag.objects.all()
+
+    # query range value
+    # Entry.objects.filter(pub_date__range=(start_date, end_date))
+
     # user_list = Post.get_user.objects.all()
     # user = post_list.user.all()
 
     # for post in post_list:
     #     user = post_list[post].get_user()
+
+    # if request.is_ajax();
+    #     price = request.GET.get('price')
 
     context = {
         # "user" : user,
@@ -93,12 +113,18 @@ def post_list_roommate(request, initial_city=None):
     if request.is_ajax():
         gender = request.GET.get('gender')
         hometown = request.GET.get('hometown')
+        school = request.GET.get('school')
+        job = request.GET.get('job')
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
         if hometown:
             city_instance = City.objects.get(name = hometown)
             roommate_list = roommate_list.filter(hometown = city_instance)
+        if school:
+            roommate_list = roommate_list.filter(school = school)
+        if job:
+            roommate_list = roommate_list.filter(job = job)
 
     context = {
         "roommate_list": roommate_list,

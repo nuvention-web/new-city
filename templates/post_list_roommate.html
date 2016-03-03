@@ -40,6 +40,16 @@
         <input id = "input-hometown" type="submit" value="Search Hometown"><br>
     </form>
 
+    <form method='GET' action="" id="filter-school-form">{% csrf_token %}
+        School: <input type="text" id="text-school">
+        <input id = "input-school" type="submit" value="Search School"><br>
+    </form>
+
+    <form method='GET' action="" id="filter-job-form">{% csrf_token %}
+        Job: <input type="text" id="text-job">
+        <input id = "input-job" type="submit" value="Search job"><br>
+    </form>
+
     <form method='GET' action="" id="reset-form">{% csrf_token %}
         <input id = "reset" type="submit" value="Reset">
     </form>
@@ -64,6 +74,18 @@
         filter_roommate();
     });
 
+    $("#filter-school-form").on('submit', function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $("#filter-job-form").on('submit', function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
     $("#reset-form").on('submit', function(event){
         // event.preventDefault();
         location.reload()
@@ -77,7 +99,10 @@
         type : "GET", // http method
         // data : { gender : $('#filter-gender').val()
         data : { gender : $("input:radio[name=filter-gender]:checked").val(),
-               hometown: $("#text-hometown").val()}, // data sent with the post request
+               hometown: $("#text-hometown").val(),
+               school: $("#text-school").val(),
+               job: $("#text-job").val(),
+                }, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
