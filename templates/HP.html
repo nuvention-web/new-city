@@ -18,10 +18,13 @@
 
   <ul id="navbar">
     <li id="logo">Roommate</li>
-    <!-- link not working -->
     <li><a href="{#{% url 'posts:list' %}#}">See Listings</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="/accounts/logout">Logout</a></li>
+    {% else %}
     <li><a href="/accounts/signup">Sign Up</a></li>
     <li><a href="/accounts/login">Log In</a></li>
+    {% endif %}
   </ul>
 
   <div class="jumbotron">
