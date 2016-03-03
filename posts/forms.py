@@ -71,4 +71,6 @@ class QuestionnaireForm3(forms.Form):
     job = forms.CharField(max_length=50)
 
 class CityForm(forms.Form):
-    initial_city = forms.CharField(max_length=50) 
+    initial_city = forms.CharField(max_length=50)
+
+# class SignupForm(forms.Form):

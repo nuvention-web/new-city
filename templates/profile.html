@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if user %}
-    <h1>Welcome, {{user.first_name}}</h1>
+    <h1>Welcome {{user.first_name}}</h1>
     {% for account in user.socialaccount_set.all %}
         <p><img width="500" height="500" src="{{ account.get_avatar_url }}" /></p>
         <h3>Name: {{ account.extra_data.name }}</h3>
@@ -17,3 +17,7 @@
 {% endif %}
 {% endblock content %}
 {% endblock body %}
+
+{% if user.is_authenticated %}
+    <a href="/accounts/logout">Logout</a>
+{% endif %}

@@ -123,6 +123,9 @@ SITE_ID = 1
 
 # Oauth Configuration
 SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+# SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
+LOGIN_REDIRECT_URL = '/profile/'
 
 
 SOCIALACCOUNT_PROVIDERS = {
