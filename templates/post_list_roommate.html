@@ -72,7 +72,8 @@
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     $.ajax({
-        url : "/posts/list_roommate/", // the endpoint
+        url : window.location.pathname,
+        //"/posts/list_roommate/San%20Francisco"
         type : "GET", // http method
         // data : { gender : $('#filter-gender').val()
         data : { gender : $("input:radio[name=filter-gender]:checked").val(),

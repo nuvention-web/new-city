@@ -82,6 +82,7 @@ def post_list(request, initial_city=None):
 
 def post_list_roommate(request, initial_city=None):
 
+    print(request.GET)
     roommate_list = UserProfile.objects.all()
     form = FilterRoommateForm(request.GET or None)
 
