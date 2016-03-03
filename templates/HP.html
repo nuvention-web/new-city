@@ -39,10 +39,22 @@
 
     <h3>Looking for a...</h3><br>
     <form action='' method='get' id='set_init_city'> {% csrf_token %}
-      <input type="text" id="initial_city" name="initial_city" placeholder="Enter City" value=""><br><br>
-      <input type="submit" name="searching_for_home" value="Home">
+    <input type="hidden" id="initial_city" name="initial_city" value="">
+
+      <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Select City
+      <span class="caret"></span></button>
+
+      <ul class="dropdown-menu">
+        {% for city in city_list %}
+        <li><a>{{ city.name }}</a></li>
+        {% endfor %}
+      </ul>
+      </div>
+      <br><br>
+      <input class = "button-next" type="submit" name="searching_for_home" value="Home">
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <input type="submit" name="searching_for_roommate" value="Roommate">
+      <input class = "button-next" type="submit" name="searching_for_roommate" value="Roommate">
     </form>
 
       <!-- <a href='{% url 'posts:questionnaire' %}' class="button">Home</a> -->
@@ -52,11 +64,26 @@
       <!-- <a href='{% url 'accounts:account_signup' %}' class="button">Roommate</a> -->
   </div>
 
+
+
 </div>
 
 <div class="container" id="banner">
 
 </div>
+
+<!-- script for changing display in dropdown -->
+<script>
+ $(function(){
+  $(".dropdown-menu li a").click(function(){
+    $(".btn:first-child").text($(this).text());
+    $("#initial_city").val($(this).text());
+  });
+});
+</script>
+
+
+
 
 
 </body>

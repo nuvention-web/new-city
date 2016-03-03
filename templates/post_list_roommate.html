@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    <div id="output">
+    <div id="output" class="output">
         <h1>This is Roommate List</h1>
         <div id="div-roommate">
         {% for roommate in roommate_list %}
@@ -40,6 +40,16 @@
         <input id = "input-hometown" type="submit" value="Search Hometown"><br>
     </form>
 
+    <form method='GET' action="" id="filter-school-form">{% csrf_token %}
+        School: <input type="text" id="text-school">
+        <input id = "input-school" type="submit" value="Search School"><br>
+    </form>
+
+    <form method='GET' action="" id="filter-job-form">{% csrf_token %}
+        Job: <input type="text" id="text-job">
+        <input id = "input-job" type="submit" value="Search job"><br>
+    </form>
+
     <form method='GET' action="" id="reset-form">{% csrf_token %}
         <input id = "reset" type="submit" value="Reset">
     </form>
@@ -54,12 +64,23 @@
     <script>
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
-        event.preventDefault();
         console.log("form submitted!")  // sanity check
         filter_roommate();
     });
 
     $("#filter-hometown-form").on('submit', function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $("#filter-school-form").on('submit', function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $("#filter-job-form").on('submit', function(event){
         event.preventDefault();
         console.log("form submitted!")  // sanity check
         filter_roommate();
@@ -73,11 +94,15 @@
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     $.ajax({
-        url : "/posts/list_roommate/", // the endpoint
+        url : window.location.pathname,
+        //"/posts/list_roommate/San%20Francisco"
         type : "GET", // http method
         // data : { gender : $('#filter-gender').val()
         data : { gender : $("input:radio[name=filter-gender]:checked").val(),
-               hometown: $("#text-hometown").val()}, // data sent with the post request
+               hometown: $("#text-hometown").val(),
+               school: $("#text-school").val(),
+               job: $("#text-job").val(),
+                }, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
@@ -87,13 +112,10 @@
             // $(document).ajaxStop(function() { location.reload(true); });
             // window.location.reload(json)
             var raw_html = document.createElement('html')
-            console.log(raw_html)
             raw_html.innerHTML = json
-            console.log(raw_html)
-            var output = raw_html.firstChild;
-            console.log(output)
-
-            // $('#output').html(json)
+            // var output = raw_html.firstChild;
+            var output = raw_html.getElementsByClassName("output")[0]
+            $(".output").html(output)
             // .html(json)
             },
 

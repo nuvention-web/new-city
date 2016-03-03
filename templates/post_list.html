@@ -1,25 +1,10 @@
-a<!--DOCTYPE html -->
+<!--DOCTYPE html -->
 <html>
 <head>
   <title>{% block head_title %}Post List{% endblock head_title %}</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script>
-  $(function() {
-    $("#slider-range").slider({
-      range: true,
-      min: 0,
-      max: 5000,
-      step: 100,
-      values: [ 1000, 2000 ],
-      slide: function( event, ui ) {
-        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-      }
-    });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-  });
-  </script>
 </head>
 
 <body>
@@ -50,9 +35,11 @@ a<!--DOCTYPE html -->
     <input id="search-submit-buttom" name="search-button" type="button" value="Search" onClick="func()"/>
   </form>
 
-  {% for post in post_list %}
+  <div class="output">
 
+  <div>
   <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
+  {% for post in post_list %}
   {{ post.title }}</br>
 
   {{ post.user.user }}</br>
@@ -64,11 +51,66 @@ a<!--DOCTYPE html -->
   {{ post.house.address.street }} </br>
   {{ post.house.address.city.name }} </br>
   {{ post.house.price }} </br>
- </br>
+  </br>
+   {% endfor %}
 
-  {% endfor %}
+  </div>
+ </div>
 
   <a href='{% url 'posts:login' %}'>Build your profile</a>
+
+  <script>
+  $(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 5000,
+      step: 100,
+      values: [ 1000, 2000 ],
+      slide: function( event, ui )  {
+        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      },
+      stop: function(event, ui) {
+        console.log("slider stop");
+        console.log($("#slider-range"))
+        var values = $( "#slider-range" ).slider( "option", "values" )
+        filter_post()
+      }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+  });
+
+  function filter_post() {
+    console.log("filter_roommate is working!") // sanity check
+    var prices = $( "#slider-range" ).slider( "option", "values" )
+    $.ajax({
+        url : window.location.pathname,
+        //"/posts/list_roommate/San%20Francisco"
+        type : "GET", // http method
+        data : { price_low : prices[0],
+                 price_high: prices[1],
+                }, // data sent with the post request
+
+        // handle a successful response
+        success : function(json) {
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+            var raw_html = document.createElement('html')
+            raw_html.innerHTML = json
+            var output = raw_html.getElementsByClassName("output")[0]
+            $(".output").html(output)
+            },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>");
+                // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
+</script>
 
 </body>
 
