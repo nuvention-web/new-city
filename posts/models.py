@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
-# from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class City(models.Model):
@@ -39,9 +39,10 @@ class UserProfile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
-    gender = models.CharField(max_length=1, choices=GENDER)
+    city_to = models.ForeignKey(City, null=True, blank=True, related_name = 'city_to')
+    gender = models.CharField(max_length=1, choices=GENDER, null=False)
     school = models.CharField(max_length=50)
-    hometown = models.ForeignKey(City, null=True, blank=True)
+    hometown = models.ForeignKey(City, null=True, blank=True, related_name = "hometown")
     job = models.CharField(max_length=50)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
@@ -56,6 +57,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
 
 class Subletter(models.Model):
     profile = models.OneToOneField(UserProfile)

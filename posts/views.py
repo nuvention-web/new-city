@@ -1,8 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, UserProfileForm
-from .models import Post, House, PostTag, Tag, UserProfile, City
+from .forms import HouseForm, PostForm, FilterRoommateForm, CityForm
+from .models import Post, House, PostTag, Tag, UserProfile, City, Address
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
 from formtools.wizard.views import SessionWizardView
@@ -62,10 +62,14 @@ def post_detail(request, post_id=None):
             }
     return render(request, "post_detail.html", context)
 
-def post_list(request):
-    post_list = Post.objects.all()
-
-    # post_list.filter()
+def post_list(request, initial_city=None):
+    if initial_city:
+        city_query = City.objects.filter(name=initial_city)
+        address_query = Address.objects.filter(city=city_query)
+        house_query = House.objects.filter(address=address_query)
+        post_list = Post.objects.filter(house=house_query)
+    else:
+        post_list = Post.objects.all()
 
     tag_list = Tag.objects.all()
     # user_list = Post.get_user.objects.all()
@@ -81,17 +85,24 @@ def post_list(request):
     }
     return render(request,'post_list.html', context)
 
-def post_list_roommate(request):
+def post_list_roommate(request, initial_city=None):
+
     roommate_list = UserProfile.objects.all()
-    form = UserProfileForm(request.GET or None)
+    form = FilterRoommateForm(request.GET or None)
+
+    if initial_city:
+        city_instance = City.objects.get(name = initial_city)
+        roommate_list = roommate_list.filter(city_to = city_instance)
 
     if request.is_ajax():
         gender = request.GET.get('gender')
-        print(gender)
+        hometown = request.GET.get('hometown')
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
-            print(roommate_list)
+        if hometown:
+            city_instance = City.objects.get(name = hometown)
+            roommate_list = roommate_list.filter(hometown = city_instance)
 
     context = {
         "roommate_list": roommate_list,
@@ -105,6 +116,10 @@ def post_update(request):
 
 def post_delete(request):
     return HttpResponse("<h1>Hello World</h1>")
+
+def login(request):
+    context = {}
+    return render(request, 'login.html', context)
 
 def create_user(request):
     print ("this is request *************")
@@ -128,6 +143,7 @@ def create_user(request):
             json.dumps(response_data),
             content_type="application/json"
         )
+
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),

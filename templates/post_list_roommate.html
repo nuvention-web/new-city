@@ -11,6 +11,7 @@
     </head>
 
     <body>
+    <div id="output">
         <h1>This is Roommate List</h1>
         <div id="div-roommate">
         {% for roommate in roommate_list %}
@@ -26,36 +27,74 @@
          </br>
         {% endfor %}
         </div>
+    </div>
 
     <form method='GET' action="" id="filter-form">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Filter"/>
+        <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
+        <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+    </br>
     </form>
 
-    <script type="text/javascript">
-    $('#filter-form').on('submit', function(event){
-    event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    filter_roommate();
-    });
-    </script>
+     <form method='GET' action="" id="filter-hometown-form">{% csrf_token %}
+        Hometown: <input type="text" id="text-hometown">
+        <input id = "input-hometown" type="submit" value="Search Hometown"><br>
+    </form>
 
-    <script type="text/javascript">
+    <form method='GET' action="" id="reset-form">{% csrf_token %}
+        <input id = "reset" type="submit" value="Reset">
+    </form>
+
+    <!-- post house -->
+    <a href='{% url 'posts:login' %}'>Build your profile</a>
+    <a href='{% url 'posts:create_house' %}'>Post your house!</a>
+
+
+    </div>
+
+    <script>
+    // $('.gender-class').on('submit', function(event){
+    $(".gender-class").click(function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $("#filter-hometown-form").on('submit', function(event){
+        event.preventDefault();
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $("#reset-form").on('submit', function(event){
+        // event.preventDefault();
+        location.reload()
+    });
+
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     $.ajax({
         url : "/posts/list_roommate/", // the endpoint
         type : "GET", // http method
-        data : { gender : $('#filter-gender').val() }, // data sent with the post request
+        // data : { gender : $('#filter-gender').val()
+        data : { gender : $("input:radio[name=filter-gender]:checked").val(),
+               hometown: $("#text-hometown").val()}, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
-            $('#filter-gender').val(''); // remove the value from the input
+            // $('#filter-gender').val(''); // remove the value from the input
             console.log(json); // log the returned json to the console
             console.log("success"); // another sanity check
             // $(document).ajaxStop(function() { location.reload(true); });
-            window.location.reload(json)
-            $(document).html(json.html)
+            // window.location.reload(json)
+            var raw_html = document.createElement('html')
+            console.log(raw_html)
+            raw_html.innerHTML = json
+            console.log(raw_html)
+            var output = raw_html.firstChild;
+            console.log(output)
+
+            // $('#output').html(json)
+            // .html(json)
             },
 
         // handle a non-successful response
@@ -66,7 +105,6 @@
             }
         });
     };
-
     </script>
 
     </body>
