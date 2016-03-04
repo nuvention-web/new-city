@@ -30,6 +30,7 @@
           Job: {{ roommate.job }}</br>
           Budget: {{ roommate.budget }}</br>
           Age: {{ roommate.birthday }}</br>
+          Relationship Status: {{ roommate.get_relationship_status_display }}</br>
           <!-- {{ roommate.picture }}</br>
           {{ roommate.friends }}</br> -->
          </br>
@@ -64,9 +65,20 @@
         <input id = "input-job" type="submit" value="Search job"><br>
     </form>
 
+    <div id="div-relationship">
+    <input type="checkbox" class="filter-relationship" value="S"> Single<br>
+    <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
+    <input type="checkbox" class="filter-relationship" value="M"> Married<br>
+    <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
+    </div>
+
+
+
     <form method='GET' action="" id="reset-form">{% csrf_token %}
         <input id = "reset" type="submit" value="Reset">
     </form>
+
+
 
     {% for tag in tag_list %}
   <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
@@ -106,6 +118,11 @@
         filter_roommate();
     });
 
+    $(".filter-relationship").click(function(event){
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
     $("#filter-hometown-form").on('submit', function(event){
         event.preventDefault();
         console.log("form submitted!")  // sanity check
@@ -132,6 +149,10 @@
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     var budget = $( "#slider-range" ).slider( "option", "values" )
+    var selected = [];
+        $('#div-relationship input:checked').each(function() {
+            selected.push($(this).val());
+        });
     $.ajax({
         url : window.location.pathname,
         //"/posts/list_roommate/San%20Francisco"
@@ -143,6 +164,7 @@
                job: $("#text-job").val(),
                budget_low: budget[0],
                budget_high: budget[1],
+               relationship_status: selected,
                 }, // data sent with the post request
 
         // handle a successful response

@@ -119,6 +119,7 @@ def post_list_roommate(request, initial_city=None):
         job = request.GET.get('job')
         budget_low = request.GET.get("budget_low")
         budget_high = request.GET.get("budget_high")
+        relationship_status = request.GET.getlist("relationship_status[]")
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
@@ -131,6 +132,10 @@ def post_list_roommate(request, initial_city=None):
             roommate_list = roommate_list.filter(job = job)
         if budget_low and budget_high:
             roommate_list = roommate_list.filter(budget__range = (budget_low, budget_high))
+        if relationship_status:
+            for status in relationship_status:
+                roommate_list = roommate_list.filter(relationship_status = status)
+
 
     context = {
         "initial_city": initial_city,
