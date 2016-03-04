@@ -26,10 +26,11 @@
           Username: {{ roommate.user.username }}</br>
           Gender: {{ roommate.gender }}</br>
           School: {{ roommate.school }}</br>
+          Age: {{ roommate.birthday }}
           Hometown: {{ roommate.hometown }}</br>
           Job: {{ roommate.job }}</br>
           Budget: {{ roommate.budget }}</br>
-          Age: {{ roommate.birthday }}</br>
+          Age: {{ roommate.age }}</br>
           Relationship Status: {{ roommate.get_relationship_status_display }}</br>
           <!-- {{ roommate.picture }}</br>
           {{ roommate.friends }}</br> -->
@@ -48,7 +49,13 @@
       <label for="amount">Monthly budget:</label>
       <input type="text" id="amount-budget" readonly>
     </p>
-    <div id="slider-range"></div>
+    <div id="budget-range"></div>
+
+    <p>
+      <label for="amount">Age range:</label>
+      <input type="text" id="text-age" readonly>
+    </p>
+    <div id="age-range"></div>
 
      <form method='GET' action="" id="filter-hometown-form">{% csrf_token %}
         Hometown: <input type="text" id="text-hometown">
@@ -72,8 +79,6 @@
     <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
     </div>
 
-
-
     <form method='GET' action="" id="reset-form">{% csrf_token %}
         <input id = "reset" type="submit" value="Reset">
     </form>
@@ -94,24 +99,41 @@
     <script>
 
     $(function() {
-    $("#slider-range").slider({
+    $("#budget-range").slider({
       range: true,
       min: 0,
       max: 5000,
       step: 100,
-      values: [ 1000, 2000 ],
+      values: [ 0, 5000 ],
       slide: function( event, ui )  {
         $("#amount-budget").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
       stop: function(event, ui) {
-        console.log("slider stop");
-        console.log($("#slider-range"))
-        var values = $( "#slider-range" ).slider( "option", "values" )
+        var values = $( "#budget-range" ).slider( "option", "values" )
         filter_roommate()
       }
     });
-    $("#amount-budget").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+    $("#amount-budget").val("$" + $("#budget-range").slider("values", 0) + " - $" + $("#budget-range").slider("values", 1));
   });
+
+    $(function() {
+    $("#age-range").slider({
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      values: [ 0, 100 ],
+      slide: function( event, ui )  {
+        $("#text-age").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      },
+      stop: function(event, ui) {
+        var values = $( "#age-range" ).slider( "option", "values" )
+        filter_roommate()
+      }
+    });
+    $("#text-age").val("$" + $("#age-range").slider("values", 0) + " - $" + $("#age-range").slider("values", 1));
+  });
+
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
         console.log("form submitted!")  // sanity check
@@ -149,6 +171,7 @@
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
     var budget = $( "#slider-range" ).slider( "option", "values" )
+    var age = $(" #age-range").slider("option", "values")
     var selected = [];
         $('#div-relationship input:checked').each(function() {
             selected.push($(this).val());
@@ -164,6 +187,8 @@
                job: $("#text-job").val(),
                budget_low: budget[0],
                budget_high: budget[1],
+               age_low: age[0],
+               age_high: age[1],
                relationship_status: selected,
                 }, // data sent with the post request
 

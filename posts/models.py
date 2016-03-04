@@ -45,6 +45,7 @@ class UserProfile(models.Model):
     hometown = models.ForeignKey(City, null=True, blank=True, related_name = "hometown")
     budget = models.PositiveIntegerField(default=0) #Max amount user can afford
     job = models.CharField(max_length=50)
+    age = models.PositiveIntegerField(default=0)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
