@@ -42,7 +42,11 @@
     </br>
     </form>
 
-     Budget: <div id="slider-range"></div>
+    <p>
+      <label for="amount">Monthly budget:</label>
+      <input type="text" id="amount-budget" readonly>
+    </p>
+    <div id="slider-range"></div>
 
      <form method='GET' action="" id="filter-hometown-form">{% csrf_token %}
         Hometown: <input type="text" id="text-hometown">
@@ -84,16 +88,16 @@
       step: 100,
       values: [ 1000, 2000 ],
       slide: function( event, ui )  {
-        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#amount-budget").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
       stop: function(event, ui) {
         console.log("slider stop");
         console.log($("#slider-range"))
         var values = $( "#slider-range" ).slider( "option", "values" )
-        filter_post()
+        filter_roommate()
       }
     });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+    $("#amount-budget").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
   });
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
@@ -126,6 +130,7 @@
 
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
+    var budget = $( "#slider-range" ).slider( "option", "values" )
     $.ajax({
         url : window.location.pathname,
         //"/posts/list_roommate/San%20Francisco"
@@ -135,6 +140,8 @@
                hometown: $("#text-hometown").val(),
                school: $("#text-school").val(),
                job: $("#text-job").val(),
+               budget_low: budget[0],
+               budget_high: budget[1],
                 }, // data sent with the post request
 
         // handle a successful response
