@@ -182,7 +182,8 @@ class QuestionnaireWizard(SessionWizardView):
     def done(self, form_list, **kwargs):
         form_data = process_form_data(self, form_list)
 
-        return render_to_response('done.html', {'form_data':form_data})
+        # return render_to_response('done.html', {'form_data':form_data})
+        return redirect('/')
 
 def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]

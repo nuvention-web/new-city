@@ -125,6 +125,7 @@ SITE_ID = 1
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 # SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
+
 LOGIN_REDIRECT_URL = '/posts/questionnaire/'
 
 
