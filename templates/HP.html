@@ -74,19 +74,34 @@
 
     </div>
 
-    <!-- script for changing display in dropdown -->
-    <script>
-    $(function(){
-      $(".dropdown-menu li a").click(function(){
-        $(".btn:first-child").text($(this).text());
-        $("#initial_city").val($(this).text());
-      });
+
+
+    <div class="container">
+      <div class="logo">
+        Apt 5A
+      </div>
+      <header id="headTitle">
+        Find your Right Roommate
+      </header>
+    </div>
+
+    <div class="container" id="bottom">
+      <a href="#" class="button">I have an apartment</a>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="#" class="button">I don't have an apartment</a>
+    </div>
+  </div>
+  <!-- script for changing display in dropdown -->
+  <script>
+  $(function(){
+    $(".dropdown-menu li a").click(function(){
+      $(".btn:first-child").text($(this).text());
+      $("#initial_city").val($(this).text());
     });
-    </script>
+  });
+  </script>
 
 
 
-
-
-  </body>
-  </html>
+</body>
+</html>
