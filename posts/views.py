@@ -122,6 +122,7 @@ def post_list_roommate(request, initial_city=None):
         relationship_status = request.GET.getlist("relationship_status[]")
         age_low = request.GET.get("age_low")
         age_high = request.GET.get("age_high")
+        filter_selected = request.GET.getlist("filter_selected[]")
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
@@ -139,6 +140,13 @@ def post_list_roommate(request, initial_city=None):
                 roommate_list = roommate_list.filter(relationship_status = status)
         if age_low and age_high:
             roommate_list = roommate_list.filter(age__range = (age_low, age_high))
+        if filter_selected:
+            for tag in filter_selected:
+                temp_tag = Tag.objects.filter(name = tag)
+                print(temp_tag)
+                roommate_list = roommate_list.filter(tags = temp_tag)
+
+        print(roommate_list)
 
     context = {
         "initial_city": initial_city,

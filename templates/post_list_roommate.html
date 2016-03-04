@@ -32,8 +32,10 @@
           Budget: {{ roommate.budget }}</br>
           Age: {{ roommate.age }}</br>
           Relationship Status: {{ roommate.get_relationship_status_display }}</br>
-          <!-- {{ roommate.picture }}</br>
-          {{ roommate.friends }}</br> -->
+          Tags:
+          {% for tag in roommate.tags.all %}
+            {{tag.name}},
+          {% endfor %}
          </br>
         {% endfor %}
         </div>
@@ -84,15 +86,15 @@
     </form>
 
 
-
+    <div id="div-tag">
     {% for tag in tag_list %}
-  <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
+    <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
     {% endfor %}
+    </div>
 
     <!-- post house -->
     <a href='{% url 'posts:login' %}'>Build your profile</a>
     <a href='{% url 'posts:create_house' %}'>Post your house!</a>
-
 
     </div>
 
@@ -109,7 +111,6 @@
         $("#amount-budget").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
       stop: function(event, ui) {
-        var values = $( "#budget-range" ).slider( "option", "values" )
         filter_roommate()
       }
     });
@@ -124,14 +125,13 @@
       step: 1,
       values: [ 0, 100 ],
       slide: function( event, ui )  {
-        $("#text-age").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#text-age").val(ui.values[0] + " - " + ui.values[1]);
       },
       stop: function(event, ui) {
-        var values = $( "#age-range" ).slider( "option", "values" )
         filter_roommate()
       }
     });
-    $("#text-age").val("$" + $("#age-range").slider("values", 0) + " - $" + $("#age-range").slider("values", 1));
+    $("#text-age").val($("#age-range").slider("values", 0) + " - " + $("#age-range").slider("values", 1));
   });
 
     // $('.gender-class').on('submit', function(event){
@@ -141,6 +141,11 @@
     });
 
     $(".filter-relationship").click(function(event){
+        console.log("form submitted!")  // sanity check
+        filter_roommate();
+    });
+
+    $(".filter-tag").click(function(event){
         console.log("form submitted!")  // sanity check
         filter_roommate();
     });
@@ -170,12 +175,18 @@
 
     function filter_roommate() {
     console.log("filter_roommate is working!") // sanity check
-    var budget = $( "#slider-range" ).slider( "option", "values" )
-    var age = $(" #age-range").slider("option", "values")
-    var selected = [];
-        $('#div-relationship input:checked').each(function() {
-            selected.push($(this).val());
-        });
+    var budget = $("#budget-range").slider( "option", "values" )
+    var age = $("#age-range").slider("option", "values")
+    var relationship_selected = [];
+    var filter_selected = [];
+    $('#div-relationship input:checked').each(function() {
+      relationship_selected.push($(this).val());
+    });
+
+    $('#div-tag input:checked').each(function() {
+      filter_selected.push($(this).val());
+    });
+
     $.ajax({
         url : window.location.pathname,
         //"/posts/list_roommate/San%20Francisco"
@@ -189,7 +200,8 @@
                budget_high: budget[1],
                age_low: age[0],
                age_high: age[1],
-               relationship_status: selected,
+               relationship_status: relationship_selected,
+               filter_selected: filter_selected,
                 }, // data sent with the post request
 
         // handle a successful response
