@@ -23,12 +23,13 @@
         <div id="div-roommate">
         {% for roommate in roommate_list %}
           <!-- <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br> -->
-          {{ roommate.user.username }}</br>
-          {{ roommate.gender }}</br>
-          {{ roommate.school }}</br>
-          {{ roommate.hometown }}</br>
-          {{ roommate.job }}</br>
-          {{ roommate.birthday }}</br>
+          Username: {{ roommate.user.username }}</br>
+          Gender: {{ roommate.gender }}</br>
+          School: {{ roommate.school }}</br>
+          Hometown: {{ roommate.hometown }}</br>
+          Job: {{ roommate.job }}</br>
+          Budget: {{ roommate.budget }}</br>
+          Age: {{ roommate.birthday }}</br>
           <!-- {{ roommate.picture }}</br>
           {{ roommate.friends }}</br> -->
          </br>

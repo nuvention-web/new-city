@@ -61,7 +61,7 @@ class HouseModelAdmin(admin.ModelAdmin):
         model = House
 
 class UserProfileModelAdmin(admin.ModelAdmin):
-    list_display = ["user", "school", "hometown", "job", "created_timestamp", "last_updated", "last_active", "get_tags"]
+    list_display = ["user", "school", "hometown", "city_to", "job", "relationship_status","created_timestamp", "last_updated", "last_active", "get_tags"]
     list_filter = ["user", "school", "hometown", "job"]
 
     search_fields = ["user", "address"]

@@ -117,6 +117,8 @@ def post_list_roommate(request, initial_city=None):
         hometown = request.GET.get('hometown')
         school = request.GET.get('school')
         job = request.GET.get('job')
+        budget_low = request.GET.get("budget_low")
+        budget_high = request.GET.get("budget_high")
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
@@ -127,6 +129,8 @@ def post_list_roommate(request, initial_city=None):
             roommate_list = roommate_list.filter(school = school)
         if job:
             roommate_list = roommate_list.filter(job = job)
+        if budget_low and budget_high:
+            roommate_list = roommate_list.filter(budget__range = (budget_low, budget_high))
 
     context = {
         "initial_city": initial_city,

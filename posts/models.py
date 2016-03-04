@@ -50,6 +50,15 @@ class UserProfile(models.Model):
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
     tags = models.ManyToManyField('Tag', through='UserProfileTag', blank=True)
+
+    RELATIONSHIP = (
+        ('S', 'Single'),
+        ('E', 'Engaged'),
+        ('M', 'Married'),
+        ('I', 'In a relationship'),
+    )
+
+    relationship_status = models.CharField(max_length=50, choices=RELATIONSHIP, null=False)
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
     last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
