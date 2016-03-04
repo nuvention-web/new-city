@@ -60,15 +60,30 @@ class FilterRoommateForm(forms.Form):
         #                 choices= SEX)
         # }
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            "user",
+            "school",
+            "gender",
+            "hometown",
+            "city_to",
+            "tags",
+            "picture",
+            "birthday",
+        ]
+
+
 #Form Wizard
-class QuestionnaireForm1(forms.Form):
-    school = forms.CharField(max_length=50)
+# class QuestionnaireForm1(forms.Form):
+#     school = forms.CharField(max_length=50)
 
-class QuestionnaireForm2(forms.Form):
-    hometown= forms.CharField(max_length=50)
+# class QuestionnaireForm2(forms.Form):
+#     hometown= forms.CharField(max_length=50)
 
-class QuestionnaireForm3(forms.Form):
-    job = forms.CharField(max_length=50)
+# class QuestionnaireForm3(forms.Form):
+#     job = forms.CharField(max_length=50)
 
 class CityForm(forms.Form):
     initial_city = forms.CharField(max_length=50)

@@ -15,8 +15,6 @@ from .views import (
   post_list_roommate,
 )
 
-from .forms import QuestionnaireForm1, QuestionnaireForm2, QuestionnaireForm3
-from .views import QuestionnaireWizard
 
 
 urlpatterns = [
@@ -32,9 +30,5 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
-    url(r'^questionnaire/$', QuestionnaireWizard.as_view([QuestionnaireForm1,
-                                                          QuestionnaireForm2,
-                                                          QuestionnaireForm3]),
-                                                          name='questionnaire'),
 ]
 

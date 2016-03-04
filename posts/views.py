@@ -10,6 +10,7 @@ from formtools.wizard.views import SessionWizardView
 def post_create_house(request):
 
     form = HouseForm(request.POST or None)
+    print("form", form)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
@@ -193,13 +194,9 @@ def login(request):
     return render(request, 'login.html', context)
 
 def create_user(request):
-    print ("this is request *************")
-    print (request.POST)
     if request.method == 'POST':
         post_text = request.POST.get('user')
         response_data = {}
-        print("this is post text *********")
-        print(post_text)
 
         # post = Post(text=post_text, author=request.user)
         # post.save()
@@ -221,6 +218,7 @@ def create_user(request):
             content_type="application/json"
         )
 
+
 class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"
 
@@ -228,7 +226,7 @@ class QuestionnaireWizard(SessionWizardView):
         form_data = process_form_data(self, form_list)
 
         # return render_to_response('done.html', {'form_data':form_data})
-        return redirect('/')
+        return redirect('/profile')
 
 def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]
@@ -237,12 +235,11 @@ def process_form_data(self, form_list):
     hometown = form_data[1]['hometown']
     job = form_data[2]['job']
 
-    #hometown must be a city instance
+    # hometown must be a city instance
     hometown_instance = City.objects.get(name = hometown)
 
-    print(self.request.user)
-    new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
-    new_user_profile.save()
+    # get existing user profile or create new one
+    new_user_profile = UserProfile.objects.get_or_create(user=self.request.user, school = school, hometown = hometown_instance, job = job)
 
     return form_data
 

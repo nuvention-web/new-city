@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from posts.forms import CityForm
+from posts.forms import CityForm, UserProfileForm
 from posts.models import City
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
@@ -39,3 +39,27 @@ def home(request, initial_city=None):
     }
 
     return render(request, 'HP.html', context)
+
+
+def user_profile_detail(request, user_profile_id= None):
+    user_profile = get_object_or_404(UserProfile, id=user_profile_id)
+
+    context = {
+            "user_profile": user_profile,
+            }
+
+    return render(request, "user_profile.html", context)
+
+
+def create_user_profile(request):
+    form = UserProfileForm(request.POST or None)
+    print("form",form)
+    if form.is_valid():
+        user_profile = form.save(commit=False)
+        user_profile.save()
+        return HttpResponseRedirect(reverse('user_profile_detail',
+                                    kwargs={'user_profile_id': user_profile.id}))
+    context = {
+        "form": form,
+    }
+    return render(request, "create_user_profile.html", context)
