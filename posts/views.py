@@ -10,6 +10,7 @@ from formtools.wizard.views import SessionWizardView
 def post_create_house(request):
 
     form = HouseForm(request.POST or None)
+    print("form", form)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
@@ -172,9 +173,6 @@ def create_user(request):
             content_type="application/json"
         )
 
-def create_user_profile(request):
-    if request.is_ajax():
-        print request.POST
 
 class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"

@@ -12,17 +12,13 @@ from .views import (
   post_delete,
   login,
   create_user,
-  create_user_profile,
   post_list_roommate,
 )
 
-from .forms import QuestionnaireForm1, QuestionnaireForm2, QuestionnaireForm3
-from .views import QuestionnaireWizard
 
 
 urlpatterns = [
     url(r'^create_user/$', create_user),
-    url(r'^create_user_profile/$', create_user_profile, name='user_profile'),
     url(r'^list/(?P<initial_city>\D+)$', post_list, name='list'),
     url(r'^list_roommate/(?P<initial_city>\D+)$', post_list_roommate, name='list_roommate'),
     ##remove name in list and list_roommate
@@ -34,9 +30,5 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
-    url(r'^questionnaire/$', QuestionnaireWizard.as_view([QuestionnaireForm1,
-                                                          QuestionnaireForm2,
-                                                          QuestionnaireForm3]),
-                                                          name='questionnaire'),
 ]
 
