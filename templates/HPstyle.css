@@ -20,6 +20,11 @@
     src: url(OpenSans-Regular.ttf);
 }
 
+@font-face {
+    font-family: folk;
+    src: url(Folksolid.otf);
+}
+
 body {
 /*  background-image: url(landing1.jpg);
   background-repeat: no-repeat;
@@ -48,12 +53,12 @@ body {
 
 /*reg css*/
 
-#logo {
-  font-family: bebasBold;
-  font-size: 20px;
-  color:#A5AAD9;
+.logo {
+  font-family: folk;
+  font-size: 100px;
+  color:white;
   padding: 15px;
-  margin-top: 10px;
+  text-align: center;
 
 }
 
@@ -82,33 +87,19 @@ ul#navbar li a:hover {
 
 #headTitle {
   color: white;
-  font-size: 100px;
+  font-size: 70px;
   text-align: center;
-  font-family: bebasBold;
+  font-family: moonBold;
   margin-top: 60px;
-}
-
-#tagline {
-  font-family: bebasBold;
-  font-size: 60px;
-  color:white;
 }
 
 #bottom {
   padding: 100px 0px;
 }
 
-h3 {
-  font-family: moonBold;
-  color: #7e5686;
-  text-align: center;
-  font-size: 45px;
-  background-color: rgba(255,255,255,0.7);
-
-}
-
 .button {
   text-align: center;
+  width: 50px !important;
   border: 5px  white;
   background-color: white;
   font-family: openSansLight;
