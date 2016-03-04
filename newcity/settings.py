@@ -177,9 +177,9 @@ STATIC_URL = '/static/'
 
 # BASE_DIR -> src
 # ROOT     -> files auto created with ./manage.py collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # DIRS -> where you put static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static", "static_posts"),
+    os.path.join(BASE_DIR, "static", "posts"),
 )
