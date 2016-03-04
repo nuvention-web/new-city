@@ -45,11 +45,21 @@ class UserProfile(models.Model):
     hometown = models.ForeignKey(City, null=True, blank=True, related_name = "hometown")
     budget = models.PositiveIntegerField(default=0) #Max amount user can afford
     job = models.CharField(max_length=50)
+    age = models.PositiveIntegerField(default=0)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
     tags = models.ManyToManyField('Tag', through='UserProfileTag', blank=True)
+
+    RELATIONSHIP = (
+        ('S', 'Single'),
+        ('E', 'Engaged'),
+        ('M', 'Married'),
+        ('I', 'In a relationship'),
+    )
+
+    relationship_status = models.CharField(max_length=50, choices=RELATIONSHIP, null=False)
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
     last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
