@@ -25,22 +25,22 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            "title", "tags",
+            "title",
         ]
 
     #create multiple choice fields for tags
-    def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super(PostForm, self).__init__(*args, **kwargs)
 
-        self.fields["tags"].widget = CheckboxSelectMultiple()
-        self.fields["tags"].queryset = Tag.objects.all()
+    #     self.fields["tags"].widget = CheckboxSelectMultiple()
+    #     self.fields["tags"].queryset = Tag.objects.all()
 
 SEX = (
     ('M', 'Male'),
     ('F', 'Female'),
 )
 
-
+#NOT USED CURRENTLY
 class FilterRoommateForm(forms.Form):
     gender = forms.ChoiceField(widget=forms.RadioSelect(
                                 attrs={'id': 'filter-gender'}),

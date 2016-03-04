@@ -42,6 +42,8 @@
     </br>
     </form>
 
+     Budget: <div id="slider-range"></div>
+
      <form method='GET' action="" id="filter-hometown-form">{% csrf_token %}
         Hometown: <input type="text" id="text-hometown">
         <input id = "input-hometown" type="submit" value="Search Hometown"><br>
@@ -61,6 +63,10 @@
         <input id = "reset" type="submit" value="Reset">
     </form>
 
+    {% for tag in tag_list %}
+  <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
+    {% endfor %}
+
     <!-- post house -->
     <a href='{% url 'posts:login' %}'>Build your profile</a>
     <a href='{% url 'posts:create_house' %}'>Post your house!</a>
@@ -69,6 +75,26 @@
     </div>
 
     <script>
+
+    $(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 5000,
+      step: 100,
+      values: [ 1000, 2000 ],
+      slide: function( event, ui )  {
+        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      },
+      stop: function(event, ui) {
+        console.log("slider stop");
+        console.log($("#slider-range"))
+        var values = $( "#slider-range" ).slider( "option", "values" )
+        filter_post()
+      }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+  });
     // $('.gender-class').on('submit', function(event){
     $(".gender-class").click(function(event){
         console.log("form submitted!")  // sanity check
