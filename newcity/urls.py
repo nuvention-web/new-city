@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^posts/', include("posts.urls", namespace="posts")),
-    url(r'^profile/', TemplateView.as_view(template_name="profile.html")),
+    url(r'^myprofile/', TemplateView.as_view(template_name="profile.html")),
     url(r'^accounts/', include('allauth.urls')),
 ]

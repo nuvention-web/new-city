@@ -126,7 +126,7 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_EMAIL_REQUIRED = True
 # SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
 
-LOGIN_REDIRECT_URL = '/posts/questionnaire/'
+LOGIN_REDIRECT_URL = '/myprofile/'
 
 
 SOCIALACCOUNT_PROVIDERS = {

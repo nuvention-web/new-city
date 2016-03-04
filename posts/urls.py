@@ -12,6 +12,7 @@ from .views import (
   post_delete,
   login,
   create_user,
+  create_user_profile,
   post_list_roommate,
 )
 
@@ -21,6 +22,7 @@ from .views import QuestionnaireWizard
 
 urlpatterns = [
     url(r'^create_user/$', create_user),
+    url(r'^create_user_profile/$', create_user_profile, name='user_profile'),
     url(r'^list/(?P<initial_city>\D+)$', post_list, name='list'),
     url(r'^list_roommate/(?P<initial_city>\D+)$', post_list_roommate, name='list_roommate'),
     ##remove name in list and list_roommate
