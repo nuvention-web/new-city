@@ -43,7 +43,7 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER, null=False)
     school = models.CharField(max_length=50)
     hometown = models.ForeignKey(City, null=True, blank=True, related_name = "hometown")
-    budget = models.PositiveIntegerField(default=0)
+    budget = models.PositiveIntegerField(default=0) #Max amount user can afford
     job = models.CharField(max_length=50)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
     picture = models.BinaryField(null=True)

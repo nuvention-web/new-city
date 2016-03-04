@@ -8,7 +8,14 @@
 </head>
 
 <body>
-  <h1>This is the post_list</h1>
+  <div>
+    {% if initial_city %}
+    <h1>Rooms Available in {{ initial_city }}</h1>
+    {% else %}
+    <h1>Rooms Available</h1>
+    {% endif %}
+  </div>
+
 
   {% for tag in tag_list %}
 

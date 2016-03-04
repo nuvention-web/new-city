@@ -95,6 +95,7 @@ def post_list(request, initial_city=None):
 
     context = {
         # "user" : user,
+        "initial_city" : initial_city,
         "post_list" : post_list,
         "tag_list" : tag_list,
     }
@@ -127,6 +128,7 @@ def post_list_roommate(request, initial_city=None):
             roommate_list = roommate_list.filter(job = job)
 
     context = {
+        "initial_city": initial_city,
         "roommate_list": roommate_list,
         "form": form,
     }
