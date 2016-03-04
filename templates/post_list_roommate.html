@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
           <script src="//code.jquery.com/jquery-1.10.2.js"></script>
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
     </head>
 
     <body>
@@ -81,16 +80,16 @@
     <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
     </div>
 
-    <form method='GET' action="" id="reset-form">{% csrf_token %}
-        <input id = "reset" type="submit" value="Reset">
-    </form>
-
 
     <div id="div-tag">
     {% for tag in tag_list %}
     <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
     {% endfor %}
     </div>
+
+    <form method='GET' action="" id="reset-form">{% csrf_token %}
+        <input id = "reset" type="submit" value="Reset">
+    </form>
 
     <!-- post house -->
     <a href='{% url 'posts:login' %}'>Build your profile</a>
