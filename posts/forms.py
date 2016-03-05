@@ -64,14 +64,12 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = [
-            "user",
             "school",
-            "gender",
             "hometown",
             "city_to",
             "tags",
+            "age",
             # "picture",
-            "birthday",
         ]
     # create multiple choice fields for tags
     def __init__(self, *args, **kwargs):
