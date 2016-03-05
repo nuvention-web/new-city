@@ -68,6 +68,7 @@ class UserProfileForm(forms.ModelForm):
             "hometown",
             "city_to",
             "tags",
+            "age",
             # "picture",
         ]
     # create multiple choice fields for tags
