@@ -25,26 +25,26 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            "title", "tags",
+            "title",
         ]
 
     #create multiple choice fields for tags
-    def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super(PostForm, self).__init__(*args, **kwargs)
 
-        self.fields["tags"].widget = CheckboxSelectMultiple()
-        self.fields["tags"].queryset = Tag.objects.all()
+    #     self.fields["tags"].widget = CheckboxSelectMultiple()
+    #     self.fields["tags"].queryset = Tag.objects.all()
 
 SEX = (
     ('M', 'Male'),
     ('F', 'Female'),
 )
 
-
-class FilterRoommateForm(forms.Form):
-    gender = forms.ChoiceField(widget=forms.RadioSelect(
-                                attrs={'id': 'filter-gender'}),
-                                choices=SEX)
+#NOT USED CURRENTLY
+# class FilterRoommateForm(forms.Form):
+#     gender = forms.ChoiceField(widget=forms.RadioSelect(
+#                                 attrs={'id': 'filter-gender'}),
+#                                 choices=SEX)
 
     # def __init__(self, *args, **kwargs):
     #     super(FilterRoommateForm, self).__init__(*args, **kwargs)
@@ -60,15 +60,36 @@ class FilterRoommateForm(forms.Form):
         #                 choices= SEX)
         # }
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            "school",
+            "hometown",
+            "city_to",
+            "tags",
+            "age",
+            # "picture",
+        ]
+    # create multiple choice fields for tags
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+
+        self.fields["tags"].widget = CheckboxSelectMultiple()
+        self.fields["tags"].queryset = Tag.objects.all()
+
+
 #Form Wizard
-class QuestionnaireForm1(forms.Form):
-    school = forms.CharField(max_length=50)
+# class QuestionnaireForm1(forms.Form):
+#     school = forms.CharField(max_length=50)
 
-class QuestionnaireForm2(forms.Form):
-    hometown= forms.CharField(max_length=50)
+# class QuestionnaireForm2(forms.Form):
+#     hometown= forms.CharField(max_length=50)
 
-class QuestionnaireForm3(forms.Form):
-    job = forms.CharField(max_length=50)
+# class QuestionnaireForm3(forms.Form):
+#     job = forms.CharField(max_length=50)
 
 class CityForm(forms.Form):
-    initial_city = forms.CharField(max_length=50) 
+    initial_city = forms.CharField(max_length=50)
+
+# class SignupForm(forms.Form):

@@ -1,8 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, FilterRoommateForm, CityForm
-from .models import Post, House, PostTag, Tag, UserProfile, City, Address
+from .forms import HouseForm, PostForm, CityForm
+from .models import Post, House, UserProfileTag, Tag, UserProfile, City, Address
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
 from formtools.wizard.views import SessionWizardView
@@ -15,6 +15,7 @@ def home(request):
 def post_create_house(request):
 
     form = HouseForm(request.POST or None)
+    print("form", form)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
@@ -30,21 +31,21 @@ def post_create_house(request):
 def post_create_post(request, house_id=None):
     house_instance = get_object_or_404(House, id=house_id)
     form = PostForm(request.POST or None)
-    if form.is_valid() and house_instance:
-        instance = form.save(commit=False)
-        id_tag_list = request.POST.getlist('tags')
-        instance.house = house_instance
-        instance.save()
+    # if form.is_valid() and house_instance:
+    #     instance = form.save(commit=False)
+    #     id_tag_list = request.POST.getlist('tags')
+    #     instance.house = house_instance
+    #     instance.save()
 
-        post_instance = instance
-        for id_tag in id_tag_list:
-            tag_instance = Tag.objects.get(id=int(id_tag))
-            print(type(tag_instance))
-            print(type(house_instance))
-            new_posttag = PostTag(post=post_instance, tag=tag_instance)
-            new_posttag.save()
+    #     post_instance = instance
+    #     for id_tag in id_tag_list:
+    #         tag_instance = Tag.objects.get(id=int(id_tag))
+    #         print(type(tag_instance))
+    #         print(type(house_instance))
+    #         new_posttag = PostTag(post=post_instance, tag=tag_instance)
+    #         new_posttag.save()
 
-        return redirect("posts:list_roommate")
+    #     return redirect("posts:list_roommate")
     # else:
     #     messages.error(request, "Not Successfully Created")
 
@@ -67,6 +68,8 @@ def post_list(request, initial_city=None):
     print(request.GET)
     post_list = Post.objects.all()
     house_list = House.objects.all()
+    user_list = UserProfile.objects.all()
+    tag_list = Tag.objects.all()
 
     if initial_city:
         city_query = City.objects.filter(name=initial_city)
@@ -79,12 +82,35 @@ def post_list(request, initial_city=None):
     if request.is_ajax():
         price_low = request.GET.get("price_low")
         price_high = request.GET.get("price_high")
-        print(price_low)
-        print(price_high)
-        house_list = house_list.filter(price__range = (price_low, price_high))
-        post_list = post_list.filter(house=house_list)
+        gender = request.GET.get('gender')
+        school = request.GET.get('school')
+        price_low = request.GET.get("budget_low")
+        price_high = request.GET.get("budget_high")
+        relationship_status = request.GET.getlist("relationship_status[]")
+        age_low = request.GET.get("age_low")
+        age_high = request.GET.get("age_high")
+        filter_selected = request.GET.getlist("filter_selected[]")
 
-    tag_list = Tag.objects.all()
+        if price_low and price_high:
+            house_list = house_list.filter(price__range = (price_low, price_high))
+            post_list = post_list.filter(house = house_list)
+        # if gender:
+        #     user_list = user_list.filter(gender = gender)
+        # if school:
+        #     user_list = user_list.filter(school = school)
+        # if relationship_status:
+        #     for status in relationship_status:
+        #         user_list = user_list.filter(relationship_status = status)
+        # if age_low and age_high:
+        #     user_list = user_list.filter(age__range = (age_low, age_high))
+        # if filter_selected:
+        #     for tag in filter_selected:
+        #         temp_tag = Tag.objects.filter(name = tag)
+        #         print(temp_tag)
+        #         user_list = user_list.filter(tags = temp_tag)
+
+        # post_list = post_list.filter(house = house_list)
+        # post_list = post_list.filter(user = user_list)
 
     # query range value
     # Entry.objects.filter(pub_date__range=(start_date, end_date))
@@ -100,6 +126,7 @@ def post_list(request, initial_city=None):
 
     context = {
         # "user" : user,
+        "initial_city" : initial_city,
         "post_list" : post_list,
         "tag_list" : tag_list,
     }
@@ -109,6 +136,7 @@ def post_list_roommate(request, initial_city=None):
 
     print(request.GET)
     roommate_list = UserProfile.objects.all()
+    tag_list = Tag.objects.all()
     form = FilterRoommateForm(request.GET or None)
 
     if initial_city:
@@ -120,6 +148,12 @@ def post_list_roommate(request, initial_city=None):
         hometown = request.GET.get('hometown')
         school = request.GET.get('school')
         job = request.GET.get('job')
+        budget_low = request.GET.get("budget_low")
+        budget_high = request.GET.get("budget_high")
+        relationship_status = request.GET.getlist("relationship_status[]")
+        age_low = request.GET.get("age_low")
+        age_high = request.GET.get("age_high")
+        filter_selected = request.GET.getlist("filter_selected[]")
 
         if gender:
             roommate_list = roommate_list.filter(gender = gender)
@@ -130,8 +164,24 @@ def post_list_roommate(request, initial_city=None):
             roommate_list = roommate_list.filter(school = school)
         if job:
             roommate_list = roommate_list.filter(job = job)
+        if budget_low and budget_high:
+            roommate_list = roommate_list.filter(budget__range = (budget_low, budget_high))
+        if relationship_status:
+            for status in relationship_status:
+                roommate_list = roommate_list.filter(relationship_status = status)
+        if age_low and age_high:
+            roommate_list = roommate_list.filter(age__range = (age_low, age_high))
+        if filter_selected:
+            for tag in filter_selected:
+                temp_tag = Tag.objects.filter(name = tag)
+                print(temp_tag)
+                roommate_list = roommate_list.filter(tags = temp_tag)
+
+        print(roommate_list)
 
     context = {
+        "initial_city": initial_city,
+        "tag_list": tag_list,
         "roommate_list": roommate_list,
         "form": form,
     }
@@ -149,13 +199,9 @@ def login(request):
     return render(request, 'login.html', context)
 
 def create_user(request):
-    print ("this is request *************")
-    print (request.POST)
     if request.method == 'POST':
         post_text = request.POST.get('user')
         response_data = {}
-        print("this is post text *********")
-        print(post_text)
 
         # post = Post(text=post_text, author=request.user)
         # post.save()
@@ -177,13 +223,15 @@ def create_user(request):
             content_type="application/json"
         )
 
+
 class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"
 
     def done(self, form_list, **kwargs):
         form_data = process_form_data(self, form_list)
 
-        return render_to_response('done.html', {'form_data':form_data})
+        # return render_to_response('done.html', {'form_data':form_data})
+        return redirect('/profile')
 
 def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]
@@ -192,12 +240,11 @@ def process_form_data(self, form_list):
     hometown = form_data[1]['hometown']
     job = form_data[2]['job']
 
-    #hometown must be a city instance
+    # hometown must be a city instance
     hometown_instance = City.objects.get(name = hometown)
 
-    print(self.request.user)
-    new_user_profile = UserProfile(user=self.request.user, school = school, hometown = hometown_instance, job = job)
-    new_user_profile.save()
+    # get existing user profile or create new one
+    new_user_profile = UserProfile.objects.get_or_create(user=self.request.user, school = school, hometown = hometown_instance, job = job)
 
     return form_data
 

@@ -43,15 +43,29 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER, null=False)
     school = models.CharField(max_length=50)
     hometown = models.ForeignKey(City, null=True, blank=True, related_name = "hometown")
-    budget = models.PositiveIntegerField(default=0)
+    budget = models.PositiveIntegerField(default=0) #Max amount user can afford
     job = models.CharField(max_length=50)
+    age = models.PositiveIntegerField(default=0)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
-    picture = models.BinaryField(null=True)
+    picture = models.CharField(max_length=100, blank=True, null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
+    tags = models.ManyToManyField('Tag', through='UserProfileTag', blank=True)
+
+    RELATIONSHIP = (
+        ('S', 'Single'),
+        ('E', 'Engaged'),
+        ('M', 'Married'),
+        ('I', 'In a relationship'),
+    )
+
+    relationship_status = models.CharField(max_length=50, choices=RELATIONSHIP, null=False)
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
     last_active = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
+
+    def get_tags(self):
+        return ",".join([str(tag) for tag in self.tags.all()])
 
     def __unicode__(self):
         return self.user.username
@@ -101,12 +115,9 @@ class Post(models.Model):
     title = models.CharField(max_length=100, default="")
     house = models.OneToOneField(House, null=True, blank=True)
     #Tag is in quotations because of order of code
-    tags = models.ManyToManyField('Tag', through='PostTag', blank=True)
+    # tags = models.ManyToManyField('Tag', through='PostTag', blank=True)
     created_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-
-    def get_tags(self):
-        return ",".join([str(tag) for tag in self.tags.all()])
 
     def __unicode__(self):
         return str(self.id)
@@ -124,7 +135,7 @@ class Post(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=50)
     content = models.CharField(max_length=100)
-    posts = models.ManyToManyField(Post, through='PostTag', blank=True)
+    posts = models.ManyToManyField(UserProfile, through='UserProfileTag', blank=True)
 
     def __unicode__(self):
         return self.name
@@ -132,8 +143,10 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-class PostTag(models.Model):
-    post = models.ForeignKey(Post)
+class UserProfileTag(models.Model):
+    user_profile = models.ForeignKey(UserProfile)
     tag = models.ForeignKey(Tag)
+
+
 
 

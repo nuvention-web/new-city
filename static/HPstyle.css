@@ -2,22 +2,22 @@
 
 @font-face {
     font-family: bebasBold;
-    src: url(BebasNeue_Bold.otf);
+    src: url("BebasNeue_Bold.otf");
 }
 
 @font-face {
     font-family: moonBold;
-    src: url(Moon_Bold.otf);
+    src: url("Moon_Bold.otf");
 }
 
 @font-face {
     font-family: openSansLight;
-    src: url(OpenSans-Light.ttf);
+    src: url("OpenSans-Light.ttf");
 }
 
 @font-face {
     font-family: openSansReg;
-    src: url(OpenSans-Regular.ttf);
+    src: url("OpenSans-Regular.ttf");
 }
 
 body {

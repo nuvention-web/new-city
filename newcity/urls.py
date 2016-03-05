@@ -20,13 +20,16 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from .views import (
-    home
+    home,
+    user_profile_detail,
+    create_user_profile,
 )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^posts/', include("posts.urls", namespace="posts")),
-    url(r'^accounts/profile/', TemplateView.as_view(template_name="profile.html")),
-    url(r'^accounts/', include('allauth.urls', namespace="accounts")),
+    url(r'^users/(?P<user_profile_id>\d+)$', user_profile_detail, name= "user_profile_detail"),
+    url(r'^users/create_user_profile/', create_user_profile, name= "create_user_profile"),
+    url(r'^accounts/', include('allauth.urls')),
 ]

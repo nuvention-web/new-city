@@ -1,23 +1,21 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter, PostTag, Address
+from .models import Post, City, Tag, House, UserProfile, Tenant, Subletter, UserProfileTag, Address
 
-class PostTagInline(admin.TabularInline):
-    model = PostTag
+class UserProfileTagInline(admin.TabularInline):
+    model = UserProfileTag
     #what is extra?
     extra = 1
 
 class PostModelAdmin(admin.ModelAdmin):
     #tags cannot be included because many to many
-    list_display = ["title", "user", "house", "get_tags", "created_timestamp",
+    list_display = ["title", "user", "house", "created_timestamp",
                     "last_updated"]
 
-    list_filter = ["user", "house", "tags"]
+    list_filter = ["user", "house"]
 
-    search_fields = ["user", "house", "tags"]
-
-    inlines = (PostTagInline,)
+    search_fields = ["user", "house"]
 
     class Meta:
         model = Post
@@ -63,10 +61,11 @@ class HouseModelAdmin(admin.ModelAdmin):
         model = House
 
 class UserProfileModelAdmin(admin.ModelAdmin):
-    list_display = ["user", "school", "hometown", "job", "created_timestamp", "last_updated", "last_active"]
+    list_display = ["user", "school", "hometown", "city_to", "job", "relationship_status","age", "created_timestamp", "last_updated", "last_active", "get_tags"]
     list_filter = ["user", "school", "hometown", "job"]
 
     search_fields = ["user", "address"]
+    inlines = (UserProfileTagInline,)
     class Meta:
         model = UserProfile
 
@@ -80,10 +79,10 @@ class SubletterModelAdmin(admin.ModelAdmin):
     class Meta:
         model = Subletter
 
-class PostTagModelAdmin(admin.ModelAdmin):
-    list_display = ["post", "tag"]
+class UserProfileTagModelAdmin(admin.ModelAdmin):
+    list_display = ["user_profile", "tag"]
     class Meta:
-        model = Subletter
+        model = UserProfileTag
 
 
 
@@ -95,7 +94,7 @@ admin.site.register(UserProfile, UserProfileModelAdmin)
 admin.site.register(Tenant, TenantModelAdmin)
 admin.site.register(Subletter, SubletterModelAdmin)
 admin.site.register(Post, PostModelAdmin)
-admin.site.register(PostTag, PostTagModelAdmin)
+admin.site.register(UserProfileTag, UserProfileTagModelAdmin)
 
 
 

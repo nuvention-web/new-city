@@ -123,6 +123,10 @@ SITE_ID = 1
 
 # Oauth Configuration
 SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+# SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
+
+LOGIN_REDIRECT_URL = '/users/create_user_profile'
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -174,9 +178,9 @@ STATIC_URL = '/static/'
 
 # BASE_DIR -> src
 # ROOT     -> files auto created with ./manage.py collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # DIRS -> where you put static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static", "static_posts"),
+    os.path.join(BASE_DIR, "static", "posts"),
 )

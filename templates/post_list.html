@@ -8,24 +8,81 @@
 </head>
 
 <body>
-  <h1>This is the post_list</h1>
+  <div>
+    {% if initial_city %}
+    <h1>Rooms Available in {{ initial_city }}</h1>
+    {% else %}
+    <h1>Rooms Available</h1>
+    {% endif %}
+  </div>
 
-  {% for tag in tag_list %}
+  <div class="output">
 
-  <button id="likes" class="filter-buttons" type="button">{{ tag.name }}</button>
-
+  <div>
+  {% for post in post_list %}
+  Username: <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
+  User:{{ post.user.user }}</br>
+  Relationship Status: {{ post.user.relationship_status}}</br>
+  Gender: {{ post.user.gender }}</br>
+  School: {{ post.user.school }}</br>
+  Hometown: {{ post.user.hometown }} </br>
+  Budget: {{ post.user.budget }} </br>
+  Job: {{ post.user.job }} </br>
+  Age: {{ post.user.age }} </br>
+  Picture: {{ post.user.picture }}</br>
+  Title: {{ post.house.title }} </br>
+  Tags:
+  {% for tag in post.user.tags.all %}
+   {{tag.name}},
   {% endfor %}
+  Content: {{ post.house.content }} </br>
+  Street: {{ post.house.address.street }} </br>
+  City: {{ post.house.address.city.name }} </br>
+  Price: {{ post.house.price }} </br>
+  </br>
+   {% endfor %}
 
-  {# list all house attributes as filter criteria #}
+  </div>
+ </div>
 
   <p>
-    <label for="amount">Price range:</label>
-    <input type="text" id="amount" readonly>
+    <label for="amount">Monthly rent:</label>
+    <input type="text" id="amount-rent" readonly>
   </p>
-  <div id="slider-range"></div>
+  <div id="rent-range"></div>
+
+  <p>
+      <label for="amount">Age range:</label>
+      <input type="text" id="text-age" readonly>
+    </p>
+  <div id="age-range"></div>
+
+  <form method='GET' action="" id="filter-school-form">{% csrf_token %}
+    School: <input type="text" id="text-school">
+    <input id = "input-school" type="submit" value="Search School"><br>
+  </form>
+
+  <form method='GET' action="" id="filter-form">{% csrf_token %}
+        <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
+        <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+    </br>
+  </form>
+
+  <div id="div-relationship">
+    <input type="checkbox" class="filter-relationship" value="S"> Single<br>
+    <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
+    <input type="checkbox" class="filter-relationship" value="M"> Married<br>
+    <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
+  </div>
+
+  <div id="div-tag">
+    {% for tag in tag_list %}
+    <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
+    {% endfor %}
+  </div>
 
   {# facebook wrote a separate php script to run their searches #}
-  <script type="text/javascript">
+<!--   <script type="text/javascript">
     function func(){
       return false;
     }
@@ -33,62 +90,97 @@
   <form action="" method="get" id="filter-search" onSubmit="return func()">
     <input id="search" name="search" type="text" value="Find filters"/>
     <input id="search-submit-buttom" name="search-button" type="button" value="Search" onClick="func()"/>
+  </form> -->
+
+  <form method='GET' action="" id="reset-form">{% csrf_token %}
+        <input id = "reset" type="submit" value="Reset">
   </form>
-
-  <div class="output">
-
-  <div>
-  <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
-  {% for post in post_list %}
-  {{ post.title }}</br>
-
-  {{ post.user.user }}</br>
-  {{ post.user.address }}</br>
-  {{ post.user.picture }}</br>
-
-  {{ post.house.title }} </br>
-  {{ post.house.content }} </br>
-  {{ post.house.address.street }} </br>
-  {{ post.house.address.city.name }} </br>
-  {{ post.house.price }} </br>
-  </br>
-   {% endfor %}
-
-  </div>
- </div>
 
   <a href='{% url 'posts:login' %}'>Build your profile</a>
 
   <script>
   $(function() {
-    $("#slider-range").slider({
+    $("#rent-range").slider({
       range: true,
       min: 0,
       max: 5000,
       step: 100,
-      values: [ 1000, 2000 ],
+      values: [ 0, 5000 ],
       slide: function( event, ui )  {
-        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#amount-rent").val("$" + ui.values[0] + " - $" + ui.values[1]);
       },
       stop: function(event, ui) {
         console.log("slider stop");
-        console.log($("#slider-range"))
-        var values = $( "#slider-range" ).slider( "option", "values" )
+        console.log($("#rent-range"))
+        var values = $( "#rent-range" ).slider( "option", "values" )
         filter_post()
       }
     });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+    $("#amount-rent").val("$" + $("#rent-range").slider("values", 0) + " - $" + $("#rent-range").slider("values", 1));
   });
+
+  $(function() {
+    $("#age-range").slider({
+      range: true,
+      min: 0,
+      max: 100,
+      step: 1,
+      values: [ 0, 100 ],
+      slide: function( event, ui )  {
+        $("#text-age").val(ui.values[0] + " - " + ui.values[1]);
+      },
+      stop: function(event, ui) {
+        filter_post()
+      }
+    });
+    $("#text-age").val($("#age-range").slider("values", 0) + " - " + $("#age-range").slider("values", 1));
+  });
+
+  $(".gender-class").click(function(event){
+        console.log("form submitted!")  // sanity check
+        filter_post();
+    });
+
+  $(".filter-relationship").click(function(event){
+        console.log("form submitted!")  // sanity check
+        filter_post();
+    });
+
+  $(".filter-tag").click(function(event){
+        console.log("form submitted!")  // sanity check
+        filter_post();
+    });
+
+  $("#reset-form").on('submit', function(event){
+        // event.preventDefault();
+        location.reload()
+    });
 
   function filter_post() {
     console.log("filter_roommate is working!") // sanity check
-    var prices = $( "#slider-range" ).slider( "option", "values" )
+    var rent = $( "#rent-range" ).slider( "option", "values" )
+    var age = $("#age-range").slider("option", "values")
+    var relationship_selected = [];
+    var filter_selected = [];
+    $('#div-relationship input:checked').each(function() {
+      relationship_selected.push($(this).val());
+    });
+
+    $('#div-tag input:checked').each(function() {
+      filter_selected.push($(this).val());
+    });
     $.ajax({
         url : window.location.pathname,
         //"/posts/list_roommate/San%20Francisco"
         type : "GET", // http method
-        data : { price_low : prices[0],
-                 price_high: prices[1],
+        data : { gender : $("input:radio[name=filter-gender]:checked").val(),
+                 school: $("#text-school").val(),
+                 price_low : rent[0],
+                 price_high: rent[1],
+                 age_low: age[0],
+                 age_high: age[1],
+                 relationship_status: relationship_selected,
+                 filter_selected: filter_selected,
                 }, // data sent with the post request
 
         // handle a successful response

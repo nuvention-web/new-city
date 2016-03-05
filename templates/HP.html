@@ -1,7 +1,8 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
-
   <title>New City</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -13,78 +14,92 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- <script src="home.js"></script> -->
 
-  <link rel="stylesheet" type="text/css" href="templates/HPstyle.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'HPstyle.css' %}">
 </head>
 <body>
 
   <ul id="navbar">
     <li id="logo">Roommate</li>
-    <!-- link not working -->
     <li><a href="{#{% url 'posts:list' %}#}">See Listings</a></li>
-    <li><a href="#">Sign Up</a></li>
-    <li><a href="login.html">Log In</a></li>
+    {% if user.is_authenticated %}
+    <li><a href="/accounts/logout">Logout</a></li>
+    {% else %}
+    <li><a href="/accounts/signup">Sign Up</a></li>
+    <li><a href="/accounts/login">Log In</a></li>
+    {% endif %}
   </ul>
 
-<div class="jumbotron">
+  <div class="jumbotron">
+
+    <div class="container">
+      <header id="headTitle">
+        Welcome Home
+      </header>
+      <h4 id="tagline">Let us help</h4>
+    </div>
+
+    <div class="container" id="bottom">
+      <h3>What city are you moving to?</h3>
+
+      <h3>Looking for a...</h3><br>
+      <form action='' method='get' id='set_init_city'> {% csrf_token %}
+        <input type="hidden" id="initial_city" name="initial_city" value="">
+
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Select City
+            <span class="caret"></span></button>
+
+            <ul class="dropdown-menu">
+              {% for city in city_list %}
+              <li><a>{{ city.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <br><br>
+          <input class = "button-next" type="submit" name="searching_for_home" value="Home">
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <input class = "button-next" type="submit" name="searching_for_roommate" value="Roommate">
+        </form>
+
+
+      </div>
+
+
+
+    </div>
+
+    <div class="container" id="banner">
+
+    </div>
+
+    <!-- script for changing display in dropdown -->
+    <script>
+    $(function(){
+      $(".dropdown-menu li a").click(function(){
+        $(".btn:first-child").text($(this).text());
+        $("#initial_city").val($(this).text());
+      });
+    });
+    </script>
 
   <div class="container">
+    <div class="logo">
+      Apt 5A
+    </div>
     <header id="headTitle">
-      Welcome Home
+      Find your Right Roommate
     </header>
-    <h4 id="tagline">Let us help</h4>
   </div>
 
   <div class="container" id="bottom">
-    <h3>What city are you moving to?</h3>
-
-    <h3>Looking for a...</h3><br>
-    <form action='' method='get' id='set_init_city'> {% csrf_token %}
-    <input type="hidden" id="initial_city" name="initial_city" value="">
-
-      <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Select City
-      <span class="caret"></span></button>
-
-      <ul class="dropdown-menu">
-        {% for city in city_list %}
-        <li><a>{{ city.name }}</a></li>
-        {% endfor %}
-      </ul>
-      </div>
-      <br><br>
-      <input class = "button-next" type="submit" name="searching_for_home" value="Home">
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <input class = "button-next" type="submit" name="searching_for_roommate" value="Roommate">
-    </form>
-
-      <!-- <a href='{% url 'posts:questionnaire' %}' class="button">Home</a> -->
-      <!-- <a href='{% url 'accounts:account_signup' %}' class="button">Home</a> -->
-      <!-- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-      <!-- <a href='{% url 'posts:questionnaire' %}' class="button">Roommate</a> -->
-      <!-- <a href='{% url 'accounts:account_signup' %}' class="button">Roommate</a> -->
+    <a href="#" class="button">I have an apartment</a>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="#" class="button">I don't have an apartment</a>
   </div>
-
-
-
 </div>
 
-<div class="container" id="banner">
-
-</div>
-
-<!-- script for changing display in dropdown -->
-<script>
- $(function(){
-  $(".dropdown-menu li a").click(function(){
-    $(".btn:first-child").text($(this).text());
-    $("#initial_city").val($(this).text());
-  });
-});
-</script>
 
 
 
-
-
-</body>
-</html>
+  </body>
+  </html>

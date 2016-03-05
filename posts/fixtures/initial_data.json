@@ -27,6 +27,15 @@
     }
   },
   {
+    "model": "posts.city",
+    "pk": 3,
+    "fields": {
+      "name": "Evanston",
+      "created_timestamp": "2015-02-24",
+      "last_updated": "2015-02-24"
+    }
+  },
+  {
     "model": "auth.user",
     "pk": 3,
     "fields": {
