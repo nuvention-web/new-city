@@ -924,6 +924,9 @@ Portfolio
 .work-image {
 	position: relative;
 	overflow: hidden;
+
+	/*modified*/
+	text-align:center;
 }
 
 .work-image img {

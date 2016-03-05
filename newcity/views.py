@@ -90,3 +90,8 @@ def create_user_profile(request):
         "form": form,
     }
     return render(request, "create_user_profile.html", context)
+
+
+def test_template(request):
+    context = {}
+    return render(request, 'test_template.html', context)

@@ -132,7 +132,8 @@ def post_list_roommate(request, initial_city=None):
     print(request.GET)
     roommate_list = UserProfile.objects.all()
     tag_list = Tag.objects.all()
-    form = FilterRoommateForm(request.GET or None)
+    # form not being used currently
+    # form = FilterRoommateForm(request.GET or None)
 
     if initial_city:
         city_instance = City.objects.get(name = initial_city)
@@ -172,13 +173,14 @@ def post_list_roommate(request, initial_city=None):
                 print(temp_tag)
                 roommate_list = roommate_list.filter(tags = temp_tag)
 
-        print(roommate_list)
+    print(roommate_list)
+
 
     context = {
         "initial_city": initial_city,
         "tag_list": tag_list,
         "roommate_list": roommate_list,
-        "form": form,
+        # "form": form,
     }
     return render(request, 'post_list_roommate.html', context)
 
@@ -192,6 +194,7 @@ def post_delete(request):
 def login(request):
     context = {}
     return render(request, 'login.html', context)
+
 
 def create_user(request):
     if request.method == 'POST':
@@ -218,9 +221,6 @@ def create_user(request):
             content_type="application/json"
         )
 
-def test_template(request):
-    context = {}
-    return render(request, 'test_template.html', context)
 
 
 class QuestionnaireWizard(SessionWizardView):
