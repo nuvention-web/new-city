@@ -10,6 +10,9 @@
 
   <title>Semantic - Minimal portfolio template</title>
 
+  <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+
+
   <!-- Bootstrap core CSS -->
   <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -252,11 +255,53 @@
 
             <ul id="filters" class="filter font-inc hidden-xs">
               <li><!-- <a href="#" data-filter="*" class="current wow fadeInUp">All</a> -->
+
+              <form method='GET' action="" id="filter-form">{% csrf_token %}
+                  <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
+                  <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+              </br>
+              </form>
               </li>
-              <li><a href="#" data-filter=".illustration" class="wow fadeInUp" data-wow-delay="0.2s">Illustration</a></li>
-              <li><a href="#" data-filter=".marketing" class="wow fadeInUp" data-wow-delay="0.4s">Marketing</a></li>
-              <li><a href="#" data-filter=".photography" class="wow fadeInUp" data-wow-delay="0.6s">Photography</a></li>
-              <li><a href="#" data-filter=".webdesign" class="wow fadeInUp" data-wow-delay="0.8s">Web Design</a></li>
+              <li>
+                <p>
+                  <label for="amount">Monthly budget:</label>
+                  <input type="text" id="amount-budget" readonly>
+                </p>
+                <div id="budget-range"></div>
+              </li>
+              <li>
+              <p>
+                <label for="amount">Age range:</label>
+                <input type="text" id="text-age" readonly>
+              </p>
+              <div id="age-range"></div>
+              </li>
+              <li>
+              <form method='GET' action="" id="filter-school-form">{% csrf_token %}
+                School: <input type="text" id="text-school">
+                <input id = "input-school" type="submit" value="Search School"><br>
+              </form>
+              </li>
+              <li>
+              <div id="div-relationship">
+              <input type="checkbox" class="filter-relationship" value="S"> Single<br>
+              <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
+              <input type="checkbox" class="filter-relationship" value="M"> Married<br>
+              <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
+              </div>
+              </li>
+              <li>
+                <div id="div-tag">
+                {% for tag in tag_list %}
+                <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
+                {% endfor %}
+                </div>
+              </li>
+              <li>
+                <form method='GET' action="" id="reset-form">{% csrf_token %}
+                <input id = "reset" type="submit" value="Reset">
+              </form>
+              </li>
             </ul>
 
           </div>
@@ -518,6 +563,8 @@
   <script src="{% static 'assets/js/wow.min.js' %}"></script>
   <script src="{% static 'assets/js/contact.js' %}"></script>
   <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-1.11.1.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-ui-1.11.4.js' %}"></script>
 
      <script>
 
