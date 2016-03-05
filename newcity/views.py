@@ -37,7 +37,7 @@ def home(request, initial_city=None):
         "city_list" : city_list,
     }
 
-    return render(request, 'HP.html', context)
+    return render(request, 'landing.html', context)
 
 
 def user_profile_detail(request, user_profile_id= None):
