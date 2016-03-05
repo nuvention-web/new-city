@@ -87,6 +87,8 @@ class House(models.Model):
     content = models.TextField(max_length=1000, default="")
     #How shoulld users input address
     address = models.OneToOneField(Address, default="", null=True, blank=True)
+    photos = models.ManyToManyField('self', through='HouseImage',
+                                     symmetrical=False)
     price = models.PositiveIntegerField(default=0)
     beds = models.PositiveIntegerField(default=0)
     baths = models.PositiveIntegerField(default=0)
@@ -146,6 +148,15 @@ class Tag(models.Model):
 class UserProfileTag(models.Model):
     user_profile = models.ForeignKey(UserProfile)
     tag = models.ForeignKey(Tag)
+
+
+class HouseImage(models.Model):
+    house = models.ForeignKey(House)
+    image = models.ForeignKey('Image')
+
+class Image(models.Model):
+    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+
 
 
 
