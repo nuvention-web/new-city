@@ -47,7 +47,7 @@ class UserProfile(models.Model):
     job = models.CharField(max_length=50)
     age = models.PositiveIntegerField(default=0)
     birthday = models.DateField(error_messages={'invalid': "Please enter a correct date format"}, null=True, blank=True)
-    picture = models.BinaryField(null=True)
+    picture = models.CharField(max_length=100, blank=True, null=True)
     friends = models.ManyToManyField('self', through='Friendship',
                                      symmetrical=False)
     tags = models.ManyToManyField('Tag', through='UserProfileTag', blank=True)

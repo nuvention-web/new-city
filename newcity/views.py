@@ -51,15 +51,25 @@ def user_profile_detail(request, user_profile_id= None):
 
 
 def create_user_profile(request):
-    print(request.user)
-    socialaccounts = request.user.socialaccount_set.all()
-    print(type(socialaccounts))
-    print(socialaccounts)
+    social_accounts = request.user.socialaccount_set.all()
+    account = social_accounts[0]
+    picture = account.get_avatar_url()
+    data = account.extra_data
 
-    for account in socialaccounts:
-        print(type(account))
-        print(account)
-        print(account.get("first_name"))
+    name = data.get('name')
+    gender = data.get('gender')
+    email = data.get('email')
+    fb_count = data.get('friends').get('summary').get('total_count')
+    friends = data.get('friends').get('data') # array of querydict
+
+    print(data)
+    print(name)
+    print(gender)
+    print(email)
+    print(picture)
+    print(type(picture))
+
+
 
     form = UserProfileForm(request.POST or None)
     if form.is_valid():
