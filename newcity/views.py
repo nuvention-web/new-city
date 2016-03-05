@@ -17,7 +17,6 @@ def home(request, initial_city=None):
 
     if form.is_valid():
 
-
         initial_city = request.GET.get('initial_city')
 
         if 'searching_for_home' in request.GET:
@@ -52,8 +51,17 @@ def user_profile_detail(request, user_profile_id= None):
 
 
 def create_user_profile(request):
+    print(request.user)
+    socialaccounts = request.user.socialaccount_set.all()
+    print(type(socialaccounts))
+    print(socialaccounts)
+
+    for account in socialaccounts:
+        print(type(account))
+        print(account)
+        print(account.get("first_name"))
+
     form = UserProfileForm(request.POST or None)
-    print("form",form)
     if form.is_valid():
         user_profile = form.save(commit=False)
         user_profile.save()

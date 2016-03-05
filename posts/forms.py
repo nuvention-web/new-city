@@ -41,10 +41,10 @@ SEX = (
 )
 
 #NOT USED CURRENTLY
-class FilterRoommateForm(forms.Form):
-    gender = forms.ChoiceField(widget=forms.RadioSelect(
-                                attrs={'id': 'filter-gender'}),
-                                choices=SEX)
+# class FilterRoommateForm(forms.Form):
+#     gender = forms.ChoiceField(widget=forms.RadioSelect(
+#                                 attrs={'id': 'filter-gender'}),
+#                                 choices=SEX)
 
     # def __init__(self, *args, **kwargs):
     #     super(FilterRoommateForm, self).__init__(*args, **kwargs)
@@ -70,9 +70,15 @@ class UserProfileForm(forms.ModelForm):
             "hometown",
             "city_to",
             "tags",
-            "picture",
+            # "picture",
             "birthday",
         ]
+    # create multiple choice fields for tags
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+
+        self.fields["tags"].widget = CheckboxSelectMultiple()
+        self.fields["tags"].queryset = Tag.objects.all()
 
 
 #Form Wizard

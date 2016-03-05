@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, FilterRoommateForm, CityForm
+from .forms import HouseForm, PostForm, CityForm
 from .models import Post, House, UserProfileTag, Tag, UserProfile, City, Address
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView

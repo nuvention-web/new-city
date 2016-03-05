@@ -1,0 +1,60 @@
+Searching 1076 files for "socialaccount"
+
+/Users/jinbang-mac/development/new-city/db.sqlite3:
+    <binary>
+
+/Users/jinbang-mac/development/new-city/newcity/settings.py:
+   44      'allauth',
+   45      'allauth.account',
+   46:     'allauth.socialaccount',
+   47:     'allauth.socialaccount.providers.facebook',
+   48      #Django form wizard
+   49      'formtools',
+   ..
+  123
+  124  # Oauth Configuration
+  125: SOCIALACCOUNT_AUTO_SIGNUP = True
+  126: SOCIALACCOUNT_EMAIL_REQUIRED = True
+  127: # SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
+  128
+  129  LOGIN_REDIRECT_URL = '/users/create_user_profile'
+  130
+  131
+  132: SOCIALACCOUNT_PROVIDERS = {
+  133      'facebook': {
+  134          'SCOPE': ['email','public_profile','user_friends'],
+
+98 matches across 2 files
+
+
+Searching 1076 files for "account_set"
+
+0 matches
+
+Searching 1076 files for "socialaccount"
+
+/Users/jinbang-mac/development/new-city/db.sqlite3:
+    <binary>
+
+/Users/jinbang-mac/development/new-city/newcity/settings.py:
+   44      'allauth',
+   45      'allauth.account',
+   46:     'allauth.socialaccount',
+   47:     'allauth.socialaccount.providers.facebook',
+   48      #Django form wizard
+   49      'formtools',
+   ..
+  123
+  124  # Oauth Configuration
+  125: SOCIALACCOUNT_AUTO_SIGNUP = True
+  126: SOCIALACCOUNT_EMAIL_REQUIRED = True
+  127: # SOCIALACCOUNT_FORMS = {'signup': 'posts.forms.SignupForm'}
+  128
+  129  LOGIN_REDIRECT_URL = '/users/create_user_profile'
+  130
+  131
+  132: SOCIALACCOUNT_PROVIDERS = {
+  133      'facebook': {
+  134          'SCOPE': ['email','public_profile','user_friends'],
+
+98 matches across 2 files
