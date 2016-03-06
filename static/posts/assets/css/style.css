@@ -924,6 +924,9 @@ Portfolio
 .work-image {
 	position: relative;
 	overflow: hidden;
+
+	/*modified*/
+	text-align:center;
 }
 
 .work-image img {
@@ -1595,4 +1598,12 @@ Multi-columns-row
 	.multi-columns-row .col-lg-2:nth-child(6n + 7) { clear: left; }
 	.multi-columns-row .col-lg-1:nth-child(12n + 13) { clear: left; }
 
+}
+
+/* -------------------------------------------------------------------
+modified
+------------------------------------------------------------------- */
+
+#div-relationship {
+	text-align: left;
 }

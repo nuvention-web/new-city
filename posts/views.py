@@ -77,22 +77,36 @@ def post_list(request, initial_city=None):
     if request.is_ajax():
         price_low = request.GET.get("price_low")
         price_high = request.GET.get("price_high")
-        gender = request.GET.get('gender')
+        gender_list = request.GET.getlist('gender[]')
         school = request.GET.get('school')
-        price_low = request.GET.get("budget_low")
-        price_high = request.GET.get("budget_high")
         relationship_status = request.GET.getlist("relationship_status[]")
         age_low = request.GET.get("age_low")
         age_high = request.GET.get("age_high")
         filter_selected = request.GET.getlist("filter_selected[]")
+        print(school)
 
         if price_low and price_high:
             house_list = house_list.filter(price__range = (price_low, price_high))
-            post_list = post_list.filter(house = house_list)
-        # if gender:
-        #     user_list = user_list.filter(gender = gender)
-        # if school:
-        #     user_list = user_list.filter(school = school)
+            post_list = post_list.filter(house__in = house_list)
+        if age_low and age_high:
+            user_list = user_list.filter(age__range = (age_low, age_high))
+            post_list = post_list.filter(user__in = user_list)
+        if gender_list:
+            for gender in gender_list:
+                user_list = user_list.filter(gender = gender)
+            post_list = post_list.filter(user__in = user_list)
+        if relationship_status:
+            for status in relationship_status:
+                user_list = user_list.filter(relationship_status = status)
+            post_list = post_list.filter(user__in = user_list)
+        if filter_selected:
+            for tag in filter_selected:
+                temp_tag = Tag.objects.filter(name = tag)
+                user_list = user_list.filter(tags = temp_tag)
+            post_list = post_list.filter(user__in = user_list)
+        if school:
+            user_list = user_list.filter(school = school)
+            post_list = post_list.filter(user__in = user_list)
         # if relationship_status:
         #     for status in relationship_status:
         #         user_list = user_list.filter(relationship_status = status)
@@ -119,6 +133,8 @@ def post_list(request, initial_city=None):
     # if request.is_ajax();
     #     price = request.GET.get('price')
 
+    print(post_list)
+
     context = {
         # "user" : user,
         "initial_city" : initial_city,
@@ -132,14 +148,15 @@ def post_list_roommate(request, initial_city=None):
     print(request.GET)
     roommate_list = UserProfile.objects.all()
     tag_list = Tag.objects.all()
-    form = FilterRoommateForm(request.GET or None)
+    # form not being used currently
+    # form = FilterRoommateForm(request.GET or None)
 
     if initial_city:
         city_instance = City.objects.get(name = initial_city)
         roommate_list = roommate_list.filter(city_to = city_instance)
 
     if request.is_ajax():
-        gender = request.GET.get('gender')
+        gender_list = request.GET.getlist('gender[]')
         hometown = request.GET.get('hometown')
         school = request.GET.get('school')
         job = request.GET.get('job')
@@ -149,9 +166,12 @@ def post_list_roommate(request, initial_city=None):
         age_low = request.GET.get("age_low")
         age_high = request.GET.get("age_high")
         filter_selected = request.GET.getlist("filter_selected[]")
+        print(gender_list)
 
-        if gender:
-            roommate_list = roommate_list.filter(gender = gender)
+        if gender_list:
+            for gender in gender_list:
+                print(gender)
+                roommate_list = roommate_list.filter(gender = gender)
         if hometown:
             city_instance = City.objects.get(name = hometown)
             roommate_list = roommate_list.filter(hometown = city_instance)
@@ -169,16 +189,14 @@ def post_list_roommate(request, initial_city=None):
         if filter_selected:
             for tag in filter_selected:
                 temp_tag = Tag.objects.filter(name = tag)
-                print(temp_tag)
                 roommate_list = roommate_list.filter(tags = temp_tag)
 
-        print(roommate_list)
 
     context = {
         "initial_city": initial_city,
         "tag_list": tag_list,
         "roommate_list": roommate_list,
-        "form": form,
+        # "form": form,
     }
     return render(request, 'post_list_roommate.html', context)
 
@@ -192,6 +210,7 @@ def post_delete(request):
 def login(request):
     context = {}
     return render(request, 'login.html', context)
+
 
 def create_user(request):
     if request.method == 'POST':
@@ -219,6 +238,7 @@ def create_user(request):
         )
 
 
+
 class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"
 
@@ -227,6 +247,8 @@ class QuestionnaireWizard(SessionWizardView):
 
         # return render_to_response('done.html', {'form_data':form_data})
         return redirect('/profile')
+
+
 
 def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]
