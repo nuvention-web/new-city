@@ -396,6 +396,10 @@ Overlays
 .bg-dark-30:before {
 	position: absolute;
 	background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+	/*background-image: url(assets/images/nycBackground.png)*/
 	content: " ";
 	height: 100%;
 	width: 100%;
@@ -405,7 +409,7 @@ Overlays
 
 .bg-dark-50:before {
 	position: absolute;
-	background: rgba(255, 255, 255, .5);
+	background: white;
 	content: " ";
 	height: 100%;
 	width: 100%;
