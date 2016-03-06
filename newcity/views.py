@@ -61,7 +61,7 @@ def my_profile_detail(request):
             "user_tags": user_tags,
             }
 
-    return render(request, "profile.html", context)
+    return render(request, "my_profile.html", context)
 
 
 
