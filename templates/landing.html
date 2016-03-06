@@ -48,9 +48,13 @@
 
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><a href="/accounts/login">Login</a></li>
-
-						<li><a href="contact.html">Contact</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="/accounts/logout">Logout</a></li>
+						<li><a href="/matches">My Matches</a>
+						<li><a href="/profile">My Profile</a>
+						{% else %}
+						<li><a href="/login">Login</a></li>
+						{% endif %}
 
 					</ul>
 				</div>
