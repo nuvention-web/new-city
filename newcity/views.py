@@ -63,8 +63,16 @@ def my_profile_detail(request):
 
     return render(request, "my_profile.html", context)
 
+def my_matches(request):
+    my_profile = get_object_or_404(UserProfile, pk= request.user.pk)
+    my_tags = UserProfileTag.objects.filter(user_profile= my_profile)
 
+    context = {
+            "user_profile": my_profile,
+            "user_tags": my_tags,
+            }
 
+    return render(request, "my_matches.html", context)
 
 
 def create_user_profile(request):
