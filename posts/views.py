@@ -223,6 +223,10 @@ def create_user(request):
             content_type="application/json"
         )
 
+def test_template(request):
+    context = {}
+    return render(request, 'test_template.html', context)
+
 
 class QuestionnaireWizard(SessionWizardView):
     template_name = "questionnaire.html"
@@ -232,6 +236,8 @@ class QuestionnaireWizard(SessionWizardView):
 
         # return render_to_response('done.html', {'form_data':form_data})
         return redirect('/profile')
+
+
 
 def process_form_data(self, form_list):
     form_data = [form.cleaned_data for form in form_list]
