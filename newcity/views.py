@@ -52,6 +52,21 @@ def user_profile_detail(request, user_profile_id= None):
     return render(request, "user_profile.html", context)
 
 
+def my_profile_detail(request):
+    user_profile = get_object_or_404(UserProfile, pk=request.user.pk)
+    user_tags = UserProfileTag.objects.filter(user_profile = user_profile)
+
+    context = {
+            "user_profile": user_profile,
+            "user_tags": user_tags,
+            }
+
+    return render(request, "profile.html", context)
+
+
+
+
+
 def create_user_profile(request):
     user = request.user
     social_accounts = user.socialaccount_set.all()

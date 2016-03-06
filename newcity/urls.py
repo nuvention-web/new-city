@@ -23,6 +23,7 @@ from .views import (
     home,
     user_profile_detail,
     create_user_profile,
+    my_profile_detail,
     test_template,
 )
 
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^posts/', include("posts.urls", namespace="posts")),
     url(r'^users/(?P<user_profile_id>\d+)$', user_profile_detail, name= "user_profile_detail"),
     url(r'^users/create_user_profile/', create_user_profile, name= "create_user_profile"),
+    url(r'^profile/', my_profile_detail, name="my_profile_detail"),
     url(r'^test/',test_template),
     url(r'^accounts/', include('allauth.urls')),
 ]
