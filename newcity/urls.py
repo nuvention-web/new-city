@@ -37,5 +37,7 @@ urlpatterns = [
     url(r'^profile', my_profile_detail, name="my_profile_detail"),
     url(r'^matches', my_matches, name="my_matches" ),
     url(r'^test/',test_template),
+    url(r'^login', TemplateView.as_view(template_name="login.html")),
+    url(r'^logout', TemplateView.as_view(template_name="logout.html")),
     url(r'^accounts/', include('allauth.urls')),
 ]
