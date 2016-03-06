@@ -79,16 +79,22 @@ def post_list(request, initial_city=None):
         price_high = request.GET.get("price_high")
         gender = request.GET.get('gender')
         school = request.GET.get('school')
-        price_low = request.GET.get("budget_low")
-        price_high = request.GET.get("budget_high")
         relationship_status = request.GET.getlist("relationship_status[]")
         age_low = request.GET.get("age_low")
         age_high = request.GET.get("age_high")
         filter_selected = request.GET.getlist("filter_selected[]")
 
+
         if price_low and price_high:
             house_list = house_list.filter(price__range = (price_low, price_high))
-            post_list = post_list.filter(house = house_list)
+            print(house_list)
+            post_list = post_list.filter(house__in = house_list)
+        if age_low and age_high:
+            user_list = user_list.filter(age__range = (age_low, age_high))
+            post_list = post_list.filter(user__in = user_list)
+        if gender:
+            user_list = user_list.filter(gender = gender)
+            post_list = post_list.filter(user__in = user_list)
         # if gender:
         #     user_list = user_list.filter(gender = gender)
         # if school:
@@ -118,6 +124,8 @@ def post_list(request, initial_city=None):
 
     # if request.is_ajax();
     #     price = request.GET.get('price')
+
+    print(post_list)
 
     context = {
         # "user" : user,

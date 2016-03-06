@@ -20,28 +20,24 @@
 
   <div>
   {% for post in post_list %}
-  Username: <a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></br>
-  User:{{ post.user.user }}</br>
-  Relationship Status: {{ post.user.relationship_status}}</br>
-  Gender: {{ post.user.gender }}</br>
-  School: {{ post.user.school }}</br>
-  Hometown: {{ post.user.hometown }} </br>
-  Budget: {{ post.user.budget }} </br>
-  Job: {{ post.user.job }} </br>
-  Age: {{ post.user.age }} </br>
-  Picture: {{ post.user.picture }}</br>
-  Title: {{ post.house.title }} </br>
-  Tags:
-  {% for tag in post.user.tags.all %}
-   {{tag.name}},
-  {% endfor %}
+  Title: {{ post.title }}</br>
+  Name: {{ post.user.username }}
   Content: {{ post.house.content }} </br>
   Street: {{ post.house.address.street }} </br>
   City: {{ post.house.address.city.name }} </br>
   Price: {{ post.house.price }} </br>
-  </br>
+  Relationship Status: {{ post.user.get_relationship_status_display}}</br>
+  Gender: {{ post.user.gender }}</br>
+  School: {{ post.user.school }}</br>
+  Hometown: {{ post.user.hometown }} </br>
+  Job: {{ post.user.job }} </br>
+  Age: {{ post.user.age }} </br>
+  Tags:
+  {% for tag in post.user.tags.all %}
+   {{tag.name}},
+  {% endfor %}
+  </br></br>
    {% endfor %}
-
   </div>
  </div>
 
@@ -63,8 +59,8 @@
   </form>
 
   <form method='GET' action="" id="filter-form">{% csrf_token %}
-        <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
-        <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+        <input type="checkbox" class = "gender-class" name="filter-gender" value="M" /> Male
+        <input type="checkbox" class = "gender-class" name="filter-gender" value="F" /> Female
     </br>
   </form>
 

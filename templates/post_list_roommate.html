@@ -231,7 +231,9 @@
             <h1 class="module-title font-alt align-center">Find your roommate</h1>
 
             <div class="module-subtitle font-inc align-center">
-              abcdefghi
+              {% if initial_city %}
+              {{ initial_city }}
+              {% endif %}
             </div>
 
           </div>
@@ -254,14 +256,31 @@
           <div class="col-sm-12">
 
             <ul id="filters" class="filter font-inc hidden-xs">
-              <li><!-- <a href="#" data-filter="*" class="current wow fadeInUp">All</a> -->
-
+              <li>
               <form method='GET' action="" id="filter-form">{% csrf_token %}
-                  <input type="radio" class = "gender-class" name="filter-gender" value="M" />Male
-                  <input type="radio" class = "gender-class" name="filter-gender" value="F" />Female
+                  <input type="checkbox" class = "gender-class" name="filter-gender" value="M" /> Male <br>
+                  <input type="checkbox" class = "gender-class" name="filter-gender" value="F" /> Female
               </br>
               </form>
               </li>
+
+              <li>
+              <div id="div-relationship">
+              <input type="checkbox" class="filter-relationship" value="S"> Single<br>
+              <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
+              <input type="checkbox" class="filter-relationship" value="M"> Married<br>
+              <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
+              </div>
+              </li>
+              <li>
+
+              <li>
+              <form method='GET' action="" id="filter-school-form">{% csrf_token %}
+                School: <input type="text" id="text-school">
+                <input id = "input-school" type="submit" value="Search School"><br>
+              </form>
+              </li>
+
               <li>
                 <p>
                   <label for="amount">Monthly budget:</label>
@@ -276,22 +295,11 @@
               </p>
               <div id="age-range"></div>
               </li>
-              <li>
-              <form method='GET' action="" id="filter-school-form">{% csrf_token %}
-                School: <input type="text" id="text-school">
-                <input id = "input-school" type="submit" value="Search School"><br>
-              </form>
-              </li>
-              <li>
-              <div id="div-relationship">
-              <input type="checkbox" class="filter-relationship" value="S"> Single<br>
-              <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
-              <input type="checkbox" class="filter-relationship" value="M"> Married<br>
-              <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
-              </div>
-              </li>
-              <li>
+
+
+
                 <div id="div-tag">
+                <br>
                 {% for tag in tag_list %}
                 <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
                 {% endfor %}
@@ -345,85 +353,7 @@
           </div>
 
           <!-- PORTFOLIO ITEM -->
-          <li class="work-item illustration webdesign">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <!-- <img src="{% static 'assets/images/work-1.jpg' %}" alt=""> -->
-                <h3 class="work-title font-alt">adspofkap</h3>
-                <div class="work-descr font-inc">
-                  Illustration
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- /PORTFOLIO ITEM -->
-
-          <!-- PORTFOLIO ITEM -->
-          <li class="work-item marketing photography">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <img src="{% static 'assets/images/work-2.jpg' %}" alt="">
-              </div>
-              <div class="work-caption">
-                <h3 class="work-title font-alt">Bag MockUp</h3>
-                <div class="work-descr font-inc">
-                  Marketing
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- /PORTFOLIO ITEM -->
-
-          <!-- PORTFOLIO ITEM -->
-          <li class="work-item illustration photography">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <img src="{% static 'assets/images/work-3.jpg' %}" alt="">
-              </div>
-              <div class="work-caption">
-                <h3 class="work-title font-alt">Disk Cover</h3>
-                <div class="work-descr font-inc">
-                  Illustration
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- /PORTFOLIO ITEM -->
-
-          <!-- PORTFOLIO ITEM -->
-          <li class="work-item marketing photography">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <img src="{% static 'assets/images/work-4.jpg' %}" alt="">
-              </div>
-              <div class="work-caption">
-                <h3 class="work-title font-alt">Business Card</h3>
-                <div class="work-descr font-inc">
-                  Photography
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- /PORTFOLIO ITEM -->
-
-          <!-- PORTFOLIO ITEM -->
-          <li class="work-item illustration webdesign">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <img src="{% static 'assets/images/work-5.jpg' %}" alt="">
-              </div>
-              <div class="work-caption">
-                <h3 class="work-title font-alt">Business Cards</h3>
-                <div class="work-descr font-inc">
-                  Webdesign
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- /PORTFOLIO ITEM -->
-
-          <!-- PORTFOLIO ITEM -->
-          <li class="work-item marketing webdesign">
+<!--           <li class="work-item marketing webdesign">
             <a href="portfolio-single-1.html">
               <div class="work-image">
                 <img src="{% static 'assets/images/work-6.jpg' %}" alt="">
@@ -435,8 +365,8 @@
                 </div>
               </div>
             </a>
-          </li>
-          <!-- /PORTFOLIO ITEM --> -->
+          </li> -->
+          <!-- /PORTFOLIO ITEM -->
         </ul>
         <!-- /PORTFOLIO LIST -->
 
