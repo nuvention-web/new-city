@@ -55,6 +55,8 @@ def user_profile_detail(request, user_profile_id= None):
 def create_user_profile(request):
     user = request.user
     social_accounts = user.socialaccount_set.all()
+    print(user.socialaccount_set)
+    print(social_accounts)
     account = social_accounts[0]
 
     picture = account.get_avatar_url()
