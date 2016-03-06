@@ -257,11 +257,10 @@
 
             <ul id="filters" class="filter font-inc hidden-xs">
               <li>
-              <form method='GET' action="" id="filter-form">{% csrf_token %}
+              <div id="div-gender">
                   <input type="checkbox" class = "gender-class" name="filter-gender" value="M" /> Male <br>
                   <input type="checkbox" class = "gender-class" name="filter-gender" value="F" /> Female
-              </br>
-              </form>
+              </div>
               </li>
 
               <li>
@@ -272,7 +271,6 @@
               <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
               </div>
               </li>
-              <li>
 
               <li>
               <form method='GET' action="" id="filter-school-form">{% csrf_token %}
@@ -288,6 +286,7 @@
                 </p>
                 <div id="budget-range"></div>
               </li>
+
               <li>
               <p>
                 <label for="amount">Age range:</label>
@@ -297,7 +296,7 @@
               </li>
 
 
-
+              <li>
                 <div id="div-tag">
                 <br>
                 {% for tag in tag_list %}
@@ -353,7 +352,7 @@
           </div>
 
           <!-- PORTFOLIO ITEM -->
-<!--           <li class="work-item marketing webdesign">
+          <li class="work-item marketing webdesign">
             <a href="portfolio-single-1.html">
               <div class="work-image">
                 <img src="{% static 'assets/images/work-6.jpg' %}" alt="">
@@ -365,7 +364,7 @@
                 </div>
               </div>
             </a>
-          </li> -->
+          </li>
           <!-- /PORTFOLIO ITEM -->
         </ul>
         <!-- /PORTFOLIO LIST -->
@@ -575,8 +574,12 @@
     console.log("filter_roommate is working!") // sanity check
     var budget = $("#budget-range").slider( "option", "values" )
     var age = $("#age-range").slider("option", "values")
+    var gender_selected = []
     var relationship_selected = [];
     var filter_selected = [];
+    $('#div-gender input:checked').each(function() {
+      gender_selected.push($(this).val());
+    });
     $('#div-relationship input:checked').each(function() {
       relationship_selected.push($(this).val());
     });
@@ -590,7 +593,7 @@
         //"/posts/list_roommate/San%20Francisco"
         type : "GET", // http method
         // data : { gender : $('#filter-gender').val()
-        data : { gender : $("input:radio[name=filter-gender]:checked").val(),
+        data : { gender : gender_selected,
                hometown: $("#text-hometown").val(),
                school: $("#text-school").val(),
                job: $("#text-job").val(),
