@@ -43,13 +43,49 @@ def home(request, initial_city=None):
 def user_profile_detail(request, user_profile_id= None):
     user_profile = get_object_or_404(UserProfile, pk=user_profile_id)
     user_tags = UserProfileTag.objects.filter(user_profile = user_profile)
+    user = user_profile.user
+    first_name = user.first_name
+    last_name = user.last_name
+    initial = last_name[0]
+
 
     context = {
             "user_profile": user_profile,
             "user_tags": user_tags,
+            "first_name": first_name,
+            "initial": initial,
             }
 
     return render(request, "user_profile.html", context)
+
+
+def my_profile_detail(request):
+    my_profile = get_object_or_404(UserProfile, pk= request.user.pk)
+    my_tags = UserProfileTag.objects.filter(user_profile = my_profile)
+    user = my_profile.user
+    first_name = user.first_name
+    last_name = user.last_name
+    initial = last_name[0]
+
+    context = {
+            "user_profile": my_profile,
+            "user_tags": my_tags,
+            "first_name": first_name,
+            "initial": initial,
+            }
+
+    return render(request, "my_profile.html", context)
+
+def my_matches(request):
+    my_profile = get_object_or_404(UserProfile, pk= request.user.pk)
+    my_tags = UserProfileTag.objects.filter(user_profile= my_profile)
+
+    context = {
+            "user_profile": my_profile,
+            "user_tags": my_tags,
+            }
+
+    return render(request, "my_matches.html", context)
 
 
 def create_user_profile(request):
@@ -74,19 +110,18 @@ def create_user_profile(request):
 
     form = UserProfileForm(request.POST or None)
     if form.is_valid():
-        user_profile = form.save(commit=False)
-        user_profile.gender = gender
-        user_profile.user = user
-        user_profile.picture = picture
-        user_profile.save()
+        my_profile = form.save(commit=False)
+        my_profile.gender = gender
+        my_profile.user = user
+        my_profile.picture = picture
+        my_profile.save()
 
         for tag in tag_list:
             tag_instance = Tag.objects.get(id=int(tag))
-            new_usertag = UserProfileTag(user_profile = user_profile, tag=tag_instance)
+            new_usertag = UserProfileTag(user_profile = my_profile, tag=tag_instance)
             new_usertag.save()
 
-        return HttpResponseRedirect(reverse('user_profile_detail',
-                                    kwargs={'user_profile_id': user_profile.pk}))
+        return HttpResponseRedirect(reverse('my_profile_detail'))
     context = {
         "form": form,
     }

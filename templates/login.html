@@ -1,3 +1,6 @@
+{% load staticfiles %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,24 +9,24 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Semantic - Minimal portfolio template</title>
+  <title>Facebook Login</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Plugins -->
-  <link href="assets/css/simpletextrotator.css" rel="stylesheet">
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/css/et-line-font.css" rel="stylesheet">
-  <link href="assets/css/magnific-popup.css" rel="stylesheet">
-  <link href="assets/css/flexslider.css" rel="stylesheet">
-  <link href="assets/css/animate.css" rel="stylesheet">
+  <link href="{% static 'assets/css/simpletextrotator.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/et-line-font.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/flexslider.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
 
   <!-- Template core CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
   <!-- Custom css -->
-  <link href="assets/css/custom.css" rel="stylesheet">
+  <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
 </head>
 <body>
 
@@ -39,17 +42,17 @@
       <div class="container">
 
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">Apt 5A</a>
+          <a class="navbar-brand" href="/">Apt 5A</a>
         </div>
 
         <div class="collapse navbar-collapse" id="custom-collapse">
 
           <ul class="nav navbar-nav navbar-right">
-
-            <li><a href="login.html">Login</a></li>
-
-            <li><a href="contact.html">Contact</a></li>
-
+            {% if user.is_authenticated %}
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/matches">My Matches</a>
+            <li><a href="/profile">My Profile</a>
+            {% endif %}
           </ul>
         </div>
 
@@ -61,12 +64,9 @@
 
     <div class="hs-caption container">
       <div class="caption-content">
-        <div class="hs-title-size-4 font-alt m-b-30">
-          Log In
-        </div>
         <div class="hs-title-size-1 font-inc">
             <div class="facebook">
-              <a href="#"><img src="facebook_login.png" id="icon"></a><br><br>
+              <div>{% include "socialaccount/snippets/provider_list.html" with process="login" %}<div><br><br>
               <!-- goes to questionnaire -->
             </div>
             <form action="#" class="loginForm"> <!--reciever of information-->
@@ -113,23 +113,23 @@
   </div>
 
   <!-- Javascript files -->
-  <script src="assets/js/jquery-2.1.3.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="assets/js/appear.js"></script>
-  <script src="assets/js/jquery.simple-text-rotator.min.js"></script>
-  <script src="assets/js/jqBootstrapValidation.js"></script>
-  <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script src="assets/js/gmaps.js"></script>
-  <script src="assets/js/isotope.pkgd.min.js"></script>
-  <script src="assets/js/imagesloaded.pkgd.js"></script>
-  <script src="assets/js/jquery.flexslider-min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/jquery.fitvids.js"></script>
-  <script src="assets/js/smoothscroll.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/contact.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="{% static 'assets/js/jquery-2.1.3.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.mb.YTPlayer.min.js' %}"></script>
+  <script src="{% static 'assets/js/appear.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.simple-text-rotator.min.js' %}"></script>
+  <script src="{% static 'assets/js/jqBootstrapValidation.js' %}"></script>
+  <script src="http://maps.google.com/maps/api/js?sensor=true' %}"></script>
+  <script src="{% static 'assets/js/gmaps.js' %}"></script>
+  <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/js/imagesloaded.pkgd.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.flexslider-min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.fitvids.js' %}"></script>
+  <script src="{% static 'assets/js/smoothscroll.js' %}"></script>
+  <script src="{% static 'assets/js/wow.min.js' %}"></script>
+  <script src="{% static 'assets/js/contact.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
 
 </body>
 </html>
