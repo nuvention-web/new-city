@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
-from .forms import HouseForm, PostForm, CityForm
-from .models import Post, House, UserProfileTag, Tag, UserProfile, City, Address
+from .forms import HouseForm, PostForm, CityForm, UploadImageForm
+from .models import Post, House, UserProfileTag, Tag, UserProfile, City, Address, Image
 import json
 #from django.contrib.formtools.wizard.views import SessionWizardView
 from formtools.wizard.views import SessionWizardView
+from django.template import RequestContext
 
 # Create your views here.
 def home(request):
@@ -27,6 +28,24 @@ def post_create_house(request):
         "form": form,
     }
     return render(request, "create_house.html", context)
+
+def upload_house_image(request):
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_image = Image(image_file = request.FILE['image_file'])
+            new_image.save()
+
+            return HttpResponseRedirect(reverse('posts:list'))
+
+    images = Image.objects.all()
+
+    context = {
+            "form" : form,
+            "images" : images,
+    }
+
+    return render(request, "upload_image.html", context, context_instance=RequestContext(request))
 
 def post_create_post(request, house_id=None):
     house_instance = get_object_or_404(House, id=house_id)
@@ -253,5 +272,4 @@ def process_form_data(self, form_list):
     new_user_profile = UserProfile.objects.get_or_create(user=self.request.user, school = school, hometown = hometown_instance, job = job)
 
     return form_data
-
 

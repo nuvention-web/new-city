@@ -13,6 +13,7 @@ from .views import (
   login,
   create_user,
   post_list_roommate,
+  upload_house_image,
 )
 
 
@@ -30,5 +31,6 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
+    url(r'^upload_house_image/$', upload_house_image, name="upload_house_image"),
 ]
 

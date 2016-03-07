@@ -16,14 +16,16 @@ Including another URLconf
 # from django.conf.urls import patterns, include, url
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 
 from .views import (
     home,
     user_profile_detail,
     create_user_profile,
-    test_template,
+    # test_template,
 )
 
 urlpatterns = [
@@ -32,6 +34,6 @@ urlpatterns = [
     url(r'^posts/', include("posts.urls", namespace="posts")),
     url(r'^users/(?P<user_profile_id>\d+)$', user_profile_detail, name= "user_profile_detail"),
     url(r'^users/create_user_profile/', create_user_profile, name= "create_user_profile"),
-    url(r'^test/',test_template)
-    url(r'^accounts/', include('allauth.urls')),
-]
+    # url(r'^test/',test_template)
+    # url(r'^accounts/', include('allauth.urls')),
+] + static(settings.MEDIA_URL, image_root=settings.MEDIA_ROOT)

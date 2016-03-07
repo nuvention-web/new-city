@@ -155,9 +155,5 @@ class HouseImage(models.Model):
     image = models.ForeignKey('Image')
 
 class Image(models.Model):
-    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
-
-
-
-
-
+    image_file = models.FileField(upload_to='media/')
+    # image = models.ImageField(upload_to='/media/', height_field=None, width_field=None, max_length=100, default='some/no-image.jpg')

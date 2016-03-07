@@ -93,3 +93,9 @@ class CityForm(forms.Form):
     initial_city = forms.CharField(max_length=50)
 
 # class SignupForm(forms.Form):
+
+class UploadImageForm(forms.Form):
+    image_file = forms.FileField(
+			label = 'Select an image file', 
+			help_text = 'max 42 MB', 
+	)

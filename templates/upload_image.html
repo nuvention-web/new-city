@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}Upload House Image{% endblock head_title %}</title>
+  </head>
+
+  <body>
+    <div class='container'>
+      <h1>Upload House Image</h1>
+      <form method='POST' action="{% url 'posts:upload_house_image' %}" enctype="multipart/form-data">{% csrf_token %}
+						<p>{{ form.non_field_errors }}</p>
+            <p>{{ form.image.label_tag }} {{ form.image.help_text }}</p>
+            <p>
+                {{ form.image.errors }}
+                {{ form.image }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+      </form>
+    </div>
+  </body>
+</html>
