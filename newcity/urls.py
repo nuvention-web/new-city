@@ -19,13 +19,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-# from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 
 from .views import (
     home,
     user_profile_detail,
     create_user_profile,
-    # test_template,
+    my_profile_detail,
+    my_matches,
+    test_template,
 )
 
 urlpatterns = [
@@ -36,4 +38,10 @@ urlpatterns = [
     url(r'^users/create_user_profile/', create_user_profile, name= "create_user_profile"),
     # url(r'^test/',test_template)
     # url(r'^accounts/', include('allauth.urls')),
+    url(r'^profile', my_profile_detail, name="my_profile_detail"),
+    url(r'^matches', my_matches, name="my_matches" ),
+    url(r'^test/',test_template),
+    url(r'^login', TemplateView.as_view(template_name="login.html")),
+    url(r'^logout', TemplateView.as_view(template_name="logout.html")),
+    url(r'^accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, image_root=settings.MEDIA_ROOT)

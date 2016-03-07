@@ -65,10 +65,9 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = [
             "school",
-            "hometown",
-            "city_to",
-            "tags",
             "age",
+            "job",
+            "tags",
             # "picture",
         ]
     # create multiple choice fields for tags

@@ -14,6 +14,7 @@ from .views import (
   create_user,
   post_list_roommate,
   upload_house_image,
+  match_results,
 )
 
 
@@ -28,9 +29,9 @@ urlpatterns = [
     url(r'^create_house/$', post_create_house, name='create_house'),
     url(r'^create_post/(?P<house_id>\d+)$', post_create_post, name='create_post'),
     url(r'^(?P<post_id>\d+)/$', post_detail, name="detail"),
-    url(r'^login/$', login, name="login"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
     url(r'^upload_house_image/$', upload_house_image, name="upload_house_image"),
+    url(r'^match_results/$', match_results)
 ]
 
