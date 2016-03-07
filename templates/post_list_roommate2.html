@@ -1,3 +1,28 @@
+ <div class="work-image">
+                <img src="{% static 'assets/images/work-1.jpg' %}" alt="">
+                <img src="{% static 'assets/images/stick-figure1.jpg' %}" alt="Smiley face">
+                <h4 class="work-title font-alt">{{ roommate.user.username }}</h4>
+                <div class="work-descr font-inc">
+                  Gender: {{ roommate.gender }}</br>
+                  School: {{ roommate.school }}</br>
+                  Age: {{ roommate.birthday }}
+                  Hometown: {{ roommate.hometown }}</br>
+                  Job: {{ roommate.job }}</br>
+                  Budget: {{ roommate.budget }}</br>
+                  Age: {{ roommate.age }}</br>
+
+              </div>
+
+<div class="module-subtitle font-inc align-center">
+              {% if initial_city %}
+              {{ initial_city }}
+              {% endif %}
+            </div>
+
+
+
+
+
 <!doctype html>
 <html>
     <head>

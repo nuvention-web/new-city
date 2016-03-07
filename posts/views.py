@@ -237,6 +237,18 @@ def create_user(request):
             content_type="application/json"
         )
 
+def match_results(request):
+    roommate_list = UserProfile.objects.all()
+    tag_list = Tag.objects.all()
+
+    context = {
+        "tag_list": tag_list,
+        "roommate_list": roommate_list,
+        # "form": form,
+    }
+    return render(request, 'post_match_results.html', context)
+
+
 
 
 class QuestionnaireWizard(SessionWizardView):

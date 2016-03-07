@@ -228,13 +228,7 @@
 
           <div class="col-sm-6 col-sm-offset-3">
 
-            <h1 class="module-title font-alt align-center">Find your roommate</h1>
-
-            <div class="module-subtitle font-inc align-center">
-              {% if initial_city %}
-              {{ initial_city }}
-              {% endif %}
-            </div>
+            <h1 class="module-title font-alt align-center">My Matches</h1>
 
           </div>
 
@@ -251,73 +245,12 @@
 
       <div class="container">
 
- <!-- PORTFOLIO FILTER -->
-        <div class="row">
-          <div class="col-sm-12">
-
-            <ul id="filters" class="filter font-inc hidden-xs">
-              <li>
-              <div id="div-gender">
-                  <input type="checkbox" class = "gender-class" name="filter-gender" value="M" /> Male <br>
-                  <input type="checkbox" class = "gender-class" name="filter-gender" value="F" /> Female
-              </div>
-              </li>
-
-<!--               <li>
-              <form method='GET' action="" id="filter-school-form">{% csrf_token %}
-                School: <input type="text" id="text-school">
-                <input id = "input-school" type="submit" value="Search School"><br>
-              </form>
-              </li> -->
-
-              <li>
-                <p>
-                  <label for="amount">Monthly budget:</label>
-                  <input type="text" id="amount-budget" readonly>
-                </p>
-                <div id="budget-range"></div>
-              </li>
-
-              <li>
-              <p>
-                <label for="amount">Age range:</label>
-                <input type="text" id="text-age" readonly>
-              </p>
-              <div id="age-range"></div>
-              </li>
-
-
-              <li>
-                <div id="div-tag">
-                <br>
-                {% for tag in tag_list %}
-
-                <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
-
-                {% endfor %}
-                </div>
-              </li>
-              <li>
-                <form method='GET' action="" id="reset-form">{% csrf_token %}
-                <input id = "reset" type="submit" value="Reset">
-              </form>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-        <!-- /PORTFOLIO FILTER -->
-
         <!-- PORTFOLIO LIST -->
         <ul id="works-grid" class="works-grid works-grid-gut works-grid-2 works-hover-w">
 
         <div id="output" class="output">
 
-        {% for roommate in roommate_list %}
-
         <li class="work-item illustration webdesign">
-
-        <a href="portfolio-single-1.html">
 
         <div class="container">
 
@@ -325,11 +258,15 @@
 
           <div class="col-sm-8 col-sm-offset-2">
 
+
+            <a href="portfolio-single-1.html">
+
             <!-- CONTENT BOXES -->
 
             <hr class="divider-w m-t-10 m-b-20">
 
             <div class="row multi-columns-row">
+
 
               <!-- CONTENT BOX -->
               <div class="col-sm-6 col-md-4 col-lg-4">
@@ -343,34 +280,142 @@
               <!-- /CONTENT BOX -->
 
               <!-- CONTENT BOX -->
-              <div class="col-sm-6 col-md-8 col-lg-8">
+              <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="content-box">
                   <div class="content-box-title font-inc font-uppercase">
-                    {{ roommate.user.username }}
+                    Andrew
                   </div>
-                  <div class="content-box-text">
-                  {{ roommate.get_gender_display }}</br>
-                  {{ roommate.age }}</br>
-                  {{ roommate.school }}</br>
-                  {{ roommate.job }}</br>
-                  {{ roommate.get_tags}}<br>
+                  <div class="content-box-text" style="text-align: left;">
+                    &#10004; Northwestern University <br>
+                    &#10004; 4 Mutual Friends <br>
+                    &#10004; Quiet, Clean, Non-Smoker <br>
                   </div>
                 </div>
               </div>
               <!-- /CONTENT BOX -->
 
-            </div>
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <div class="content-box-title font-inc font-uppercase" style="font-size:120%; font-family: Comic Sans MS, cursive, sans-serif;">
+                    93%
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              </div>
             <!-- /CONTENT BOXES -->
+            </a>
 
-          </div>
+          <a href="portfolio-single-1.html">
 
+            <!-- CONTENT BOXES -->
+
+            <hr class="divider-w m-t-10 m-b-20">
+
+            <div class="row multi-columns-row">
+
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <!-- <span class="icon-camera"></span> -->
+                    <img src="{% static 'assets/images/stick-figure1.jpg' %}" alt="Smiley face">
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-title font-inc font-uppercase">
+                    Chris
+                  </div>
+                  <div class="content-box-text" style="text-align: left;">
+                    &#10004; From Miami, FL <br>
+                    &#10004; 2 Mutual Friends <br>
+                    &#10004; Quiet, Night-Owl, Non-Smoker <br>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <div class="content-box-title font-inc font-uppercase" style="font-size:120%; font-family: Comic Sans MS, cursive, sans-serif;">
+                    89%
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              </div>
+            <!-- /CONTENT BOXES -->
+            </a>
+
+            <a href="portfolio-single-1.html">
+
+            <!-- CONTENT BOXES -->
+
+            <hr class="divider-w m-t-10 m-b-20">
+
+            <div class="row multi-columns-row">
+
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <!-- <span class="icon-camera"></span> -->
+                    <img src="{% static 'assets/images/stick-figure1.jpg' %}" alt="Smiley face">
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-title font-inc font-uppercase">
+                    Andrew
+                  </div>
+                  <div class="content-box-text" style="text-align: left;">
+                    &#10004; Student <br>
+                    &#10004; 2 Mutual Friends <br>
+                    &#10004; Night-Owl, Organized <br>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <div class="content-box-title font-inc font-uppercase" style="font-size:120%; font-family: Comic Sans MS, cursive, sans-serif;">
+                    84%
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              </div>
+            <!-- /CONTENT BOXES -->
+            </a>
         </div>
 
       </div>
-      </a>
       </li>
 
-        {% endfor %}
 
           </div>
 

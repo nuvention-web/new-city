@@ -13,6 +13,7 @@ from .views import (
   login,
   create_user,
   post_list_roommate,
+  match_results,
 )
 
 
@@ -30,5 +31,6 @@ urlpatterns = [
     url(r'^login/$', login, name="login"),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
+    url(r'^match_results/$', match_results)
 ]
 

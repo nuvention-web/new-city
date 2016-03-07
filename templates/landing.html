@@ -73,8 +73,28 @@
     			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     				<a href="ApartmentListing.html" class="button">I don't have an apartment</a>
 				</div>
-
-
+				</br>
+				</br>
+				<div class="dropdown">
+          <button class="btn" type="button" data-toggle="dropdown" style="
+          float:right;
+    			position:relative;
+			    left:-45%;
+			    text-align:left;">Select City
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu"
+							style="
+							list-style:none;
+					    position:relative;
+					    left:30%;">
+              {% for city in city_list %}
+              <li
+              style="
+              /*float:left;*/
+              position:relative;"><a>{{ city.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
 			</div>
 		</div>
 
@@ -178,6 +198,15 @@
 	<script src="{% static 'assets/js/wow.min.js' %}"></script>
 	<script src="{% static 'assets/js/contact.js' %}"></script>
 	<script src="{% static 'assets/js/custom.js' %}"></script>
+
+	<script>
+    $(function(){
+      $(".dropdown-menu li a").click(function(){
+        $(".btn:first-child").text($(this).text());
+        $("#initial_city").val($(this).text());
+      });
+    });
+    </script>
 
 </body>
 </html>
