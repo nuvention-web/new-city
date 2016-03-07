@@ -31,15 +31,38 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-
   <!-- javascript file -->
    <script>
     $(document).ready(function(){
-
+      $('.btn-city').popover({title: "<h4>City</h4>",
+                        content: "<div id='city-sf'>San Francisco</div><div id='city-ny'>New York</div><div id='city-ch'>Chicago</div><div id='city-ev'>Evanston</div>",
+                        html: true,
+                        placement: "bottom"});
+      $('.btn-period').popover({title: "<h4>Period</h4>",
+                        content: "<div id='period-week'>1 Week</div><div id='period-month'>1 Month</div><div id='period-3-month'>3 Months</div><div id='period-6-months'>6 months</div>",
+                        html: true,
+                        placement: "bottom"});
+      $('.btn-budget').popover({title: "<h4>Budget</h4>",
+                        content: "<div id='budget-under-1000'>< $ 1000</div><div id='budget-under-2000'>< $ 2000</div><div id='budget-under-3000'>< $ 3000</div><div id='budget-under-4000'>< $ 4000</div>",
+                        html: true,
+                        placement: "bottom"});
     });
+
+
   </script>
 
   <style>
+  .btn.outline {
+    background: none;
+    padding: 12px 22px;
+    font-weight: bold;
+  }
+
+  .btn-primary.outline {
+    border: 2px solid #0099cc;
+    color: #0099cc;
+  }
+
 
   </style>
 
@@ -82,12 +105,12 @@
           <div class="col-sm-8 col-sm-offset-2">
             <h1 class="module-title font-alt align-center">
               Hi, I'm
-              <button>{{ first_name }}
-              {{ initial }}.</button>
+              <u>{{ first_name }}
+              {{ initial }}.</u>
             </h1>
             <h3 class= "font-alt align-center">
-              I'm moving to <u>New York</u> in <u><span id="period">3 months</span></u>
-              and my monthly budget is <u><span id="budget">$ 2000</span></u>
+              I'm moving to <button class= "btn-city">New York</button> in <button class="btn-period">3 months</button>
+              and my monthly budget is <button class="btn-budget">$ 2000</button>
             </h3><br>
 
             <div class="profile">
@@ -216,17 +239,17 @@
             <hr class="divider-w m-t-10 m-b-20">
             <div class="row multi-columns-row">
               <!-- CONTENT BOX -->
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="content-box">
-                  <div class="content-box-icon">
-                    <img src="{% static 'Coffee Cup.png' %}">Coffee Addict
-                    <img src="{% static 'Globe.png' %}">Explorer
-                    <img src="{% static 'Headphones.png' %}">Musician
-                    <img src="{% static 'Wrench.png' %}">MacGyver
-                    <img src="{% static 'Shopping Cart.png' %}">Shopaholic
-                  </div>
-                </div>
-              </div>
+                    <button type="button" class="btn btn-primary btn-lg outline">Outline</button>
+                    <button type="button" class="btn btn-primary btn-lg outline">Outline</button>
+                    <button type="button" class="btn btn-primary btn-lg outline">Outline</button>
+                    <button type="button" class="btn btn-primary btn-lg outline">Outline</button>
+                    <button type="button" class="btn btn-primary btn-lg outline">Outline</button><br>
+
+                    <img src="{% static 'Coffee Cup.png' %}">
+                    <img src="{% static 'Globe.png' %}">
+                    <img src="{% static 'Headphones.png' %}">
+                    <img src="{% static 'Wrench.png' %}">
+                    <img src="{% static 'Shopping Cart.png' %}">
               <!-- /CONTENT BOX -->
             </div>
             <!-- /CONTENT BOXES -->
@@ -245,7 +268,6 @@
                 <div class="content-box">
                   <div class="content-box-icon">
                     <img src="{% static 'Contacts.png' %}">
-                    <div>Click to send email</div>
                   </div>
                 </div>
               </div>
