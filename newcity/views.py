@@ -43,10 +43,17 @@ def home(request, initial_city=None):
 def user_profile_detail(request, user_profile_id= None):
     user_profile = get_object_or_404(UserProfile, pk=user_profile_id)
     user_tags = UserProfileTag.objects.filter(user_profile = user_profile)
+    user = user_profile.user
+    first_name = user.first_name
+    last_name = user.last_name
+    initial = last_name[0]
+
 
     context = {
             "user_profile": user_profile,
             "user_tags": user_tags,
+            "first_name": first_name,
+            "initial": initial,
             }
 
     return render(request, "user_profile.html", context)

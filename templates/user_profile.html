@@ -26,14 +26,25 @@
 
   <!-- Custom css -->
   <link href= "{% static "assets/css/custom.css" %}" rel="stylesheet">
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+  <!-- javascript file -->
+   <script>
+    $(document).ready(function(){
+
+    });
+  </script>
+
+  <style>
+
+  </style>
+
 </head>
 <body>
-
-  <!-- PRELOADER -->
-  <div class="page-loader">
-    <div class="loader">Loading...</div>
-  </div>
-  <!-- /PRELOADER -->
 
   <!-- NAVIGATION -->
   <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top" role="navigation">
@@ -45,15 +56,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">APT 5A</a>
+          <a class="navbar-brand" href="/">APT 5A</a>
         </div>
 
         <div class="collapse navbar-collapse" id="custom-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
+            <li><a href="/matches">My matches</a></li>
             <li><a href="/posts/list_roommate">Find a Roommate</a></li>
             <li><a href="/posts/list">Find a House</a></li>
-            <li><a href="/users/">My Profile </a></li>
+            <li><a href="/profile">My Profile </a></li>
           </ul>
         </div>
       </div>
@@ -65,33 +76,34 @@
 
     <!-- HOME -->
     <section class="module module-header bg-dark bg-dark-50" data-background="/assets/images/section-7.jpg">
-
       <div class="container">
-
         <!-- MODULE TITLE -->
         <div class="row">
-
           <div class="col-sm-8 col-sm-offset-2">
             <h1 class="module-title font-alt align-center">
-              {{user_profile.user.first_name }}
-              {{user_profile.user.last_name }}
+              Hi, I'm
+              <button>{{ first_name }}
+              {{ initial }}.</button>
             </h1>
-            <h4>
-              is your friend <span class="icon-facebook"></span><br>
-              is also in Evanston <span class="icon-map-pin"></span><br>
-              went to same school - Northwestern University <span class="icon-pencil"></span><br>
+            <h3 class= "font-alt align-center">
+              I'm moving to <u>New York</u> in <u><span id="period">3 months</span></u>
+              and my monthly budget is <u><span id="budget">$ 2000</span></u>
+            </h3><br>
 
-            </h4>
-
-            <img src= "{{user_profile.picture}}" height= "300px" width="300px">
-          </div>
+            <div class="profile">
+              <span class="align-left">
+                <img src= "{{user_profile.picture}}" height="300px" width="300px" style="border-radius:50px;">
+              </span>
+            </div>
         </div>
         <!-- /MODULE TITLE -->
-
       </div>
 
     </section >
     <!-- /HOME -->
+    <div class="profile-image">
+
+    </div>
 
     <!-- COMPONENTS -->
     <section class="module">
@@ -100,15 +112,13 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <!-- CONTENT BOXES -->
-            <h4 class="font-alt m-t-0 m-b-0">About me</h4>
+            <h1 class="font-alt m-t-0 m-b-0">About me</h1>
             <hr class="divider-w m-t-10 m-b-20">
             <div class="row multi-columns-row">
               <!-- CONTENT BOX -->
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="content-box">
-                  <div class="content-box-icon">
-                    <span class="icon-laptop"></span>
-                  </div>
+                  <img src="{% static 'Desktop.png' %}">
                   <div class="content-box-title font-inc font-uppercase">
                     I am ...
                   </div><br>
@@ -126,9 +136,7 @@
               <!-- CONTENT BOX -->
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="content-box">
-                  <div class="content-box-icon">
-                    <span class="icon-profile-male"></span>
-                  </div>
+                  <img src="{% static 'Happy-Face.png' %}">
                   <div class="content-box-title font-inc font-uppercase">
                     I appreciate when my roommate ...
                   </div>
@@ -142,25 +150,7 @@
               <!-- CONTENT BOX -->
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="content-box">
-                  <div class="content-box-icon">
-                    <span class="icon-happy"></span>
-                  </div>
-                  <div class="content-box-title font-inc font-uppercase">
-                    I like ...
-                  </div>
-                  <div class="content-box-text">
-                    skiing, traveling, casual drinking
-                  </div>
-                </div>
-              </div>
-              <!-- /CONTENT BOX -->
-
-              <!-- CONTENT BOX -->
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="content-box">
-                  <div class="content-box-icon">
-                    <span class="icon-sad"></span>
-                  </div>
+                  <img src="{% static 'Warning-Triangle.png' %}">
                   <div class="content-box-title font-inc font-uppercase">
                     I don't like ...
                   </div>
@@ -179,7 +169,7 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <!-- CONTENT BOXES -->
-            <h4 class="font-alt m-t-0 m-b-0">Endorsements</h4>
+            <h1 class="font-alt m-t-0 m-b-0">Endorsements</h1>
             <hr class="divider-w m-t-10 m-b-20">
             <div class="row multi-columns-row">
               <!-- CONTENT BOX -->
@@ -222,17 +212,18 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <!-- CONTENT BOXES -->
-            <h4 class="font-alt m-t-0 m-b-0">Traits</h4>
+            <h1 class="font-alt m-t-0 m-b-0">I'm more like a ...</h1>
             <hr class="divider-w m-t-10 m-b-20">
             <div class="row multi-columns-row">
               <!-- CONTENT BOX -->
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="content-box">
                   <div class="content-box-icon">
-                    <span class="icon-bike"></span>
-                    <span class="icon-alarmclock"></span>
-                    <span class="icon-chat"></span>
-                    <span class="icon-compass"></span>
+                    <img src="{% static 'Coffee Cup.png' %}">Coffee Addict
+                    <img src="{% static 'Globe.png' %}">Explorer
+                    <img src="{% static 'Headphones.png' %}">Musician
+                    <img src="{% static 'Wrench.png' %}">MacGyver
+                    <img src="{% static 'Shopping Cart.png' %}">Shopaholic
                   </div>
                 </div>
               </div>
@@ -246,25 +237,24 @@
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <!-- CONTENT BOXES -->
-            <h4 class="font-alt m-t-40 m-b-0">Other</h4>
+            <h1 class="font-alt m-t-0 m-b-0">Contact</h1>
             <hr class="divider-w m-t-10 m-b-20">
-
-            <h5 class="progress-title font-inc">Budget</h5>
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped active" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-              <span class="font-inc"></span>
+            <div class="row multi-columns-row">
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <img src="{% static 'Contacts.png' %}">
+                  </div>
+                </div>
               </div>
+              <!-- /CONTENT BOX -->
             </div>
-
-            <h5 class="progress-title font-inc">Profile completion</h5>
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped active" aria-valuenow="80" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                <span class="font-inc"></span>
-              </div>
-            </div>
-          </div>
+            <!-- /CONTENT BOXES -->
         </div>
       </div><br><br><br>
+
+
     </section>
 
     <!-- /CONTACT -->
