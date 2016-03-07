@@ -25,7 +25,7 @@
   <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
 
   <!-- Template core CSS -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style-list-roommate.css' %}" rel="stylesheet">
 
   <!-- Custom css -->
   <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
@@ -263,21 +263,12 @@
               </div>
               </li>
 
-              <li>
-              <div id="div-relationship">
-              <input type="checkbox" class="filter-relationship" value="S"> Single<br>
-              <input type="checkbox" class="filter-relationship" value="E"> Engaged<br>
-              <input type="checkbox" class="filter-relationship" value="M"> Married<br>
-              <input type="checkbox" class="filter-relationship" value="I"> In a relationship<br>
-              </div>
-              </li>
-
-              <li>
+<!--               <li>
               <form method='GET' action="" id="filter-school-form">{% csrf_token %}
                 School: <input type="text" id="text-school">
                 <input id = "input-school" type="submit" value="Search School"><br>
               </form>
-              </li>
+              </li> -->
 
               <li>
                 <p>
@@ -300,7 +291,9 @@
                 <div id="div-tag">
                 <br>
                 {% for tag in tag_list %}
+
                 <input type="checkbox" class="filter-tag" value="{{ tag.name }}"> {{ tag.name }}
+
                 {% endfor %}
                 </div>
               </li>
@@ -322,37 +315,67 @@
 
         {% for roommate in roommate_list %}
 
-          <li class="work-item illustration webdesign">
-            <a href="portfolio-single-1.html">
-              <div class="work-image">
-                <!-- <img src="{% static 'assets/images/work-1.jpg' %}" alt=""> -->
-                <h3 class="work-title font-alt">{{ roommate.user.username }}</h3>
-                <div class="work-descr font-inc">
+        <li class="work-item illustration webdesign">
 
-                  Gender: {{ roommate.gender }}</br>
-                  School: {{ roommate.school }}</br>
-                  Age: {{ roommate.birthday }}
-                  Hometown: {{ roommate.hometown }}</br>
-                  Job: {{ roommate.job }}</br>
-                  Budget: {{ roommate.budget }}</br>
-                  Age: {{ roommate.age }}</br>
-                  Relationship Status: {{ roommate.get_relationship_status_display }}</br>
-                  Tags:
-                  {% for tag in roommate.tags.all %}
-                    {{ tag.name }},
-                  {% endfor %}
+        <a href="portfolio-single-1.html">
 
+        <div class="container">
+
+        <div class="row">
+
+          <div class="col-sm-8 col-sm-offset-2">
+
+            <!-- CONTENT BOXES -->
+
+            <hr class="divider-w m-t-10 m-b-20">
+
+            <div class="row multi-columns-row">
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <!-- <span class="icon-camera"></span> -->
+                    <img src="{% static 'assets/images/stick-figure1.jpg' %}" alt="Smiley face">
+                  </div>
                 </div>
               </div>
-            </a>
-          </li>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-8 col-lg-8">
+                <div class="content-box">
+                  <div class="content-box-title font-inc font-uppercase">
+                    {{ roommate.user.username }}
+                  </div>
+                  <div class="content-box-text">
+                  {{ roommate.get_gender_display }}</br>
+                  {{ roommate.age }}</br>
+                  {{ roommate.school }}</br>
+                  {{ roommate.job }}</br>
+                  {{ roommate.get_tags}}<br>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+            </div>
+            <!-- /CONTENT BOXES -->
+
+          </div>
+
+        </div>
+
+      </div>
+      </a>
+      </li>
 
         {% endfor %}
 
           </div>
 
           <!-- PORTFOLIO ITEM -->
-          <li class="work-item marketing webdesign">
+          <!-- <li class="work-item marketing webdesign">
             <a href="portfolio-single-1.html">
               <div class="work-image">
                 <img src="{% static 'assets/images/work-6.jpg' %}" alt="">
@@ -364,7 +387,7 @@
                 </div>
               </div>
             </a>
-          </li>
+          </li> -->
           <!-- /PORTFOLIO ITEM -->
         </ul>
         <!-- /PORTFOLIO LIST -->
@@ -375,7 +398,7 @@
     <!-- /PORTFOLIO -->
 
     <!-- PAGINATION -->
-    <section class="module-small p-t-0">
+    <!-- <section class="module-small p-t-0">
 
       <div class="container">
 
@@ -388,7 +411,7 @@
 
       </div>
 
-    </section>
+    </section> -->
     <!-- /PAGINATION -->
 
     <!-- DIVIDER -->
@@ -606,25 +629,25 @@
                 }, // data sent with the post request
 
         // handle a successful response
-        success : function(json) {
+        success : function(son) {
             // $('#filter-gender').val(''); // remove the value from the input
-            console.log(json); // log the returned json to the console
+            console.log(son); // log the returned son to the console
             console.log("success"); // another sanity check
             // $(document).ajaxStop(function() { location.reload(true); });
-            // window.location.reload(json)
+            // window.location.reload(son)
             var raw_html = document.createElement('html')
-            raw_html.innerHTML = json
+            raw_html.innerHTML = son
             // var output = raw_html.firstChild;
             var output = raw_html.getElementsByClassName("output")[0]
             $(".output").html(output)
-            // .html(json)
+            // .html(son)
             },
 
         // handle a non-successful response
-        error : function(xhr,errmsg,err) {
+        error : function(xor,errmsg,err) {
             $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
                 " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            console.log(hr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
             }
         });
     };
