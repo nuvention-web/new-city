@@ -42,7 +42,7 @@
       <div class="container">
 
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">Apt 5A</a>
+          <a class="navbar-brand" href="/">Apt 5A</a>
         </div>
 
         <div class="collapse navbar-collapse" id="custom-collapse">
@@ -52,8 +52,6 @@
             <li><a href="/logout">Logout</a></li>
             <li><a href="/matches">My Matches</a>
             <li><a href="/profile">My Profile</a>
-            {% else %}
-            <li><a href="/login">Login</a></li>
             {% endif %}
           </ul>
         </div>
@@ -66,12 +64,9 @@
 
     <div class="hs-caption container">
       <div class="caption-content">
-        <div class="hs-title-size-4 font-alt m-b-30">
-          Log In
-        </div>
         <div class="hs-title-size-1 font-inc">
             <div class="facebook">
-              <a href="#"><img src="facebook_login.png" id="icon"></a><br><br>
+              <div>{% include "socialaccount/snippets/provider_list.html" with process="login" %}<div><br><br>
               <!-- goes to questionnaire -->
             </div>
             <form action="#" class="loginForm"> <!--reciever of information-->
