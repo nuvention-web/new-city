@@ -55,10 +55,16 @@ def user_profile_detail(request, user_profile_id= None):
 def my_profile_detail(request):
     my_profile = get_object_or_404(UserProfile, pk= request.user.pk)
     my_tags = UserProfileTag.objects.filter(user_profile = my_profile)
+    user = my_profile.user
+    first_name = user.first_name
+    last_name = user.last_name
+    initial = last_name[0]
 
     context = {
             "user_profile": my_profile,
             "user_tags": my_tags,
+            "first_name": first_name,
+            "initial": initial,
             }
 
     return render(request, "my_profile.html", context)
