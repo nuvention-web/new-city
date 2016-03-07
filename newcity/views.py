@@ -42,12 +42,11 @@ def home(request, initial_city=None):
 
 def user_profile_detail(request, user_profile_id= None):
     user_profile = get_object_or_404(UserProfile, pk=user_profile_id)
-    user_tag_instance = UserProfileTag.objects.filter(user_profile = user_profile)
-    print(user_tag_instance)
+    user_tags = UserProfileTag.objects.filter(user_profile = user_profile)
 
     context = {
             "user_profile": user_profile,
-            "user_tag_instance": user_tag_instance,
+            "user_tags": user_tags,
             }
 
     return render(request, "user_profile.html", context)
@@ -57,10 +56,11 @@ def create_user_profile(request):
     user = request.user
     social_accounts = user.socialaccount_set.all()
     account = social_accounts[0]
+
     picture = account.get_avatar_url()
     data = account.extra_data
+
     tag_list = request.POST.getlist("tags")
-    print(tag_list)
 
     # UserProfile
     gender = data.get('gender')
@@ -77,6 +77,7 @@ def create_user_profile(request):
         user_profile = form.save(commit=False)
         user_profile.gender = gender
         user_profile.user = user
+        user_profile.picture = picture
         user_profile.save()
 
         for tag in tag_list:

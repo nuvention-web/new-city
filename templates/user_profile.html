@@ -1,4 +1,317 @@
-<h2>User Profile</h2>
-{% for usertag in user_tag_instance %}
-{{ usertag.tag.name }}
-{% endfor %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>User Profile</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static "assets/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Plugins -->
+  <link href="{% static "assets/css/simpletextrotator.css" %}" rel="stylesheet">
+  <link href="{% static "assets/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "assets/css/et-line-font.css" %}" rel="stylesheet">
+  <link href="{% static "assets/css/magnific-popup.css" %}" rel="stylesheet">
+  <link href="{% static "assets/css/flexslider.css" %}" rel="stylesheet">
+  <link href="{% static "assets/css/animate.css" %}" rel="stylesheet">
+
+  <!-- Template core CSS -->
+  <link href="{% static "assets/css/style.css" %}" rel="stylesheet">
+
+  <!-- Custom css -->
+  <link href= "{% static "assets/css/custom.css" %}" rel="stylesheet">
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- /PRELOADER -->
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">APT 5A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="custom-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/posts/list_roommate">Find a Roommate</a></li>
+            <li><a href="/posts/list">Find a House</a></li>
+            <li><a href="/users/">My Profile </a></li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <!-- /NAVIGATION -->
+
+  <!-- WRAPPER -->
+  <div class="wrapper">
+
+    <!-- HOME -->
+    <section class="module module-header bg-dark bg-dark-50" data-background="/assets/images/section-7.jpg">
+
+      <div class="container">
+
+        <!-- MODULE TITLE -->
+        <div class="row">
+
+          <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="module-title font-alt align-center">
+              {{user_profile.user.first_name }}
+              {{user_profile.user.last_name }}
+            </h1>
+            <h4>
+              is your friend <span class="icon-facebook"></span><br>
+              is also in Evanston <span class="icon-map-pin"></span><br>
+              went to same school - Northwestern University <span class="icon-pencil"></span><br>
+
+            </h4>
+
+            {{user_profile.picture}}
+          </div>
+        </div>
+        <!-- /MODULE TITLE -->
+
+      </div>
+
+    </section >
+    <!-- /HOME -->
+
+    <!-- COMPONENTS -->
+    <section class="module">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <!-- CONTENT BOXES -->
+            <h4 class="font-alt m-t-0 m-b-0">About me</h4>
+            <hr class="divider-w m-t-10 m-b-20">
+            <div class="row multi-columns-row">
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-laptop"></span>
+                  </div>
+                  <div class="content-box-title font-inc font-uppercase">
+                    I am ...
+                  </div><br>
+                  <div class="content-box-text">
+                    Job
+                    <li>{{user_profile.job}}</li>
+                    Education
+                    <li>{{user_profile.school}}</li>
+                    Age
+                    <li>{{user_profile.age}}</li>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-profile-male"></span>
+                  </div>
+                  <div class="content-box-title font-inc font-uppercase">
+                    I appreciate when my roommate ...
+                  </div>
+                  <div class="content-box-text">
+                    is willing to try new things, has a good sense of humor, challenges me to think critically, have fun anywhere
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-happy"></span>
+                  </div>
+                  <div class="content-box-title font-inc font-uppercase">
+                    I like ...
+                  </div>
+                  <div class="content-box-text">
+                    skiing, traveling, casual drinking
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-sad"></span>
+                  </div>
+                  <div class="content-box-title font-inc font-uppercase">
+                    I don't like ...
+                  </div>
+                  <div class="content-box-text">
+                    smoking inside the room
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+            </div>
+            <!-- /CONTENT BOXES -->
+        </div>
+      </div><br><br><br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <!-- CONTENT BOXES -->
+            <h4 class="font-alt m-t-0 m-b-0">Endorsements</h4>
+            <hr class="divider-w m-t-10 m-b-20">
+            <div class="row multi-columns-row">
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-quote"></span>
+                  </div>
+                  from
+                  <div class="content-box-title font-inc font-uppercase">
+                  Rachel Xanttopoulous
+                  </div>
+                  <div class="content-box-text">
+                    "He's such a great person. Enjoyed every moment with him"
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-quote"></span>
+                  </div>
+                  <div class="content-box-title font-inc font-uppercase">
+                    Andre Paim
+                  </div>
+                  <div class="content-box-text">
+                    "He's such an amazing guy. "
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+            </div>
+            <!-- /CONTENT BOXES -->
+        </div>
+      </div><br><br><br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <!-- CONTENT BOXES -->
+            <h4 class="font-alt m-t-0 m-b-0">Traits</h4>
+            <hr class="divider-w m-t-10 m-b-20">
+            <div class="row multi-columns-row">
+              <!-- CONTENT BOX -->
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="content-box">
+                  <div class="content-box-icon">
+                    <span class="icon-bike"></span>
+                    <span class="icon-alarmclock"></span>
+                    <span class="icon-chat"></span>
+                    <span class="icon-compass"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- /CONTENT BOX -->
+            </div>
+            <!-- /CONTENT BOXES -->
+        </div>
+      </div><br><br><br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <!-- CONTENT BOXES -->
+            <h4 class="font-alt m-t-40 m-b-0">Other</h4>
+            <hr class="divider-w m-t-10 m-b-20">
+
+            <h5 class="progress-title font-inc">Budget</h5>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              <span class="font-inc"></span>
+              </div>
+            </div>
+
+            <h5 class="progress-title font-inc">Profile completion</h5>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" aria-valuenow="80" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <span class="font-inc"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br><br><br>
+    </section>
+
+    <!-- /CONTACT -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-sm-12 text-center">
+            <p class="copyright font-inc m-b-0">© 2015 <a href="index.html">APT 5A</a>, All Rights Reserved.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </footer>
+    <!-- /FOOTER -->
+
+  </div>
+  <!-- /WRAPPER -->
+
+  <!-- Scroll-up -->
+  <div class="scroll-up">
+    <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+  </div>
+
+  <!-- Javascript files -->
+  <script src="{% static "assets/js/jquery-2.1.3.min.js" %}"></script>
+  <script src="{% static "assets/bootstrap/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "assets/js/jquery.mb.YTPlayer.min.js" %}"></script>
+  <script src="{% static "assets/js/appear.js" %}"></script>
+  <script src="{% static "assets/js/jquery.simple-text-rotator.min.js" %}"></script>
+  <script src="{% static "assets/js/jqBootstrapValidation.js" %}"></script>
+  <script src="{% static "assets/js/gmaps.js" %}"></script>
+  <script src="{% static "assets/js/isotope.pkgd.min.js" %}"></script>
+  <script src="{% static "assets/js/imagesloaded.pkgd.js" %}"></script>
+  <script src="{% static "assets/js/jquery.flexslider-min.js" %}"></script>
+  <script src="{% static "assets/js/jquery.magnific-popup.min.js" %}"></script>
+  <script src="{% static "assets/js/jquery.fitvids.js" %}"></script>
+  <script src="{% static "assets/js/smoothscroll.js" %}"></script>
+  <script src="{% static "assets/js/wow.min.js" %}"></script>
+  <script src="{% static "assets/js/contact.js" %}"></script>
+  <script src="{% static "assets/js/custom.js" %}"></script>
+
+</body>
+</html>
