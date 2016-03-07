@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>APT 5A</title>
+  <title>Apt 5A</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -43,15 +43,7 @@
           <a class="navbar-brand" href="/">APT 5A</a>
         </div>
 
-        <div class="collapse navbar-collapse" id="custom-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/posts/list_roommate">Find a Roommate</a></li>
-            <li><a href="/posts/list">Find an Apartment</a></li>
-          </ul>
-        </div>
-      </div>
-  </nav>
-
+<!-- NAV Bar -->
         <div class="collapse navbar-collapse" id="custom-collapse">
 
           <ul class="nav navbar-nav navbar-right">
@@ -72,20 +64,37 @@
 
           </ul>
         </div>
+<!-- End Nav Bar -->
+
+      </div>
+  </nav>
+<!--           <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/matches">My Matches</a>
+            <li><a href="/profile">My Profile</a>
+            {% endif %}
+          </ul> -->
+
+          <!-- authentication, different nav bar if not logged in vs logged in -->
+
 
   <section id="home" class="module-hero module-parallax module-fade module-full-height bg-dark-30" data-background="assets/images/indoorApt1.jpg">
 
     <div class="hs-caption container">
       <div class="caption-content">
         <div class="hs-title-size-1 font-inc">
-          <h1>Login</h1>
+          <h1>Sign Up</h1>
             <div class="facebook">
+            <!-- SIGN UP!!!!! -->
               <div>{% include "socialaccount/snippets/provider_list.html" with process="login" %}<div><br><br>
               <!-- goes to questionnaire -->
             </div>
-            <form action="#" class="loginForm"> <!--reciever of information-->
-                <input type="text" name="email" placeholder="Email or Username"><br><br>
-                <input type="password" name="email" placeholder="Password"><br><br>
+            <form action="#" class="signUpForm"> <!--reciever of information-->
+                <input type="text" name="name" placeholder="Username"><br><br>
+                <input type="text" name="username" placeholder="Username"><br><br>
+                <input type="text" name="email" placeholder="Email"><br><br>
+                <input type="password" name="password" placeholder="Password"><br><br>
                 <input type="submit" value="Submit">
             </form>
         </div><br><br>
