@@ -61,10 +61,20 @@
 
         <div class="collapse navbar-collapse" id="custom-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/matches">My matches</a></li>
+
             <li><a href="/posts/list_roommate">Find a Roommate</a></li>
             <li><a href="/posts/list">Find a House</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a href="/matches">My matches</a></li>
             <li><a href="/profile">My Profile </a></li>
+            <li><a href="/accounts/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
+
+
+
           </ul>
         </div>
       </div>
@@ -86,7 +96,7 @@
               {{ initial }}.</button>
             </h1>
             <h3 class= "font-alt align-center">
-              I'm moving to <u>New York</u> in <u><span id="period">3 months</span></u>
+              I'm moving to <u>San Francisco</u> in <u><span id="period">3 months</span></u>
               and my monthly budget is <u><span id="budget">$ 2000</span></u>
             </h3><br>
 
