@@ -78,10 +78,10 @@
 					Find the right roommate
 				</div>
 				<div class="hs-title-size-1 font-inc">
-					<a href="/posts/list_roommate" class="button">I have an apartment</a>
+				<form action='' method='GET' id='set_init_city'>{% csrf_token %}
+					<input type="submit" name="searching_for_home" class="button" value="I HAVE AN APARTMENT" style="width:200px; background-color:	#FFFFFF;">
     			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    				<a href="/posts/list" class="button">I don't have an apartment</a>
-				</div>
+    			<input type="submit" name="searching_for_roommate" class="button" value="I DON'T HAVE AN APARTMENT" style="width:200px; background-color:	#FFFFFF;">
 				<br><br>
 				<div class="dropdown">
           <button class="btn" type="button" data-toggle="dropdown" style="
@@ -103,7 +103,11 @@
               {% endfor %}
             </ul>
           </div>
+          <input type="hidden" id="initial_city" name="initial_city" value="">
+          </form>
+        </div>
 			</div>
+
 		</div>
 
 	</section >
