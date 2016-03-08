@@ -67,6 +67,8 @@ class UserProfileForm(forms.ModelForm):
             "school",
             "age",
             "job",
+            "budget",
+            "city_to",
             "tags",
             # "picture",
         ]

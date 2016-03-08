@@ -67,6 +67,7 @@ def my_profile_detail(request):
     last_name = user.last_name
     initial = last_name[0]
 
+
     context = {
             "user_profile": my_profile,
             "user_tags": my_tags,
