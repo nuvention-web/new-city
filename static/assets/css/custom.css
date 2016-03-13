@@ -1,0 +1,23 @@
+/* ------------------------------------------------------------------
+Project: Semantic
+Place here your custom CSS styles
+------------------------------------------------------------------ */
+
+.button {
+  border: solid 1px black;
+  padding: 5px;
+  width: 50px;
+}
+
+.facebook {
+  width: 60%;
+  margin: auto;
+}
+
+#icon {
+  width: 250px;
+}
+
+#loginBox {
+  border: 1px solid black;
+}
